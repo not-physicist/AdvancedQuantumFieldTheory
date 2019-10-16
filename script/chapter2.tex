@@ -1,0 +1,284 @@
+\chapter[Path Integrals and Gauge Fields]{Path Integrals and Gauge Fields\footnote{see also in  Peskin and Schroeder Ch 9.1,  Ryder Ch 5.1, L.S.Brown Ch1 1-3}}
+
+\section{Reminder: Path integrals in Quantum Mechanics}
+Transition amplitude is given by 
+\begin{align}
+   \braket{x_b | \euler^{-iH(t_b - t_a)} | x_a}_{S} = \braket{x_b, t_b | x_a, t_a}_{H} 
+\end{align}
+Here we denotes the Schrödinger picture states by ${}_S$ and Heisenberg picture states by ${}_H$.
+
+\begin{align}
+   \ket{x_a, t_a} &= \euler^{iHt_a} \ket{x_a} \\
+   \hat{H}_a (t_a) &= \euler^{iHt_a} \hat{x}_S \euler^{-iHt_a} \\
+   \hat{x}_H(t_a) \ket{x_a, t_a} &= \euler^{iHt_a} \hat{x}_s \ket{x_a} = \euler^{iHt_a} x_a \ket{x_a}  \notag\\
+                                 &= x_a \euler^{iHt_a} \ket{x_a} = x_a \ket{x_a, t_a}
+\end{align}
+We are looking at time evolution in position space.
+
+It can be calculated directly for free particle with Hamiltonian $H = H_0 = \frac{\hat{p}^2}{2m}$
+
+\begin{align}
+   \braket{x_b | \euler^{-i \frac{\hat{p}^2}{2m}(t_b - t_a)} | x_a} = \sqrt{\frac{m}{2\pi i (t_b - t_a)}} \euler^{i(x_b - x_a)^2 \frac{m}{2(t_b - t_a)}}
+\end{align}
+We are going to insert $1 = \int \dd[3]{p} \ket{p}\bra{p}$ and use $\braket{x | p}$ is the plane wave
+
+For general Hamiltonian $H = H_0 + V$ and $ \left[ H_0, V \right] \neq 0 $ the procedure is as following
+\begin{itemize}
+   \item divide $t$ into $N$ small intervals $t = N\cdot \epsilon$
+   \item use Lie-Kato-Trotter product formula
+      \begin{align}
+         \euler^{A+B} = \lim_{N \rightarrow 0} \left( \euler^{A/N} \euler^{B/N} \right)^N \quad A, B \in GL(n, \C)
+      \end{align}
+\end{itemize}
+
+Then we get a functional for path $x(t')$
+\begin{align}
+   \braket{ x_b | \euler^{-iH(t_b - t_a)}| x_a} = \int \mathcal{D}x \euler^{i S[x] / \hbar}
+   \shortintertext{with $S[x] = \int_{t_a}^{t_b} \dd{t'} \left[ \frac{m}{2} \dot{x}(t') - V(x(t')) \right]$} \notag
+\end{align}
+
+\paragraph{Definition} (integration measure) 
+\begin{align}
+   \mathcal{D}x = D \left[ x(t) \right] = \lim_{N \rightarrow \infty} \left( \frac{mN}{2\pi i \Delta t} \right)^{N/2} \dd{x(t_1)} \dots \dd{x(t_{N-1})}
+\end{align}
+with $\Delta t = (t_b - t_a)/N$
+
+Pictorially we sum over all paths (i.e.~amplitudes). Remember the superposition principle in quantum mechanics!
+
+Classical path comes from Hamilton principle $\delta S = 0$
+\begin{align}
+   \left.\frac{\delta S[x]}{\delta x(t)} \right|_{x=x_{cl}} = 0
+\end{align}
+
+Classical path dominates the transition probability in the limit $\hbar \rightarrow 0$. It is the contribution with fewest oscillations in the path integral. Others interfere destructively (averaged out). This is essentially stationary phase approximation.
+
+\paragraph{Example} (harmonic oscillation)
+\begin{align}
+   L = \frac{m}{2} \left( \dot{x}^2 - \omega^2 x^2 \right)
+\end{align}
+Then the classical path obeys the equation of motion
+\begin{align}
+   \ddot{x}_{cl}(t) + \omega^2 x_{cl}(t) = 0
+\end{align}
+
+Split a general path into classical and fluctuations $x(t) = x_{cl}(t) + y(t)$. The action turns into
+\begin{align*}
+   S[x] = S[x_{cl}] + \underbrace{\int \dd{t} \frac{\delta s}{ \delta x(t)} |_{x=x_{cl}}y(t)}_{=0} + \frac{1}{2} \int \dd{t} \int \dd{t'} \frac{\delta^2 S}{\delta x(t) \delta x(t')}|_{x=x_{cl}} y(t) y(t') + \dots
+\end{align*}
+
+Then we can factor out the classical path contribution in transition probability
+\begin{align*}
+   \braket{ x_b | \euler^{-iHT} | x_a } = \int \mathcal{D}x \euler^{\frac{i}{\hbar} S[x]} =  \euler^{\frac{i}{\hbar} S[x_a]} \int \mathcal{D}x \euler^{\frac{i}{\hbar} S[y]}
+\end{align*}
+The integral is to sum over fluctuations around the classical path. Ideally suited to treat fluctuations (quantum and thermal). The explicit calculation for harmonics oscillator can be found in AQT course.
+
+\paragraph{Physical Interpretation} the transition probability is the propagator
+\begin{align}
+   \braket{x_b | \euler^{-iH(t_b - t_a)} | x_a} = U (x_b t_b; x_a t_a)
+\end{align}
+
+Superposition principle takes the form
+\begin{align*}
+   \psi(x_b, t_b) &= \braket{x_b | \psi(t_b) } = \braket{x_b | \euler^{-iHt_b} | \psi} \\
+                  &= \int \dd{x_a} \braket{x_b | \euler^{-iH(t_b - t_a)}| x_a } \braket{x_a| \euler^{-iHt_a} | \psi} \\
+                  &= \int \dd{x_a} U(x_b t_b; x_a t_a) \underbrace{\braket{x_a | \psi(t_a)}}_{\psi(x_a, t_a)} \\
+\end{align*}
+
+\section{Quantum Mechanical Path Integrals and External Forces}
+\paragraph{Definition} (Time evolution operator) in path integral representation
+\begin{align}
+   U(x_b, t_b; x_a, t_a) &= \braket{x_b, t_b | x_a, t_a}\\
+                       &= \int \D x(t) \euler^{iS[x]} \notag \\
+                       &= \int \D x(t) \euler^{i\int^{t_b}_{t_a} \dd{t} L(x, \dot{x})} \notag
+\end{align}
+
+Add coupling to an external force (source) $f(t)$
+\begin{align}
+   L = L_0 + f(t) x(t)
+\end{align}
+
+\paragraph{Definition} (functional derivatives) with respect to $if(t)$
+\begin{align}
+   \frac{\delta}{\delta f(t)} \int \dd{t'} f(t') g(t') = g(t)
+\end{align}
+
+For a general functional of external forces
+\begin{align}
+   F[f] = \int \dd{t_1} K_1(f_1) f(t_1) + \frac{1}{2!} \int \dd{t_1} \dd{t_2} K_2(t_1, t_2) f(t_1) f(t_2)  + \dots
+\end{align}
+with the $K_n(t_1, \dots, t_n)$ totally symmetric in the arguments $t_1, \dots , t_n$, since antisymmetric contributions drop automatically upon integration. The functional derivatives is then
+\begin{align}
+   \frac{\delta F}{\delta f(t)} = K_1(t) + \int \dd{t_2} K_2 (t, t_2) f(t_2) + \frac{1}{2!} \int \dd{t_2} \dd{t_1} K_3(t, t_2, t_3) f(t_2) f(t_3) + \dots
+\end{align}
+
+Consider functional derivative of time evolution operator
+\begin{align*}
+   \frac{1}{i} \frac{\delta}{\delta f(t)} \braket{x_b, t_b | x_a, t_a}^f  
+   &= \int \D x \exp(i \int^{t_b}_{t_a} \dd{t'}L_0) \frac{1}{i} \frac{\delta}{\delta f(t)} \exp(i\int^{t_b}_{t_a}\dd{t'}f(t')x(t')) \\
+   &= \int \D x \, x(t) \exp(i\int^{t_b}_{t_a} \dd{t'} \left[ L_0 + f(t') x(t') \right] )
+\end{align*}
+
+To split the path integral into two parts, time before and after $t$ (superposition principle). $M$ steps before $t$ and $N-M-1$ steps after $t$. The integration over $x(t)$ is to sum over all possible positions at time $t$.
+\begin{align*}
+   \int^{t_b}_{t_a} \D x  = \int \dd{x(t)} \int^{t_b}_t \D x \int^t_{t_a} \D x
+\end{align*}
+
+Then
+\begin{align*}
+   \frac{1}{i} \frac{\delta}{\delta f(t)} \braket{x_b, t_b | x_a, t_a}^f  &= \int \dd{x(t)} \underbrace{\int \D x \exp(i \int^{t_b}_{t} \dd{t'} (L_0 + f x))}_{N-M-1 \text{ factor}} x(t) \underbrace{\int \D x \exp(i\int^{t_b}_{t_a} \dd{t'} (L_0 + fx))}_{M \text{ factor}} \\
+                                                                        &= \int \dd{x(t)} \braket{x_b, t_b | x(t), t}^f x(t) \braket{x(t), t | x_a, t_a}^f
+\end{align*}
+Here $x(t)$ is an eigenvalue, not an operator, so we write $x(t) = \bar{x}$ with 
+\begin{align*}
+\int \dd{\bar{x}} \ket{\bar{x}, t} \bar{x} \bra{\bar{x}, t} = \int \dd{\bar{x}} \bar{x} \braket{\bar{x}, t | \bar{x}, t}  = x(t)
+\end{align*}
+the Heisenberg operator.
+
+We get 
+\begin{align}
+   \frac{1}{i} \frac{\delta}{\delta f(t)} \braket{x_b t_b | x_a t_a}^f 
+   = \braket{x_b, t_b | x(t) | x_a, t_a}
+\end{align}
+
+The functional derivative with respect to the external force $f(t)$ which couples to $x(t)$, to "insert" the operator $x(t)$ into the matrix element.
+
+Now consider \textit{two} functional derivatives with $t_b \geq t, t' \geq t_a$
+\begin{align}
+   \frac{1}{i} \frac{\delta}{\delta f(t)} \frac{1}{i} \frac{\delta}{\delta f(t')} \braket{x_b, t_b | x_a, t_a}^f 
+   = \int \D x \, x(t) x(t') \euler^{i\int^{t_b}_{t_a} \dd{t'} \left[ L_0 + f\cdot x \right]}
+\end{align}
+
+In general
+\begin{align*}
+   \frac{1}{i} \frac{\delta}{\delta f(t)} \frac{1}{i} \frac{\delta}{\delta f(t')} \braket{x_b, t_b | x_a, t_a}^f 
+   &= \frac{1}{i} \frac{\delta}{\delta f(t)} \braket{ x_b, t_b | x(t') | x_a, t_a}^f \\
+   &= \frac{1}{i} \frac{\delta}{\delta f(t)} \int \dd{\bar{x}'} \braket{ x_b, t_b | x(t') | \bar{x}', t}^f \bar{x}' \braket{\bar{x}', t' | x_a, t_a}^f \\
+   &= \int \dd{\bar{x}'} \left(\frac{1}{i} \frac{\delta}{\delta f(t)} \braket{ x_b, t_b | x(t') | \bar{x}', t}^f \right) \bar{x}' \braket{\bar{x}', t' | x_a, t_a}^f  \\
+   &\quad + \int \dd{\bar{x}'} \braket{ x_b, t_b | x(t') | \bar{x}', t}^f \bar{x}' \left(\frac{1}{i} \frac{\delta}{\delta f(t)}\braket{\bar{x}', t' | x_a, t_a}^f \right)
+\end{align*}
+
+Then transition amplitudes only depend on the time interval, where the external forces actually act
+\begin{align*}
+   \frac{1}{i} \frac{\delta}{\delta f(t)} \braket{x_b, t_b | \bar{x}', t'}^f &= 
+   \begin{cases}
+      \braket{x_b, t_b | x(t) | \bar{x}', t'}^f & t > t' \\
+      0 & t < t'
+   \end{cases} \\
+   \frac{1}{i} \frac{\delta}{\delta f(t)} \braket{\bar{x}', t' | x_b, t_b   }^f &= 
+   \begin{cases}
+      0 & t > t' \\
+      \braket{\bar{x}', t' | x(t) | x_b, t_b}^f & t < t'
+   \end{cases}
+\end{align*}
+
+Eliminate $\bar{x}'$ integration as before
+\begin{align}
+   \frac{1}{i} \frac{\delta}{\delta f(t)} \frac{1}{i} \frac{\delta}{\delta f(t')} \braket{x_b, t_b | x_a, t_a}^f  
+   = \braket{x_b, t_b | T \left[x(t), x(t') \right] | x_a, t_a}^f
+\end{align}
+
+This can be easily generalised
+\begin{align}
+   \frac{1}{i} \frac{\delta}{\delta f(t')} \frac{1}{i} \frac{\delta}{\delta f(t'')} \dots \braket{x_b, t_b | x_a, t_a}^f 
+   &= \braket{x_b, t_b | T \left[ x(t') x(t'') \dots  \right] |x_a, t_a}^f \\
+   &= \int \D x \, x(t') x(t'') \dots \exp(i\int^{t_b}_{t_a} \dd{t} \left( L_0(x, \dot{x}) + f(t) x(t) \right))
+\end{align}
+
+\paragraph{Interpretation} the addition of external force to the Lagrangian of a path integral produces a "generating functional" for a matrix element which contain time-ordered products of arbitrary many position operators. The functional derivative is just a trick to generate the matrix element in the propagator. This is called Schwinger source theory.
+
+Now we can set $f=0$
+\begin{align}
+   \braket{x_b, t_b | T \left[ x(t') x(t'') \dots  \right] |x_a, t_a}^{f=0}
+   = \int \D x x(t') x(t'') \dots \exp(i\int^{t_b}_{t_a}  L_0(x, \dot{x}) )
+\end{align}
+or in case of an arbitrary generating functional $F[x]$ 
+\begin{align}
+   \braket{x_b, t_b | T \left\{ F[x]  \right\} |x_a, t_a}^{f=0}
+   = \int \D x F[x] \exp(i\int^{t_b}_{t_a}  L_0(x, \dot{x}) )
+\end{align}
+for example
+\begin{align*}
+   \braket{x_b, t_b | x_a, t_a}^f = \braket{ x_b, t_b | T \euler^{i\int^{t_b}_{t_a} \dd{t'} q(t') f(t')} | x_a, t_a}^{f=0}
+\end{align*}
+
+\section{Scalar Field Theories and Feynman Rules}
+We are going to generalise the concept of path integral to field theories. Simplest example is a neutral (real) scalar field $\phi(x)$ coupled to an external classical "current"/source $j(x)$
+\begin{align}
+   \lag = \frac{1}{2} \left( \partial_\mu \phi \right)^2 - \frac{1}{2} m^2 \phi^2 + \phi j(x) = \lag_0 + \phi(x) j(x)
+\end{align}
+
+Proceed along the lines of quantum mechanical path integral with external forces
+\begin{itemize}
+   \item construct a generating functional
+   \item using the functional-integral-representation derive expressions for the correlation functions $\stackrel{\sim}{=}$ Feynman rules
+\end{itemize}
+
+Sufficient to consider vacuum-to-vacuum amplitudes in the presence of $j(x)$. Consider $t_a = -\infty(1-i\epsilon)$, $t_b = +\infty(1-i\epsilon)$ and $j(x) = 0$ for $t \mapsto \pm \infty$
+\begin{align*}
+   \braket{0 | 0}^j = \int \D x \, \phi(x) \exp(i\int \dd[4]{x}\lag(\phi, \partial_\mu \phi))
+\end{align*}
+where $\D \phi(x)$ in the generalization $\D x \mapsto \D (\text{field})$
+
+Compute $\braket{0|0}^j$ (exact for a free field theory). First to solve with classical action
+\begin{align*}
+   \delta \int \dd[4]{x} \left[ \frac{1}{2} \left( \partial_\mu \phi_{cl} \right)^2 - \frac{1}{2} m^2 \phi^2_{cl} + \phi_{cl}j \right] &= 0\\\
+   \left( \partial^2 + m^2 \right) \phi_{cl}(x) &= j(x)
+\end{align*}
+
+Solution 
+\begin{align}
+   \phi_{cl}(x) = i \int \dd[4]{y} D_F(x-y) j(y)
+\end{align}
+since Feynman-propagator is the Green's function of the KG operator.
+\begin{align}
+   \left( \partial^2 + m^2 \right) D_F(x-y) = -i \delta^{(4)}(x-y)
+\end{align}
+
+To define the "fluctuation" field $\phi'(x)$ via $\phi(x) = \phi_{cl}(x) + \phi'(x)$. Then the Lagrangian is
+\begin{align*}
+   \lag &= \frac{1}{2} \left( \partial_\mu \phi_{cl} + \partial_\mu \phi'\right)^2 -  \frac{m^2}{2} \left( \phi_{cl} + \phi' \right)^2 + \left( \phi_{cl} + \phi' \right) \cdot j(x) \\
+        &= \lag_{cl} + \lag' + \left[ (\partial_\mu \phi_{cl}) (\partial^\mu \phi') - m^2 \phi_{cl} \phi' + j\phi \right] 
+\end{align*}
+after integration by parts and using equation of motion the last part vanishes. Then $\phi'$ (per construction) is a free field. Thus
+\begin{align}
+   \braket{0 | 0 }^j = \int \D \phi' \exp(i\int \dd[4]{x} (\lag_{cl} + \lag'))
+   = \euler^{iS_{cl}} \braket{0 | 0}^{j=0}
+\end{align}
+
+On the other hand, $iS_{cl}$ can be rewritten as
+\begin{align*}
+   iS_{cl} &= i \int \dd[4]{x} \left[ \frac{1}{2} - \frac{m}{2} \phi_{cl}^2 + \phi_{cl} j \right] \\
+           &= i \int \dd[4]{x} \bigg[ -\frac{1}{2} \phi_{cl} \underbrace{\left( \partial^2 + m^2 \right)\phi_{cl}}_{=j \;\text{from e.o.m.}} + \phi_{cl} j \bigg] \\
+           &= \frac{i}{2} \int \dd[4]{x} \phi_{cl}(x) j(x) \\
+           &= -\frac{1}{2} \int \dd[4]{x} \dd[4]{y} j(x) D_F(x-y) j(y)
+\end{align*}
+
+\paragraph{Definition} (generating functional) in the free scalar field theory
+\begin{align}
+   W_0[j] &= \frac{Z[j]}{Z[j=0]} = \frac{\braket{0 | 0}^j}{\braket{0 | 0}^{j=0}} \notag\\
+            &= \exp(-\frac{1}{2} \int \dd[4]{x}\dd[4]{y} j(x) D_F(x-y) j(y))
+\end{align}
+
+Connection to the S-matrix
+\begin{align}
+   S &= U(-\infty, \infty) \notag\\
+     &= \lim_{t_i \mapsto -\infty(1-i\epsilon)}\lim_{t_f \mapsto +\infty(1-i\epsilon)} T \exp(-i\int^{t_f}_{t_i} \dd{t} \ham_{int} (t)) \notag\\
+   &= T \exp(-i\int \dd[4]{x}\ham_{int} (x)) \notag\\
+   &= T \exp(i\int \dd[4]{x} \phi(x) j(x)) \notag\\
+   &= T \sum_{n=0}^{\infty} \frac{i^n}{n!} \int \dd[4]{x_1} \dots \dd[4]{x_n} j(x_1) \dots j(x_n) \phi(x_1) \dots \phi(x_n) \notag\\
+   \braket{0 | S | 0} &= \sum_{n=0}^{\infty} \frac{i^n}{n!} \int \dd[4]{x_1} \dots \dd[4]{x_n}  j(x_1) \dots j(x_n)G_n^0 (x_1, \dots, x_n)
+\end{align}
+where $G^0_n(x_1, \dots, x_n) = \braket{0 | T [\phi(x_1) \dots \phi(x_n)]| 0}$ the n-point-Green's function of the free scalar field theory.
+
+We can calculate the Green's function as for the quantum mechanical path integral with external forces via functional derivatives of the generating functional
+\begin{align}
+   W_0[j] = \frac{\int \D \phi \exp(i\int \dd^4 x (\lag_0(\phi, \partial_\mu \phi)+\phi j))}{\int \D \phi \exp(i\int \dd^4 x (\lag_0(\phi, \partial_\mu \phi)))}
+\end{align}
+
+\begin{align}
+   G_n^0 (x_1,\dots, x_n) &= \frac{1}{i} \frac{\delta}{ \delta j(x_1)} \dots \frac{1}{i} \frac{\delta}{ \delta j(x_n)} W_0[j] |_{j=0} \notag \\
+                          &= \frac{\int \D \phi \exp(i\int \dd^4 x (\lag_0(\phi, \partial_\mu \phi)) )\phi(x_1) \dots \phi(x_n) }{\int \D \phi \exp(i\int \dd^4 x (\lag_0(\phi, \partial_\mu \phi)))} \notag \\
+                          &= \braket{0 | T \phi(x_1) \dots \phi(x_n) | 0}
+\end{align}
+
+The central result here is that these three things are closely related: S-matrix $\leftrightarrow$ Green's function $\leftrightarrow$ Path integral
