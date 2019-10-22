@@ -37,7 +37,7 @@ Then we get a functional for path $x(t')$
    \shortintertext{with $S[x] = \int_{t_a}^{t_b} \dd{t'} \left[ \frac{m}{2} \dot{x}(t') - V(x(t')) \right]$} \notag
 \end{align}
 
-\paragraph{Definition} (integration measure) 
+\paragraph{Definition} \underline{integration measure}
 \begin{align}
    \mathcal{D}x = D \left[ x(t) \right] = \lim_{N \rightarrow \infty} \left( \frac{mN}{2\pi i \Delta t} \right)^{N/2} \dd{x(t_1)} \dots \dd{x(t_{N-1})}
 \end{align}
@@ -52,7 +52,7 @@ Classical path comes from Hamilton principle $\delta S = 0$
 
 Classical path dominates the transition probability in the limit $\hbar \rightarrow 0$. It is the contribution with fewest oscillations in the path integral. Others interfere destructively (averaged out). This is essentially stationary phase approximation.
 
-\paragraph{Example} (harmonic oscillation)
+\paragraph{Example} \unlderline{harmonic oscillation}
 \begin{align}
    L = \frac{m}{2} \left( \dot{x}^2 - \omega^2 x^2 \right)
 \end{align}
@@ -85,7 +85,7 @@ Superposition principle takes the form
 \end{align*}
 
 \section{Quantum Mechanical Path Integrals and External Forces}
-\paragraph{Definition} (Time evolution operator) in path integral representation
+\paragraph{Definition} \underline{Time evolution operator} in path integral representation
 \begin{align}
    U(x_b, t_b; x_a, t_a) &= \braket{x_b, t_b | x_a, t_a}\\
                        &= \int \D x(t) \euler^{iS[x]} \notag \\
@@ -97,7 +97,7 @@ Add coupling to an external force (source) $f(t)$
    L = L_0 + f(t) x(t)
 \end{align}
 
-\paragraph{Definition} (functional derivatives) with respect to $if(t)$
+\paragraph{Definition} \underline{functional derivatives} with respect to $if(t)$
 \begin{align}
    \frac{\delta}{\delta f(t)} \int \dd{t'} f(t') g(t') = g(t)
 \end{align}
@@ -152,9 +152,9 @@ In general
 \begin{align*}
    \frac{1}{i} \frac{\delta}{\delta f(t)} \frac{1}{i} \frac{\delta}{\delta f(t')} \braket{x_b, t_b | x_a, t_a}^f 
    &= \frac{1}{i} \frac{\delta}{\delta f(t)} \braket{ x_b, t_b | x(t') | x_a, t_a}^f \\
-   &= \frac{1}{i} \frac{\delta}{\delta f(t)} \int \dd{\bar{x}'} \braket{ x_b, t_b | x(t') | \bar{x}', t}^f \bar{x}' \braket{\bar{x}', t' | x_a, t_a}^f \\
-   &= \int \dd{\bar{x}'} \left(\frac{1}{i} \frac{\delta}{\delta f(t)} \braket{ x_b, t_b | x(t') | \bar{x}', t}^f \right) \bar{x}' \braket{\bar{x}', t' | x_a, t_a}^f  \\
-   &\quad + \int \dd{\bar{x}'} \braket{ x_b, t_b | x(t') | \bar{x}', t}^f \bar{x}' \left(\frac{1}{i} \frac{\delta}{\delta f(t)}\braket{\bar{x}', t' | x_a, t_a}^f \right)
+   &= \frac{1}{i} \frac{\delta}{\delta f(t)} \int \dd{\bar{x}'} \braket{ x_b, t_b | \bar{x}', t}^f \bar{x}' \braket{\bar{x}', t' | x_a, t_a}^f \\
+   &= \int \dd{\bar{x}'} \left(\frac{1}{i} \frac{\delta}{\delta f(t)} \braket{ x_b, t_b | \bar{x}', t}^f \right) \bar{x}' \braket{\bar{x}', t' | x_a, t_a}^f  \\
+   &\quad + \int \dd{\bar{x}'} \braket{ x_b, t_b |  \bar{x}', t}^f \bar{x}' \left(\frac{1}{i} \frac{\delta}{\delta f(t)}\braket{\bar{x}', t' | x_a, t_a}^f \right)
 \end{align*}
 
 Then transition amplitudes only depend on the time interval, where the external forces actually act
@@ -253,7 +253,7 @@ On the other hand, $iS_{cl}$ can be rewritten as
            &= -\frac{1}{2} \int \dd[4]{x} \dd[4]{y} j(x) D_F(x-y) j(y)
 \end{align*}
 
-\paragraph{Definition} (generating functional) in the free scalar field theory
+\paragraph{Definition} \underline{generating functional} in the free scalar field theory
 \begin{align}
    W_0[j] &= \frac{Z[j]}{Z[j=0]} = \frac{\braket{0 | 0}^j}{\braket{0 | 0}^{j=0}} \notag\\
             &= \exp(-\frac{1}{2} \int \dd[4]{x}\dd[4]{y} j(x) D_F(x-y) j(y))
