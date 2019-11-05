@@ -21,13 +21,19 @@
 \usepackage{hyperref}
 \RequirePackage[all]{hypcap}
 
+%There are a number of symbols defined inside txfonts that are also defined in amsmath
+% so you can just make these available again
+\let\iint\relax
+\let\iiint\relax
+\let\iiiint\relax
+\let\idotsint\relax
 \usepackage{amsmath}
 \usepackage{physics}
 \usepackage{mathtools}
 \usepackage{braket}
 \usepackage{slashed} % feynman slash notation
 \usepackage{simplewick} % wick contraction
-% \usepackage{tikz-feynman} % feynman diagrams
+\usepackage{tikz-feynman} % feynman diagrams
 
 %restart footnotes every page
 \usepackage{perpage}
@@ -39,6 +45,8 @@
 % toprule and etc.
 \usepackage{booktabs}
 
+% Color
+\usepackage{xcolor}
 %%%%%%%%%%%%%%%%%%%%%%%%%% NEW COMMAND SECTION %%%%%%%%%%%%%%%%%%%%
 
 %define equal
@@ -68,7 +76,7 @@
 \newcommand{\sm}{Standard Model }
 \newcommand{\diag}{\text{diag}}
 \newcommand{\sgn}{\text{sgn}}
-
+\newcommand{\cl}{\text{cl}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% SETTINGS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \numberwithin{equation}{section}

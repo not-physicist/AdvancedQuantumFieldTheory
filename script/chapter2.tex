@@ -47,23 +47,23 @@ Pictorially we sum over all paths (i.e.~amplitudes). Remember the superposition 
 
 Classical path comes from Hamilton principle $\delta S = 0$
 \begin{align}
-   \left.\frac{\delta S[x]}{\delta x(t)} \right|_{x=x_{cl}} = 0
+   \left.\frac{\delta S[x]}{\delta x(t)} \right|_{x=x_{\cl}} = 0
 \end{align}
 
 Classical path dominates the transition probability in the limit $\hbar \rightarrow 0$. It is the contribution with fewest oscillations in the path integral. Others interfere destructively (averaged out). This is essentially stationary phase approximation.
 
-\paragraph{Example} \unlderline{harmonic oscillation}
+\paragraph{Example} \underline{harmonic oscillation}
 \begin{align}
    L = \frac{m}{2} \left( \dot{x}^2 - \omega^2 x^2 \right)
 \end{align}
 Then the classical path obeys the equation of motion
 \begin{align}
-   \ddot{x}_{cl}(t) + \omega^2 x_{cl}(t) = 0
+   \ddot{x}_{\cl}(t) + \omega^2 x_{\cl}(t) = 0
 \end{align}
 
-Split a general path into classical and fluctuations $x(t) = x_{cl}(t) + y(t)$. The action turns into
+Split a general path into classical and fluctuations $x(t) = x_{\cl}(t) + y(t)$. The action turns into
 \begin{align*}
-   S[x] = S[x_{cl}] + \underbrace{\int \dd{t} \frac{\delta s}{ \delta x(t)} |_{x=x_{cl}}y(t)}_{=0} + \frac{1}{2} \int \dd{t} \int \dd{t'} \frac{\delta^2 S}{\delta x(t) \delta x(t')}|_{x=x_{cl}} y(t) y(t') + \dots
+   S[x] = S[x_{\cl}] + \underbrace{\int \dd{t} \frac{\delta s}{ \delta x(t)} |_{x=x_{\cl}}y(t)}_{=0} + \frac{1}{2} \int \dd{t} \int \dd{t'} \frac{\delta^2 S}{\delta x(t) \delta x(t')}|_{x=x_{\cl}} y(t) y(t') + \dots
 \end{align*}
 
 Then we can factor out the classical path contribution in transition probability
@@ -221,35 +221,35 @@ where $\D \phi(x)$ in the generalization $\D x \mapsto \D (\text{field})$
 
 Compute $\braket{0|0}^j$ (exact for a free field theory). First to solve with classical action
 \begin{align*}
-   \delta \int \dd[4]{x} \left[ \frac{1}{2} \left( \partial_\mu \phi_{cl} \right)^2 - \frac{1}{2} m^2 \phi^2_{cl} + \phi_{cl}j \right] &= 0\\\
-   \left( \partial^2 + m^2 \right) \phi_{cl}(x) &= j(x)
+   \delta \int \dd[4]{x} \left[ \frac{1}{2} \left( \partial_\mu \phi_{\cl} \right)^2 - \frac{1}{2} m^2 \phi^2_{\cl} + \phi_{\cl}j \right] &= 0\\\
+   \left( \partial^2 + m^2 \right) \phi_{\cl}(x) &= j(x)
 \end{align*}
 
 Solution 
 \begin{align}
-   \phi_{cl}(x) = i \int \dd[4]{y} D_F(x-y) j(y)
+   \phi_{\cl}(x) = i \int \dd[4]{y} D_F(x-y) j(y)
 \end{align}
 since Feynman-propagator is the Green's function of the KG operator.
 \begin{align}
    \left( \partial^2 + m^2 \right) D_F(x-y) = -i \delta^{(4)}(x-y)
 \end{align}
 
-To define the "fluctuation" field $\phi'(x)$ via $\phi(x) = \phi_{cl}(x) + \phi'(x)$. Then the Lagrangian is
+To define the "fluctuation" field $\phi'(x)$ via $\phi(x) = \phi_{\cl}(x) + \phi'(x)$. Then the Lagrangian is
 \begin{align*}
-   \lag &= \frac{1}{2} \left( \partial_\mu \phi_{cl} + \partial_\mu \phi'\right)^2 -  \frac{m^2}{2} \left( \phi_{cl} + \phi' \right)^2 + \left( \phi_{cl} + \phi' \right) \cdot j(x) \\
-        &= \lag_{cl} + \lag' + \left[ (\partial_\mu \phi_{cl}) (\partial^\mu \phi') - m^2 \phi_{cl} \phi' + j\phi \right] 
+   \lag &= \frac{1}{2} \left( \partial_\mu \phi_{\cl} + \partial_\mu \phi'\right)^2 -  \frac{m^2}{2} \left( \phi_{\cl} + \phi' \right)^2 + \left( \phi_{\cl} + \phi' \right) \cdot j(x) \\
+        &= \lag_{\cl} + \lag' + \left[ (\partial_\mu \phi_{\cl}) (\partial^\mu \phi') - m^2 \phi_{\cl} \phi' + j\phi \right] 
 \end{align*}
 after integration by parts and using equation of motion the last part vanishes. Then $\phi'$ (per construction) is a free field. Thus
 \begin{align}
-   \braket{0 | 0 }^j = \int \D \phi' \exp(i\int \dd[4]{x} (\lag_{cl} + \lag'))
-   = \euler^{iS_{cl}} \braket{0 | 0}^{j=0}
+   \braket{0 | 0 }^j = \int \D \phi' \exp(i\int \dd[4]{x} (\lag_{\cl} + \lag'))
+   = \euler^{iS_{\cl}} \braket{0 | 0}^{j=0}
 \end{align}
 
-On the other hand, $iS_{cl}$ can be rewritten as
+On the other hand, $iS_{\cl}$ can be rewritten as
 \begin{align*}
-   iS_{cl} &= i \int \dd[4]{x} \left[ \frac{1}{2} - \frac{m}{2} \phi_{cl}^2 + \phi_{cl} j \right] \\
-           &= i \int \dd[4]{x} \bigg[ -\frac{1}{2} \phi_{cl} \underbrace{\left( \partial^2 + m^2 \right)\phi_{cl}}_{=j \;\text{from e.o.m.}} + \phi_{cl} j \bigg] \\
-           &= \frac{i}{2} \int \dd[4]{x} \phi_{cl}(x) j(x) \\
+   iS_{\cl} &= i \int \dd[4]{x} \left[ \frac{1}{2} - \frac{m}{2} \phi_{\cl}^2 + \phi_{\cl} j \right] \\
+           &= i \int \dd[4]{x} \bigg[ -\frac{1}{2} \phi_{\cl} \underbrace{\left( \partial^2 + m^2 \right)\phi_{\cl}}_{=j \;\text{from e.o.m.}} + \phi_{\cl} j \bigg] \\
+           &= \frac{i}{2} \int \dd[4]{x} \phi_{\cl}(x) j(x) \\
            &= -\frac{1}{2} \int \dd[4]{x} \dd[4]{y} j(x) D_F(x-y) j(y)
 \end{align*}
 
@@ -282,3 +282,590 @@ We can calculate the Green's function as for the quantum mechanical path integra
 \end{align}
 
 The central result here is that these three things are closely related: S-matrix $\leftrightarrow$ Green's function $\leftrightarrow$ Path integral
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%   Lecture on 23.10
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Special case, two-point function
+\begin{align*}
+   G_2^0 (x_1, x_2) &= \braket{0 | T \phi(x_1) \phi(x_2) | 0}  \\
+                    &= \frac{1}{i} \frac{\delta}{\delta j(x_1)} \frac{1}{i} \frac{\delta}{\delta j(x_2)} \eval{\exp[-\frac{1}{2} \int \dd[4]{x} \dd[4]{y} j(x) D_F(x-y) j(y) ]}_{j=0} \\
+                    \shortintertext{The exponential is the generating functional.}
+                    &= -\frac{1}{\delta j(x_1)} \eval{\left[ -\frac{1}{2} \int \dd[4]{y} D_F(x_2 - y) j(y) - \frac{1}{2} \int \dd[4]{x} j(x) D_F(x-x_2) \right]W_0[j]}_{j=0} \\
+                    &= D_F(x_1 - x_2)
+\end{align*}
+
+Four-point function. Use abbreviations $\phi_i = \phi(x_i)$, $j_x = j(x)$, $D_{x_i} = D_F(x-x_i)$ and integration over the repeated index is implied.
+\begin{align*}
+   G_4^0 (x_1,x_2,x_3,x_4) &= \braket{0 | T \phi_1 \phi_2 \phi_3 \phi_4 | 0}  \\
+                           &= \left( \frac{1}{i} \right)^4 \frac{\delta }{\delta j_1} \frac{\delta }{\delta j_2} \frac{\delta }{\delta j_3} \frac{\delta }{\delta j_4} \left. \euler^{-\frac{1}{2} j_x D_{xy} j_y} \right|_{j=0} \\
+                           \shortintertext{Since $D(x-y) = D(y-x)$, one can combine two integrals after substituition into one.}
+                           &= \frac{\delta }{\delta j_1} \frac{\delta }{\delta j_2} \frac{\delta }{\delta j_3} \left[ -j_{\tilde{x}} D_{\tilde{x} 4} \right]\left. \euler^{-\frac{1}{2} j_x D_{xy} j_y} \right |_{j=0} \\
+                           &= \frac{\delta }{\delta j_1} \frac{\delta }{\delta j_2} \left[ -D_{34} + j_{\tilde{x}} D_{\tilde{x}4} j_{\tilde{y}} D_{\tilde{y} 3} \right]\euler^{-\frac{1}{2} j_x D_{xy} j_y}|_{j=0}\\
+                           &= \frac{\delta }{\delta j_1} \left[ D_{34} j_{\tilde{x}} D_{\tilde{x}2} + D_{24} j_{\tilde{y}}D_{\tilde{y}3} + j_{\tilde{x}} D_{\tilde{x}4} D_{23} + \dots \right]\euler^{-\frac{1}{2} j_x D_{xy} j_y}|_{j=0}\\
+\shortintertext{Dots are the terms contains $j$.}
+                           &= D_{34} D_{12} + D_{24} D_{13} + D_{14} D_{23}
+\end{align*}
+
+\begin{align}
+  \begin{split}
+     G^0_4 (x_1, x_2, x_3, x_4) =& D_F (x_3 - x_4) D_F(x_1 - x_2) \\
+                                &+ D_F(x_2 - x_4) D_F(x_1-x_3) + D_F(x_1 - x_4) D_F(x_2-x_3)
+  \end{split}
+\end{align}
+
+So we recovered Wick's theorem in path integral representation.
+\begin{align*}
+   \frac{1}{N} \int \D \phi \euler^{i\int \dd[4]{x} \lag_0 [\phi]} \phi(x_1) \phi(x_2) &= \contraction{}{\phi}{(x_1)}{\phi} \phi(x_1) \phi(x_2)
+   \shortintertext{with $N =\int \D \phi \euler^{i\int \dd[4]{x} \lag_0 [\phi]} $} \notag
+   \frac{1}{N} \int \D \phi \euler^{i\int \dd[4]{x} \lag_0 [\phi]} \phi(x_1) \phi(x_2) \phi(x_3)\phi(x_4) &= 
+      \contraction{}{\phi}{(x_1)}{\phi} \phi(x_1) \phi(x_2) \contraction{}{\phi}{(x_3)}{\phi} \phi(x_3) \phi(x_4) 
+      + \contraction{}{\phi}{(x_1)\phi(x_2)}{\phi}  \contraction[2ex]{\phi(x_1)}{\phi}{(x_2)\phi(x_3)}{\phi}\phi(x_1) \phi(x_2) \phi(x_3)\phi(x_4)
+      + \contraction[2ex]{}{\phi}{(x_1)\phi(x_2)\phi(x_3)}{\phi}  \contraction{\phi(x_1)}{\phi}{(x_2)}{\phi} \phi(x_1) \phi(x_2) \phi(x_3)\phi(x_4)
+\end{align*}
+
+\paragraph{Interacting field}
+Consider now an interacting field theory, e.g.~$\phi^4$
+\begin{align*}
+   \lag &= \frac{1}{2} (\partial_\mu \phi)(\partial^\mu \phi) - \frac{1}{2} m^2 \phi^2 - \frac{\lambda}{4!} \phi^4 + \phi j \\
+         &= \lag_0 - \frac{\lambda}{4!} \phi^4 + \phi j
+\end{align*}
+The generating functional or the normalized vacuum-to-vacuum transition amplitude is given
+\begin{align}
+   W[j] = \frac{\braket{0|0}^j}{\braket{0|0}^0} = \sum_{n=0}^{\infty} \frac{i^n}{n!} \int \dd[4]{x_1} \dots \dd[4]{x_n} j(x_1) \dots j(x_n) G_n (x_1, \dots, x_n) \\
+   \braket{0|0}^j = \int \D \phi \exp{i\int \dd[4]{x} \left[\frac{1}{2} (\partial_\mu \phi)(\partial^\mu \phi) - \frac{1}{2} m^2 \phi^2 - \frac{\lambda}{4!} \phi^4 + \phi j  \right]}
+   \shortintertext{thus}
+   G_n (x_1, \dots, x_n) = \frac{\int \D \phi \phi(x_1) \dots \phi(x_n) \exp{i\int \dd[4]{x} \frac{1}{2} (\partial_\mu \phi)(\partial^\mu \phi) - \frac{1}{2} m^2 \phi^2 - \frac{\lambda}{4!} \phi^4 }}{\int \D \phi \exp{i\int \dd[4]{x} \frac{1}{2} (\partial_\mu \phi)(\partial^\mu \phi) - \frac{1}{2} m^2 \phi^2 - \frac{\lambda}{4!} \phi^4 }}
+\end{align}
+
+Our aim is to get perturbative expansion of $G_n$ and thus for the S-matrix. For this purpose, expanse $\lambda \phi^4$ term!
+\begin{align*}
+   \sum_{n=0}^{\infty} \int \D \phi \phi(x_1) \dots \phi(x_n) \frac{1}{n!} \left( \int \dd[4]{y} \frac{-i\lambda}{4!} \phi^4(y) \right)^n \euler^{i\int \dd[4]{x}\lag_0}
+\end{align*}
+This expansion is equivalent to the Dyson-Wick expansion of the S-matrix in powers of $\ham_{\text{int}}$.
+
+Two-point Green's function
+
+Note that denominator cancels the vacuum diagrams, so we only have perturbation theory for connected graphs.
+\begin{itemize}
+   \item $\mathcal{O}(\lambda^0)$ 
+      \begin{align}
+         G_2^0 = \contraction{}{\phi}{(x_1)}{\phi}{} \phi(x_1) \phi(x_2 ) = D_F (x_1 - x_2)
+      \end{align}
+   \item $\mathcal{O}(\lambda^1)$ 
+   \begin{align*}
+      G(x_1, x_2) &= \frac{\int \D \phi \phi(x_1) \phi(x_2) \euler^{i\int \dd[4]{x} (\lag_0(x) \textcolor{red}{- \frac{\lambda}{4!} \phi^4 (x)})}}{\int \D \phi  \euler^{i\int \dd[4]{x} (\lag_0(x) \textcolor{red}{- \frac{\lambda}{4!} \phi^4 (x)})})} \\
+                  &= \frac{\int \D \phi \phi(x_1) \phi(x_2) \sum_{n=0}^\infty \frac{1}{n!} \textcolor{red}{\left( -\frac{i\lambda}{4!} \int \dd[4]{y} \phi^4(y) \right)}^n \euler^{i\int \dd[4]{x} \lag_0(x)}}{\int \D \phi \sum_{n=0}^\infty \frac{1}{n!} \textcolor{red}{\left( -\frac{i\lambda}{4!} \int \dd[4]{y} \phi^4(y) \right)}^n \euler^{i\int \dd[4]{x} \lag_0(x)}}
+   \end{align*}
+      \begin{align*}
+         G_2^1 (x_1, x_2) &= \frac{1}{N} \int \D \phi \phi(x_1) \phi(x_2) \left( -\frac{i\lambda}{4!} \int \dd[4]{y} \phi^4(y) \right) \euler^{i\int \dd[4]{x} \lag_0(x)}   \\
+                          &= \frac{1}{N} \left( \frac{-i\lambda}{4!} \right) \int \D \phi \phi(x_1) \phi(x_2) \phi(y) \phi(y) \phi(y) \phi(y) \euler^{i\int \dd[4]{x} \lag_0(x)} \\
+                          &=  \frac{1}{N} \left( \frac{-i\lambda}{4!} \right) \int \dd[4]{y} \Bigg[ \contraction{}{\phi}{(x_1)}{\phi}{} \phi(x_1) \phi(x_2 ) \left( 
+                              \contraction{}{\phi}{(y)}{\phi}{} \phi(y) \phi(y)\contraction{}{\phi}{(y)}{\phi}{} \phi(y) \phi(y) 
+                              + \contraction{}{\phi}{(y)\phi(y)}{\phi}  \contraction[2ex]{\phi(y)}{\phi}{(y)\phi(y)}{\phi}\phi(y) \phi(y) \phi(y)\phi(y)
+                              + \contraction[2ex]{}{\phi}{(y)\phi(y)\phi(y)}{\phi}  \contraction{\phi(y)}{\phi}{(y)}{\phi} \phi(y) \phi(y) \phi(y)\phi(y)
+                           \right)  \\
+                          &\quad + \contraction{}{\phi}{(x_1)\phi(x_2)}{\phi}  \contraction[2ex]{\phi(x_2)}{\phi}{(y)\phi(y)}{\phi} \phi(x_1) \phi(x_2) \phi(y)\phi(y) 
+                          \contraction{}{\phi}{(y)}{\phi}{} \phi(y) \phi(y) + \text{$11$ more terms}  \Bigg] \\
+                          &= \frac{1}{N} \left\{ - \frac{i\lambda}{8} \int \dd[4]{y} \contraction{}{\phi}{(x_1)}{\phi} \phi(x_1) \phi(x_2) \left(\contraction{\phi}{(y)}{\phi}{} \phi(y) \phi(y) \right)^2
+                              - \frac{i\lambda}{2} \contraction{\phi}{(x_1)}{\phi}{} \phi(x_1) \phi(y)  \contraction{\phi}{(x_2)}{\phi}{} \phi(x_2) \phi(y) \contraction{\phi}{(y)}{\phi}{} \phi(y) \phi(y) \right\}
+      \end{align*}
+\end{itemize}
+\begin{figure}[ht]
+   \centering
+   \includegraphics[width=0.3\linewidth]{./path-feynman/1.eps}%
+   \includegraphics[width=0.17\linewidth]{./path-feynman/2.eps}
+   \caption{Feynman diagrams}
+\end{figure}
+
+General case: common (position space) Feynman rules for interacting Green's functions $G_n (x_1, \dots, x_n)$
+
+\section[Photon Propagator in Path Integrals]{Photon Propagator in Path Integrals\footnote{see also Ryder, Chap 7.1-2; P \& S, Chap 9.4}}
+How can we derive the Feynman rule for photon propagator?
+\begin{align}
+   \frac{-ig^{\mu\nu}}{k^2 + i \epsilon}
+\end{align}
+
+What is the problem? The functional integral $\int \D A_\mu \euler^{iS[A]}$ incorporated the action
+\begin{align}
+   S &= \int \dd[4]{x} \left( - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} \right) \notag\\ 
+     &= \frac{1}{2} \int \dd[4]{x} A_\mu(x) \left( \partial^2 g^{\mu\nu} - \partial^{\mu} \partial^\nu \right) A_\nu(x) \notag\\
+     &= \frac{1}{2} \int \frac{\dd[4]{k}}{(2\pi)^4} \tilde{A}_\mu (k) (-k^2 g^{\mu\nu} + k^\mu k^\nu) \tilde{A}_\nu (-k) 
+\end{align}
+This expression has a great deal of (interconnected) problems
+\begin{enumerate}
+   \item Assume the photon propagator $D_{\mu\nu} (x-y)$ to be solution of
+         \begin{align*}
+            \left( \partial^2 g^{\mu\nu} - \partial^\mu \partial^\nu \right)D_{\nu\lambda} (x-y) = i g^\mu_\lambda \delta^{(4)}(x-y) \\
+            \shortintertext{multiply with partial derivative}
+            \left( \partial^\nu \partial^2 - \partial^2 \partial^\nu \right) D_{\nu\lambda} = 0 \cdot \partial^\nu D_{\nu\lambda} \neq i \partial^\nu \delta^{(4)} (x-y)
+         \end{align*}
+         $D_{\nu\lambda}$ has no inverse (formally singular). The same holds in momentum space.
+      \item We need this inverse for the derivation of the generating function with external currents.
+      \item $\frac{1}{2} \int \frac{\dd[4]{k}}{(2\pi)^4} \tilde{A}_\mu (k) (-k^2 g^{\mu\nu} + k^\mu k^\nu) \tilde{A}_\nu (-k)$ vanished for all $\tilde{A}_\nu(k) = k_\mu \alpha(k)$
+         all these field configurations have the same weight $1$ in $\int \D A_\mu \euler^{iS[A]}$. It will terribly diverge. 
+      \item These configurations correspond to gauge transformation $\lag$ (also $S$) invariant under $A_\mu(x) \mapsto A_\mu(x) + \frac{1}{\euler} \partial_\mu \alpha(x) $. 
+         Thus redundant (path-integral) integration over gauge equivalent configurations.
+\end{enumerate}
+
+Schematically to split each $A_\mu$ into some fixed $\bar{A}_\mu$ and a gauge transformation $\alpha$
+\begin{align*}
+   A_\mu (x) \mapsto \bar{A}_\mu (x), \alpha(x)
+\end{align*}
+then the path integral is given by
+\begin{align*}
+   Z = \int \D A_\mu \euler^{iS} \sim \int \D \bar{A}_\mu e^{iS} \int \D \alpha
+\end{align*}
+since $S$ is gauge invariant, i.e.~independent of $\alpha$.
+
+The divergence stems from $\int\D \alpha$ which cancels in the ratio $W[j] = \frac{Z[j]}{Z[0]}$
+
+The aim is to factorize of the gauge part in the path integral via a "smart integration" of the gauge-fixing as a constraint. This is called \underline{Faddeev-Popov method}.
+
+\subsection[Factorization of Constraints]{Factorization of Constraints\footnote{Ryder, Chap 7.2}}
+Externally simple example
+\begin{align*}
+   I &= \int \dd{x} \dd{y} \euler^{-(x^2 + y^2)}   \\
+      \shortintertext{it is rotation invariant, use polar coordinates}
+     &= \int \dd{\theta}\dd{r} r e^{-r^2}
+   \shortintertext{$\int \dd{\theta} = 2\pi$ corresponds to $\int \D \alpha$ in the path integral.}
+\end{align*}
+
+A more general expansion for this separation
+\begin{align*}
+   I = \int \dd{\theta'} \int \dd{r} \int \dd{\theta} r \euler^{-r^2} \delta(\theta)
+   \shortintertext{The delta function reduced the integration path to one along the x-axis ($\theta = 0$).}
+\end{align*}
+
+A more general path 
+\begin{align}
+f(\theta) = y\cos\theta - x \sin\theta = 0
+\end{align}
+i.e.~$\theta \neq 0$.
+
+How can we include this constraint in path integral?
+\begin{align}
+   \delta (f(\theta)) &= \sum_i \left| \frac{\partial f(\theta_i)}{\partial \theta} \right|^{-1} \delta(\theta - \theta_i)
+   \shortintertext{with $\theta_i$ the roots of $f(\theta).$}
+   \theta_1 = \arctan(\frac{y}{x}) &\quad \theta_2 = \pi + \arctan(\frac{y}{x})  \notag\\
+   \left| \frac{\partial f}{\partial \theta} \right| &= y \sin\theta + x \cos\theta = r = \left| \frac{\partial f}{\partial \theta} \right|_{\theta_1, \theta_2} \notag\\
+   \shortintertext{thus} \notag
+   \delta(f(\theta)) &= \frac{1}{r} \left( \delta(\theta-\theta_1) + \delta(\theta - \theta_2) \right) \notag\\
+   \int \delta(f(\theta)) \dd \theta &= \frac{2}{r} = \frac{2}{\sqrt{x^2 + y^2}} \notag
+   \shortintertext{rewrite this as $\Delta(r) \int \delta(f(\theta))\dd{\theta}  = 1$, i.e.~}
+   \Delta (r) &= \frac{r}{2} = \frac{\sqrt{x^2 + y^2}}{2}
+\end{align}
+
+Note that $f(\theta)$ can simply be obtained by a rotation from $y$-axis
+\begin{align*}
+   y' &= y\cos\theta - x \sin\theta \\
+   x' &= x\cos\theta + y \sin \theta \\
+   x^2 + y^2 &= x'^2 + y'^2
+\end{align*}
+
+\begin{align*}
+   \Delta(r) \int \dd{\theta} \delta(f(\theta)) &=1  \\
+   \Delta \left(\sqrt{x'^2 + y'^2} \right) \int \dd{\theta} \delta(y')&= 1
+\end{align*}
+remember $y' &= f(\theta) = y\cos\theta - x\sin\theta$.
+
+Insert this unity into $I = \int \dd{x} \dd{y} \euler^{-(x^2 + y^2)}$
+\begin{align*}
+   I = \int \dd{\theta} \int \dd{x'} \dd{y'} \euler^{-(x'^2 + y'^2)} \Delta \left(\sqrt{x'^2 + y'^2} \right) \delta(y')
+\end{align*}
+It exhibits separation of variables made possible by the rotation invariance of the integral. The integral $\int \dd{x'} \dd{y'} \dots$ is independent of $\theta$, so $\int \dd{\theta}$ is simply an overall multiplication factor in integral.
+
+Finally $\Delta(r)$ can also be rewritten as 
+\begin{align}
+   \Delta(r)^{-1} &= \int \dd{\theta} \delta(f(\theta)) \label{math:DeltaInv} \\
+                  &= \int \delta(f(\theta)) \det \left|\frac{\dd{\theta}}{\dd f} \right| \dd{f} \notag\\
+                  &= \det \left|\frac{\dd{\theta}}{\dd{f}} \right|_{f=0}\notag
+                  \shortintertext{then we have the functional determinant}
+   \Delta(r) &= \det \left| \frac{\dd{f}}{\dd{\theta}} \right|_{f=0}
+\end{align}
+
+\subsection{Gauge Fixing in a Path Integral}
+Consider a gauge transformation 
+\begin{align}
+   A_\mu(x) \mapsto A_\mu^\alpha(x) = A_\mu(x) + \frac{1}{e} \partial_\mu \alpha(x)
+\end{align}
+and a gauge-fixing condition 
+\begin{align}
+   F[A_\mu] = 0
+\end{align}
+
+In analogy to the condition \ref{math:DeltaInv}
+\begin{align}
+   \Delta_F^{-1}[A_\mu] = \int \D \alpha \delta \left(F[A_\mu^\alpha] \right)
+\end{align}
+where $\delta$ is a $\delta$-functional.
+
+$\Delta_F^{-1}[A_\mu]$ is gauge invariant
+\begin{align*}
+   \Delta_F^{-1} \left[ A_\mu^{\alpha'} \right] &= \int \D \alpha \delta \left( F [A_\mu^{\alpha+\alpha'}] \right) \\
+   \shortintertext{group invariant measure $\alpha'' = \alpha + \alpha'$}
+                        &= \int \D \alpha''  \delta \left( F[A_\mu^{\alpha''}] \right) = \Delta_F^{-1}[A_\mu]
+\end{align*}
+
+Insert $1 = \Delta_F [A_\mu] \int \D \alpha \delta(F[A_\mu^\alpha])$ into the path integral $Z$
+\begin{align}
+   Z &= \int \D A_\mu \euler^{iS[A_\mu]} \notag\\
+     &= \int \D A_\mu \Delta_F[A_\mu] \int \D \alpha \delta \left( F[A_\mu^\alpha] \right) \euler^{iS[A_\mu]} \notag\\
+   \shortintertext{using the gauge transformation $A_\mu \mapsto A_\mu^\alpha$}
+     &= \int \D A_\mu^\alpha \Delta [A_\mu^\alpha] \int \D \alpha \delta \left( F[A_\mu^\alpha] \right)\euler^{iS[A^\alpha_\mu]} \notag \\
+     \shortintertext{rename $A^\alpha_\mu = A_\mu$}
+     &= \int \D \alpha \int \D A_\mu  \Delta_F [A_\mu] \delta \left( F[A_\mu] \right) \euler^{iS[A_\mu]} \label{math:zAlpha}
+\end{align}
+
+$S$ and $\Delta_F(\dots)$ are gauge invariant and $\D A_\mu^\alpha = \D A_\mu$, since
+\begin{align*}
+   Z &= \int \D A_\mu \euler^{iS[A_\mu]} \\
+     &= \int \D A_\mu^{\tilde{\alpha}} \euler^{iS[A_\mu^{\tilde{\alpha}}]} \\
+     &= \int \D A_\mu^{\tilde{\alpha}} \euler^{iS[A_\mu]}
+\end{align*}
+or $A_\mu \mapsto A_\mu^{\tilde{\alpha}}$ is just a shift of integration. Integrand of equation \ref{math:zAlpha} independent of gauge $\alpha$. Thus $\int \D \alpha$ can be moved in front and is therefore already separated!
+
+Now use 
+\begin{align}
+   \Delta_F[A_\mu] = \det \left| \frac{\delta F}{\delta \alpha} \right|_{F=0}
+\end{align}
+We will apply gauge-fixing conditions of the form (generalization of Lorenz gauge)
+\begin{align}
+   F[A_\mu] &= \partial^\mu A_\mu + C(x) = 0
+   \shortintertext{with $c(x)$ any scalar function. Thus }
+   F[A_\mu^\alpha] &= F[A_\mu] + \frac{1}{e} \partial^2 \alpha(x) \\
+   \Delta_F[A_\mu] &= \det \left| \frac{1}{e} \partial^2 \right| 
+\end{align}
+independent of $A_\mu$.
+$\Delta_F[A_\mu]$ can be moved in front of the path integral. (Not valid in the non-abelian case.)
+
+Since $Z$ and in the end, the physics does not depend on value of $C(x)$, we are free to have a linear combination of different $C(x)$. Now multiply equation (\ref{math:zAlpha}) with a weight$\int \D C \exp(\frac{-i}{2\xi}C^2 \dd{x})$.
+After integrating $\int \D C$) and using $\delta \left( F[A_\mu] \right) = \delta \left( \partial^\mu A_\mu - C(x) \right)$
+\begin{align}
+   Z &= N \int \D A_\mu \exp{i \int \dd[4]{x} \left( \lag - \frac{1}{2\xi} \left( \partial_\mu A^\mu\right)^2  \right)} \\
+   \lag_{\text{eff}} &= \lag + \lag_{\text{GF}} = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} - \frac{1}{2\xi} (\partial_\mu A^\mu)^2
+\end{align}
+with the gauge-fixing term in Lagrangian.
+
+Now consider an n-point Green's function a la
+\begin{align*}
+   \braket{0 | T \left( O[A_\mu] \right)| 0}
+\end{align*}
+
+Coming back to our starting problem, to find photon propagator
+\begin{align}
+   \left( -k^2 g_{\mu\nu} + \left( 1- \frac{1}{\xi} \right) k_\mu k_\nu \right) \tilde{D}_F^{\nu\lambda}(k) = i\delta^\lambda_\mu \notag \\
+   \shortintertext{possess the solution}
+   \tilde{D}_{F}^{\mu\nu} (k) = \frac{-i}{k^2 + i\epsilon} \left( g^\mu\nu - (1-\xi) \frac{k^\mu k^\nu}{k^2} \right)
+\end{align}
+Most commonly used gauges Feynman gauge $\xi = 1$ and Landau gauge $\xi = 0$
+
+\section[Path Integral Quantization of Fermion Fields]{Path Integral Quantization of Fermion Fields\footnote{see also Ryder Chap 6,7, P\& S, Chap 9.5}}
+The fermionic fields anti-commute, therefore the integration over (complexed-valued) fermion fields is non-trivial.
+
+\subsection[Grassmann Algebra]{Grassmann Algebra\footnote{see also F.A.Berezin, the method of second quantization, 1966}}
+Consider an algebra $\mathcal{G}_n$ generated by n anticommuting generators $\theta_1, \dots, \theta_n$.
+\begin{align}
+   \theta_i \theta_j + \theta_j \theta_i = \left\{ \theta_i, \theta_j \right\} = 0
+\end{align}
+They are variables, not field operators (yet)!
+
+Implicitly $\theta_i^2 = 0$ for all $i$ Thus a basis is given monomials (polynomial of first order of one term) $1; \theta_1, \dots, \theta_n; \theta_1 \theta_2, \dots \thta_{n-1}\theta_n; \dots; \theta_1\dots\theta_n$
+
+Each element $F(\theta) \in \mathcal{G}_n$ can be expressed as a linear combination of these monomials.
+\begin{align}
+   F(\theta) = F^{(0)} + \sum_i F_i^{(1)} \theta_i + \dots + \sum_{i \dots k} F^{(n)}_{i,\dots,k} \theta_i \dots \theta_j \dots \theta_k
+\end{align}
+All coefficient are totally antisymmetric under exchange of the indices. We call elements with even (odd) monomials even (odd) algebra. Every $F(\theta)$ can be uniquely decomposed into a sum of even and odd monomials. Even elements \underline{commute} with each other and odd elements \underline{anti-commute} with each other.
+
+In $\mathcal{G}_n$ we can define sums $F(\theta) + G(\theta) $ products $F(\theta) \cdot G(\theta) $ and functions $\euler^{F(\theta)} = 1 + F(\theta) + \frac{1}{2!} \left( F(\theta) \right)^2 + \dots$. All these therms can easily be expressed as linear combinations of moments.
+
+\paragraph{Differentiation}
+\begin{align}
+   \pdv{\theta_j} \theta_i &= \delta_{ij} \\
+   \pdv{\theta_i} c &= 0, \quad  c \in \C \\
+   \shortintertext{from anti-commutation relation and sign convention and derivative always acts on variable directly following}
+   \pdv{\theta_i} (\theta_1 \dots \theta_n) &= \delta_{i1} \theta_2 \dots \theta_n - \delta_{i2} \theta_1 \theta_3 \dots \theta_n + \dots + (-1)^{n-1} \theta_1 \dots \theta_{n-1}
+   \shortintertext{it has the consequence}
+   \acomm{\pdv{\theta_i}}{\pdv{\theta_j}} &= 0 \\
+   \acomm{\pdv{\theta_i}}{\theta_j} &= \delta{ij}
+\end{align}
+We can then read $\theta_i$ and $\pdv{\theta_j}$ as a representation of fermion creation and annihilation operators.
+
+\paragraph{Integration}
+The goal is to find generalization of functional integrals, so we only need the analogue of $\int_{-\infty}^{\infty} \dd{x}$, no need of finite integrals. First consider one single Grassmann variable $\theta$
+\begin{align}
+   \int \dd{\theta} f(\theta) &= \int \dd{\theta} \left( A + B \theta \right) \notag 
+   \shortintertext{it should be a linear function of $A$ and $B$ because of linearity of integration. To enable variable shift $\theta \mapsto \theta + \eta$}
+   \int \dd{\theta} \left( A + B\theta \right) &= \int \dd{\theta} \left( \left( A+b\eta \right) + B \theta \right) \notag \\
+   \Rightarrow \int 1 \cdot \dd{\theta} &= 0 \\
+   \shortintertext{in addition we define}
+   \int \dd{\theta} \theta &= 1
+   \shortintertext{in general}
+   \int \dd{\theta_i} &= 0 \\
+   \int \dd{\theta_i} \theta_j &= \delta_{ij} \\
+   \acomm{\dd{\theta_i}}{\dd{\theta_j}} &= 0 = \acomm{\theta_i}{\dd{\theta_j}}
+   \shortintertext{multiple integrals}
+   \int \dd{\theta_n} \dots \dd{\theta_1} F(\theta) &= \int \dd{\theta_n} \dots \dd{\theta_1} \left( \sum^n_{i,\dots,k} F^{({n})}_{i\dots k} \theta_i \dots \theta_k \right) = n! F^{(n)}_{12\dots n}
+\end{align}
+All terms with $k<n$ vanish due to $\int \dd{\theta_i} = 0^n$
+Note that differentiation and integration with respect to Grassmann variables yield same result.
+
+\paragraph{Gaussian integrals} for \underline{even} numbers of generators and $A$ skew-symmetric matrix.
+\begin{align}
+   \int \dd{\theta_1} \dots \dd{\theta_n} \euler^{-\frac{1}{2} \theta_i A_{ij} \theta_j} = \sqrt{\det{A}}
+\end{align}
+
+Here consider only example for $n=2$, i.e.~$A_{11}=A_{22}=0$ and $A_{12}=-A_{21}$
+\begin{align*}
+   \euler^{-\frac{1}{2}\theta_i A_{ij} \theta_j} &= \euler^{-\frac{1}{2} \left( \theta_1 \theta_2 A_{12} + \theta_2 \theta_1 A_{21} \right)} \\
+                                                 &= \euler^{-A_{12}\theta_1\theta_2} \\
+                                                 &= 1 - A_{12} \theta_1 \theta_2
+                                                 \shortintertext{hence}
+   \int \dd{\theta_1} \dd{\theta_2} \euler^{-\frac{1}{2}\theta_i A_{ij} \theta_j} &= \int \dd{\theta_1} \dd{\theta_2} \left(1 - A_{12} \theta_1 \theta_2\right) = A_{12} \\
+                                                                                  &= \sqrt{\det{A}}
+\end{align*}
+
+For each skew-symmetric matrix of even rank, the determinant is a perfect square while for each skew-symmetric matrix of odd rank, $\det{A} = 0$. $\sqrt{\det{A}}=$ Pfaffian form
+\begin{align*}
+   n&=2 \quad &&P = A_{12} = \frac{1}{2}\epsilon A_{ij} \\
+   n&=4 \quad &&P = A_{12}A_{34} - A_{13}A_{24} + A_{14}A_{23} = \frac{1}{8}\epsilon_{ijkl} A_{ij}A_{kl}
+\end{align*}
+
+\subsection{Fermion Fields}
+Definition of Grassmann fields as functions of space-time, whose values are anti-commuting numbers, .e.g.
+\begin{align}
+   \psi (x) = \sum_i \psi_i \phi_i (x) 
+\end{align} 
+with $\psi_i \in \mathcal{G}, \phi_i \in \C$. For Dirac fields, $\phi_i$ are 4-component spinors.
+
+As in the scalar case, to add external sources $\eta, \bar{\eta}$ to the Dirac Lagrangian
+\begin{align}
+   \lag = \bar{\psi} \left( i\slashed{\partial} - m \right)\psi + \bar\psi \eta + \bar{\eta} \psi
+\end{align}
+Obviously the sources must be Grassmann valued $\acomm{\eta}{\eta} = \acomm{\eta}{\bar{\eta}} = \acomm{\bar{\eta}}{\bar{\eta}} = \acomm{\psi}{\eta} = \acomm{\bar\psi}{\eta} = \acomm{\psi}{\bar\eta} = \acomm{\bar\psi}{\bar\eta} = 0$. 
+
+Vacuum to vacuum transition amplitude in presence of external sources
+\begin{align}
+   \braket{0|0}^{\eta\bar{\eta}} = \int \D \bar{\psi} \D \psi \exp{i\int \dd[4]{x} \left[ \bar{\psi} (i\slashed{\partial} - m)\psi + \bar{\eta}\eta + \bar{\psi} \eta \right]}
+\end{align}
+
+Determine classical solution from the least-action principle
+\begin{align}
+   \psi_{\cl} (x) = i \int \dd[4]{y} S_F(x-y) \eta(y) \\
+   \bar\psi_{\cl} (x) = i \int \dd[4]{y} \bar\eta(y)S_F(x-y)  
+\end{align}
+with already known Dirac propagator
+\begin{align}
+   S_F(x-y) = \int \frac{\dd[4]{k}}{(2\pi)^4} \frac{i(\slashed{k}+m)}{k^2 - m^2 +i\epsilon} \euler^{-ik(x-y)}
+\end{align}
+as the Green's function of the Dirac operator $(i\slashed{\partial} - m)$.
+
+By expansion of $\psi(x)$ around the classical solution $\psi_\cl(x)$ we find, like in the scalar case,
+\begin{align}
+   \braket{0|0}^{\eta, \bar{\eta}} &= \euler^{iS_\cl} \braket{0|0}^{\eta=\bar{\eta}=0} 
+   \shortintertext{and classical action can be rewritten as}
+   iS_\cl &= i\int \dd[4]{x} \left[ \bar{\psi}_\cl \left( i \slashed{\partial} - m \right) \psi_\cl + \bar{\psi}_\cl \eta + \bar\eta \psi_\cl \right] \\
+          &= - \int \dd[4]{x} \dd[4]{y} \bar{\eta}(x) S_F(x-y) \eta(y)
+          \shortintertext{hence the generating functional for the free Dirac field is given as}
+   W_0 [\eta, \bar\eta] &= \frac{\braket{0|0}^{\eta, \bar\eta}}{\braket{0|0}^{\eta=\bar\eta=0}} = \exp{-i\int\dd[4]{x}\dd[4]{y}\bar\eta(x)S_F(x-y)\eta(y)}
+\end{align}
+ 
+Derive n-point functions from generating functional
+\begin{align}
+   \braket{0 | T \psi(x) \bar \psi(y) | 0} = \frac{1}{i} \frac{\delta}{\delta \eta(y)} \frac{1}{i} \frac{\delta}{\delta \bar\eta(x)} \eval{W_0[\eta, \bar\eta]}_{\eta=\bar\eta=0}
+\end{align}
+
+\subsection{QED}
+Lagrangian given as 
+\begin{align}
+   \begin{split}
+   \lag_{\text{QED}} &= \bar\psi \left( i \slashed{\text{D}} -m \right)\psi - \frac{1}{4}F^{\mu\nu} F_{\mu\nu} - \frac{1}{2\xi} \left( \partial_\mu A^\mu \right)^2 \\
+                     & = \bar\psi \left( i \slashed{\partial} -m \right)\psi - \frac{1}{4}F^{\mu\nu} F_{\mu\nu} - \frac{1}{2\xi} \left( \partial_\mu A^\mu \right)^2 - e \bar\psi \gamma^\mu \psi A_\mu \\
+                     &= \lag_0 + \lag_{\text{GF}} - e \bar\psi \gamma^\mu \psi A_\mu 
+   \end{split}
+\end{align}
+Expand the exponential of the interaction term.
+\begin{align*}
+   \exp{i\int\dd[4]{x} \lag_{\text{QED}}} = \exp{i\int \dd[4]{x} \left( \lag_0 + \lag_{\text{GF}} \right)} \cdot \left[ 1-ie\int \dd[4]{x} \bar\psi \gamma^\mu \psi A_\mu +\dots \right]
+\end{align*}
+
+Feynman rules (position space)
+\begin{align}
+   \feynmandiagram[horizontal=a to b]{
+      a --[fermion, momentum=\(p\)] b;
+   }; 
+   &= \int \frac{\dd[4]{p}}{(2\pi)^4} \frac{i (\slashed{p}+m)}{p^2 - m^2 + i\epsilon} \euler^{-ip(x-y)} \\
+   \feynmandiagram[horizontal=a to b]{
+      a --[photon, momentum=\(p\)] b;
+   }; 
+   &= \int \frac{\dd[4]{p}}{(2\pi)^4} \frac{-i}{q^2 + i\epsilon} \left( g^{\mu\nu} - (1-\xi)\frac{q^\mu q^\nu}{q^2} \right) \euler^{-ip(x-y)} \\
+   \feynmandiagram[small, horizontal=a to b, inline=a]{
+      a [particle={\(\mu\)}] --[photon] b -- {c, d},
+   };
+   &= -ie\gamma^\mu \int \dd[4]{x}
+\end{align}
+
+Generating functional for QED
+\begin{align}
+   Z[j_\mu, \eta, \bar\eta] &=  \int \D A_\mu \D \bar{\psi} \D \psi \exp{i\int \dd[4]{x} \left( \lag_0 + \lag_{\text{GF}} + \lag_{\text{int}} + j_\mu A^\mu + \bar\psi \eta + \bar\eta \psi \right)} \\
+   Z[j_\mu, \eta, \bar\eta] &= \frac{Z[j_\mu, \eta,\bar\eta]}{Z[j_\mu=0, \eta=\bar\eta=0]}
+\end{align}
+
+\section{Generating Functional for Fully Connected Green's Functions}
+Return to scalar theory for simplicity. In section 2.2 we calculated $4$-point function to $\lambda^0$
+\begin{align}
+   \braket{0 | T \phi(x_1)\phi(x_2)\phi(x_3)\phi(x_4) | 0} &=  D_F (x_3 - x_4) D_F(x_1 - x_2) + D_F(x_2 - x_4) D_F(x_1-x_3) \\
+   &\quad + D_F(x_1 - x_4) D_F(x_2-x_3)
+\end{align}
+
+To next order in perturbation theory $\mathcal{O}(\lambda^1)$
+\begin{align}
+   \braket{0 | T \phi(x_1)\phi(x_2)\phi(x_3)\phi(x_4) | 0} &=
+   3 \vcenter{\hbox{
+      \feynmandiagram[small, horizontal=a to b, layered layout, inline=(e.base)]{
+         a[dot] -- b -- c[dot],
+         d[dot] -- e -- f[dot],
+      {[same layer] b --[opacity=0] e,},
+};}}
+- 3i \lambda \vcenter{\hbox{
+      \feynmandiagram[small, horizontal=a to b, layered layout, inline=(e.base)]{
+         a[dot] -- b -- c[dot],
+         d[dot] -- e -- f[dot],
+      {[same layer] b --[opacity=0] e,},
+      {[same layer]e --[half left] x[nudge=(90:6mm)] --[half left] e,}
+};}}
+- i \lambda  \vcenter{\hbox{
+   \feynmandiagram[small, horizontal=a to b]{
+      a[dot] -- x[dot] -- b[dot];
+   c[dot] -- x -- d[dot];
+   };}}
+   + \order{\lambda^2}
+\end{align}
+only the last term is fully connected and contributes to T-matrix!
+
+There exists a generating functional $E[j]$ that only generates the fully connected diagrams
+\begin{align}
+   i E[j] = \ln(Z[j])
+\end{align}
+\textbf{Note} that often in the literature, $E[j]$ is often called $W[j]$!
+
+To show that $E[j]$ in $\lambda\phi^4$ generates no disconnected contributions in the $2$- and $4$-point functions!
+\paragraph{$2$-point function}
+\begin{align*}
+   \frac{\delta^2 iE[j]}{i\delta j(x_1) i \delta j(x_2) } &=  \frac{1}{Z} \frac{\delta^2 Z}{i\delta j(x_1) i \delta j(x_2)} - \frac{1}{Z^2} \frac{\delta Z}{i \delta j(x_1)} \frac{\delta Z}{i \delta j(x_2)}
+   \shortintertext{since $Z$ is quadratic in $j$, for $j=0$ term with one derivative drops put. Hence}
+   \eval{\frac{\delta^2 iE[j]}{i\delta j(x_1) i \delta j(x_2) }}_{j=0}  &= \eval{\frac{1}{Z} \frac{\delta^2 Z}{i\delta j(x_1) i \delta j(x_2)}}_{j=0}\\
+                                                         &= D_F(x-y)
+\end{align*}
+there is (to arbitrary order in $\lambda$) the propagator. It doesn't have disconnected poles.
+
+\paragraph{$4$-point function}
+\begin{align*}
+   & \eval{\frac{\delta^4 iE[j]}{i\delta j(x_1) i \deltaj(x_2) i\delta j(x_3) i \deltaj(x_4)}}_{j=0}  \\
+   &= \frac{1}{Z} \eval{\frac{\delta^4 Z[j]}{\delta j(x_1) \deltaj(x_2) \delta j(x_3) \deltaj(x_4)}}_{j=0}  - \eval{\frac{1}{Z^2} \frac{\delta^2 Z}{ \delta j(x_1) j(x_2)} \frac{\delta^2 Z}{\delta j(x_3) \delta j(x_4)}}_{j=0}- \eval{\frac{1}{Z^2} \frac{\delta^2 Z}{ \delta j(x_1) j(x_3)} \frac{\delta^2 Z}{\delta j(x_2) \delta j(x_4)}}_{j=0} \\ & \quad - \eval{\frac{1}{Z^2} \frac{\delta^2 Z}{ \delta j(x_1) j(x_4)} \frac{\delta^2 Z}{\delta j(x_2) \delta j(x_3)}}_{j=0}
+\\
+             & = \braket{0 | T \phi_1 \phi_2 \phi_3 \phi_4 | 0} - \braket{0|T\phi_1 \phi_2|0} \braket{0|T\phi_3 \phi_4|0} - \braket{0|T\phi_1 \phi_3|0}\braket{0|T\phi_2 \phi_4|0} - \braket{0|T\phi_1 \phi_4|0} \braket{0|T\phi_2 \phi_3|0}  \\
+             &=
+             \left(\vcenter{\hbox{
+      \feynmandiagram[small, horizontal=a to b, layered layout, inline=(e.base)]{
+         a[dot] -- b -- c[dot],
+         d[dot] -- e -- f[dot],
+      {[same layer] b --[opacity=0] e,},
+      };}}
+      + 2 \text{ crossed}
+      \right)
+      - \frac{i\lambda}{2} \left( \vcenter{\hbox{
+      \feynmandiagram[small, horizontal=a to b, layered layout, inline=(e.base)]{
+         a[dot] -- b -- c[dot],
+         d[dot] -- e -- f[dot],
+      {[same layer] b --[opacity=0] e,},
+      {[same layer]e --[half left] x[nudge=(90:6mm)] --[half left] e,}
+   };}} + 5 \text{ crossed} \right)
+   - \frac{i \lambda }{4!} \left( \vcenter{\hbox{
+   \feynmandiagram[small, horizontal=a to b]{
+      a[dot] -- x[dot] -- b[dot];
+   c[dot] -- x -- d[dot];
+   };}} + 23 \text{ crossed} \right) \\
+             & \quad - \left( 
+                \feynmandiagram[small, horizontal=a to b]{a[dot,label=\(1\)] -- b[dot, label=\(2\)]}; 
+             - \frac{i\lambda}{2} 
+             \feynmandiagram[small, horizontal=a to b, layered layout, inline=(a.base)]{a[dot, label=\(3\)] -- b[dot] -- c[dot,label=\(4\)]; {[same layer]b--[half left]x[nudge=(90:6mm)]--[half left]b} };
+            \right)
+            \cdot \left( 
+                \feynmandiagram[small, horizontal=a to b]{a[dot,label=\(3\)] -- b[dot, label=\(4\)]}; 
+             - \frac{i\lambda}{2} 
+             \feynmandiagram[small, horizontal=a to b, layered layout, inline=(a.base)]{a[dot, label=\(1\)] -- b[dot] -- c[dot,label=\(2\)]; {[same layer]b--[half left]x[nudge=(90:6mm)]--[half left]b} };
+            \right)
+            - 2 \text{ crossed}
+\end{align*} 
+Indeed only the fully connected term survive!
+
+So define in general the "connected" or "irreducible" $n$-point function by
+\begin{align}
+   \braket{0 | T\phi(x_1) \dots \phi(x_n) | 0 }_\text{c} = \frac{1}{i} \frac{\delta}{\delta j(x_1)} \dots \frac{1}{i} \frac{\delta}{\delta j(x_n)} i E[j]
+\end{align}
+We have shown that
+\begin{align*}
+   \braket{0 | T \phi_1 \phi_2 \phi_3 \phi_4 | 0} = \braket{0 | T \phi_1 \phi_2 \phi_3 \phi_4 | 0}_c + \sum_{P} \braket{0 | T\phi_{i_1}\phi_{i_2}}_\text{c} \braket{0 | T \phi_{i_3} \phi_{i_4} | 0}_\text{c}
+\end{align*}
+
+Example for $6$-point function
+%TODO
+
+\section{Effective action and Legendre Transform}
+$iE[j]$ is generating functional for irreducible Green's functions. Formally 
+\begin{align}
+   iE[j] = \sum_n \frac{i^n}{n!} \dd[4]{x_1} \dots \dd[4]{x_n} G_\text{c}(x_1,\dots,x_n) j(x_1) \dots j(x_n)
+\end{align} 
+Remember the LSZ reduction formula. It is the relation between S-matrix and Green's function
+\begin{align}
+   {}_{\text{out}} \braket{k_1 \dots k_m | k_{m+1} \dots k_n}_{\text{in}} = \text{disconnected terms} + \prod_{j=1}^n \left( \frac{iZ}{k^2_j - m^2 +i \epsilon} \right)^{-1} \sqrt{Z}^n G(k_1, \dots, k_n)
+\end{align} 
+Conclusion is that n-point Green's function contain \text{poles} in all external legs. S-matrix elements are \text{amputated} Green's functions.
+In the following to derive generating functional for \underline{amputated}, \underline{fully connected} (\underline{one-particle-irreducible}) Green's functions. It leads to "effective action".
+
+Define the classical field
+\begin{align}
+   \phi(x) = \frac{\delta}{\delta j(x)} E[j]
+\end{align}
+For $j \neq 0$, $\phi=\phi[j]$ can in principle be inverted to $j=j[\phi]$.
+
+Effective action is Legendre transform of $E[j]$
+\begin{align}
+   \Gamma[\phi] = E - \eval{\int \dd[4]{x} j(x) \phi(x)}_{j=j[\phi]}
+\end{align}
+
+$j(x)$ can be recovered from $\Gamma$ by functional derivation with respect to $\phi$
+\begin{align}
+   \frac{\delta}{\delta \phi(x)} \Gamma[\phi] = -j(x)
+\end{align}
+Note that $E=E[j[\phi]]$, so this calculation is not quite as trivial as it seems.
+
+Define $\Gamma(x_1, \dots, x_n)$ through the formal expansion
+\begin{align}
+   \Gamma[\phi] = - \sum \frac{(-i)^n}{n!} \int \dd{x_1} \dots \dd{x_n} \Gamma(x_1, \dots, x_n) \phi(x_1) \dots \phi(x_n)
+\end{align}
+$\Gamma(x_1,\dots, x_n)$ can be obtained from $\Gamma[\phi]$ by repeated function derivative with respect to $\phi(x_i)$.
+
+Calculate first
+\begin{align*}
+   \frac{\delta}{\delta \phi(y)} \phi(y) &= \delta(x-y)  \\
+                                         &= \frac{\delta}{\delta \phi(y)} \left( \frac{\delta}{\delta j(x)} E[j] \right)
+                                         \shortintertext{use the chain rule}
+                                         &= \int \dd[4]{z} \frac{\delta^2 E}{\delta j(x) \delta j(z)} \frac{\delta}{\delta \phi(y)} j(z)  \\
+                                         &= -i \int \dd[4]{z} G_\text{c}(x-z) \Gamma(y-z)
+\end{align*}
+Fourier transform $i=\tilde{G}(p)\tilde{\Gamma}(p)$, or $\tilde{\Gamma}(p) = Z^{-1} (p^2 - m^2)$. Differentiate this once again
+\begin{align*}
+   \frac{\delta^2 \phi(x)}{\delta \phi(x) \delta(y)} &= 0 \\
+                                                     &= \int \dd[4]{z} \dd[4][v] \left[ \frac{\delta^3 E}{\delta j(x) \delta j(z) \delta(v)} \frac{\delta j(z)}{\delta \phi(y)} \frac{\delta j(v)}{\delta \phi(n)}\right] + \int \dd[4]{z} \frac{\delta^2 E}{\delta j(x) \delta j(z)} \frac{\delta^2 j(z)}{\delta \phi(y) \delta\phi(x)} \\
+                                                     &= -\int \dd[4]{z} \dd[4]{v} G(x,z,v) \Gamma(z,y) \Gamma(v,u) - \int \dd[4]{z} G(x,z) \Gamma(z,y,x) = 0
+                                                     \shortintertext{multiply with $\int \dd[4]{x} \Gamma(x, \omega)$, use $\int \dd[4]{x} \Gamma(x-\omega) G(x-z) = i \delta(\omega -z)$}
+   i \Gamma(\omega, y,u) &= \int \dd[4]{z}\dd[4]{v}\dd[4]{x}G(x,z,v) \Gamma(z,y) \Gamma(x,\omega) \Gamma(u,v)
+   \shortintertext{graphically}
+                         &\includegraphics[width=0.7\linewidth]{./3point-IR/1.eps}
+\end{align*}
+In word, $\Gamma(\omega,y,u)$ is the 1-particle irreducible version of $G(x,z,v)$!
