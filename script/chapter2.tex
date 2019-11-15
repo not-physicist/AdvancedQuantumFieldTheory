@@ -97,7 +97,7 @@ Add coupling to an external force (source) $f(t)$
    L = L_0 + f(t) x(t)
 \end{align}
 
-\paragraph{Definition} \underline{functional derivatives} with respect to $if(t)$
+\paragraph{Definition} \underline{functional derivative} with respect to $f(t)$
 \begin{align}
    \frac{\delta}{\delta f(t)} \int \dd{t'} f(t') g(t') = g(t)
 \end{align}
@@ -615,7 +615,7 @@ Note that differentiation and integration with respect to Grassmann variables yi
 
 \paragraph{Gaussian integrals} for \underline{even} numbers of generators and $A$ skew-symmetric matrix.
 \begin{align}
-   \int \dd{\theta_1} \dots \dd{\theta_n} \euler^{-\frac{1}{2} \theta_i A_{ij} \theta_j} = \sqrt{\det{A}}
+   \int \dd{\theta_1} \dots \dd{\theta_n} \euler^{-\frac{1}{2} \theta_i A_{ij} \theta_j} = \sqrt{\det{A}} \label{math:grassmannGaussian}
 \end{align}
 
 Here consider only example for $n=2$, i.e.~$A_{11}=A_{22}=0$ and $A_{12}=-A_{21}$
@@ -627,6 +627,9 @@ Here consider only example for $n=2$, i.e.~$A_{11}=A_{22}=0$ and $A_{12}=-A_{21}
    \int \dd{\theta_1} \dd{\theta_2} \euler^{-\frac{1}{2}\theta_i A_{ij} \theta_j} &= \int \dd{\theta_1} \dd{\theta_2} \left(1 - A_{12} \theta_1 \theta_2\right) = A_{12} \\
                                                                                   &= \sqrt{\det{A}}
 \end{align*}
+
+There is a subtlety in the equation (\ref{math:grassmannGaussian}). Unlike two dimensional case where we only consider the terms up to linear term, we need to take care of higher order terms in higher dimension, otherwise the integral vanishes!
+There is a subtlety in the equation. Unlike two dimensional case where we only consider the terms up to linear term, we need to take care of higher order terms in higher dimension, otherwise the integral vanishes!
 
 For each skew-symmetric matrix of even rank, the determinant is a perfect square while for each skew-symmetric matrix of odd rank, $\det{A} = 0$. $\sqrt{\det{A}}=$ Pfaffian form
 \begin{align*}
@@ -702,7 +705,7 @@ Feynman rules (position space)
       a --[photon, momentum=\(p\)] b;
    }; 
    &= \int \frac{\dd[4]{p}}{(2\pi)^4} \frac{-i}{q^2 + i\epsilon} \left( g^{\mu\nu} - (1-\xi)\frac{q^\mu q^\nu}{q^2} \right) \euler^{-ip(x-y)} \\
-   \feynmandiagram[small, horizontal=a to b, inline=a]{
+   \feynmandiagram[small, horizontal=a to b, inline=(a.base)]{
       a [particle={\(\mu\)}] --[photon] b -- [fermion] c,
       b --[anti fermion] d,
    };
@@ -826,13 +829,13 @@ Remember the LSZ reduction formula. It is the relation between S-matrix and Gree
 Conclusion is that n-point Green's function contain \text{poles} in all external legs. S-matrix elements are \text{amputated} Green's functions.
 In the following to derive generating functional for \underline{amputated}, \underline{fully connected} (\underline{one-particle-irreducible}) Green's functions. It leads to "effective action".
 
-Define the classical field
+\paragraph{Define} the \underline{classical field}
 \begin{align}
    \phi(x) = \frac{\delta}{\delta j(x)} E[j]
 \end{align}
 For $j \neq 0$, $\phi=\phi[j]$ can in principle be inverted to $j=j[\phi]$.
 
-Effective action is Legendre transform of $E[j]$
+\underline{Effective action} is Legendre transform of $E[j]$
 \begin{align}
    \Gamma[\phi] = E - \eval{\int \dd[4]{x} j(x) \phi(x)}_{j=j[\phi]}
 \end{align}
@@ -843,7 +846,7 @@ $j(x)$ can be recovered from $\Gamma$ by functional derivation with respect to $
 \end{align}
 Note that $E=E[j[\phi]]$, so this calculation is not quite as trivial as it seems.
 
-Define $\Gamma(x_1, \dots, x_n)$ through the formal expansion
+\paragraph{Define} $\Gamma(x_1, \dots, x_n)$ through the formal expansion
 \begin{align}
    \Gamma[\phi] = - \sum \frac{(-i)^n}{n!} \int \dd{x_1} \dots \dd{x_n} \Gamma(x_1, \dots, x_n) \phi(x_1) \dots \phi(x_n)
 \end{align}
@@ -1114,3 +1117,253 @@ To ignore \ref{item:a}. QED is $\mathrm{C}$-invariant, $A_\mu \mapsto -A_\mu$, c
 Thus $I$ has to be finite! Symmetries can renders amplitudes more convergent than they appear superficially!
 
 Conclusion: primitively divergent amplitudes are (\ref{item:c}) photon self energy, (\ref{item:f}) electron self energy and (\ref{item:g}) the vertex graph.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lecture date: 19-11-13
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Renormalization of QED, schematically}
+Original Lagrangian including gauge fixing
+\begin{align}
+   \lag_{\text{QED}} = - \frac{1}{4} F_{\mu\nu}F^{\mu\nu} - \frac{1}{2\xi_0}  (\partial_\mu A^\mu)^2 + \bar \psi (i \slashed{\partial} - m_0) \psi - e_0 \bar\psi \gamma^\mu \psi A_\mu
+\end{align}
+
+Calculation of self-energy graphs leads to expressions 
+\begin{align*}
+   \feynmandiagram[layered layout, small, horizontal=a to b, inline=(a.base)]{a --[fermion] b[blob] --[fermion] c,}; &= \frac{iZ_2}{\slashed{p}- m} + \dots  \quad
+                                                                                                                     && \braket{0 | T \psi \bar\psi | 0} \sim Z_2 \\
+   \feynmandiagram[layered layout, small, horizontal=a to b, inline=(a.base)]{a --[photon] b[blob] --[photon] c,}; &= \frac{-iZ_3 g_{\mu\nu}}{q^2} + \cdots  \quad
+                                                                                                                   &&  \braket{0 | T A_\mu A_\nu | 0} \sim Z_3 
+\end{align*}
+
+To reinstate residues of $1$, define renormalized field strengths 
+\begin{align}
+   \psi = Z_2^{1/2} \psi_r \\
+   A^\mu = Z_3^{1/2} A^\mu_r 
+\end{align}
+then 
+\begin{align}
+   \lag_\text{QED} = - \frac{1}{4} Z_3 F_{r \, \mu\nu}F_r^{\mu\nu} + Z_2 \bar\psi_r (i \slashed{\partial} - m_0)\psi_r - e_0 Z_2 Z_3^{1/2} \bar\psi_r \gamma^\mu \psi A_{r\, \mu} - \frac{Z_3}{2\xi_0} (\partial_\mu A_r^\mu)^2
+\end{align}
+
+Define the physical electric coupling by 
+\begin{align}
+  e_0 Z_2 Z_3^{1/2} = e Z_1 
+\end{align}
+In addition, 
+\begin{align}
+  \xi_0 = Z_\xi \xi 
+\end{align}
+which means 
+\begin{align*}
+  \frac{Z_3}{\xi_0} = \frac{Z_3}{Z_\xi \xi} = \frac{1+\delta_3}{(1-\delta_\xi)\xi} = \frac{1}{\xi} (1+ \underbrace{\delta_3 - \delta_\xi}_{=0}) + \order{\xi^2} 
+\end{align*}
+$\delta_3 = \delta_\xi$ is a consequence of Ward Identity for $G_L$.
+
+Define 
+\begin{align}
+   \delta_i &= Z_i - 1
+   \shortintertext{for $i=1,2,3,\xi$}
+   \delta_m &= Z_2 m_0 - m
+\end{align}
+Therefore the Lagrangian with counter-terms is 
+\begin{align}
+   \begin{split}
+      \lag_\text{QED} &= - \frac{1}{4} Z_3 F_{r \, \mu\nu}F_r^{\mu\nu} - \frac{1}{2\xi}(\partial_\mu A_r^\mu)^2 + \bar\psi_r (i\slashed{\partial} - m)\psi_r - e \bar\psi_r \gamma^\mu \psi_r A_{r\, \mu} \\
+                      &\quad - \frac{1}{4} \delta_3 F_{r \, \mu\nu}F_r^{\mu\nu} - \frac{1}{2\xi} (\delta_3 - \delta_\xi) (\partial_\mu A_r^\mu)^2 + \bar\psi_r (i\delta_2 \slashed{\partial} - \delta_m)\psi_r - e \delta_1 \bar\psi_r \gamma_\mu \psi_r A_r^\mu
+   \end{split}
+\end{align}
+Introduced four counter-terms in the Lagrangian. They are to be determined such that observables are finite.
+
+\section[Renormalization of QED II: One Loop]{Renormalization of QED II: One Loop\footnote{see also Ryder Ch. 9.6}}
+Use dimensional regularisation $\dd[4]{k} \mapsto \dd[d]k$. In order to give the Lagrangian density in $d$ dimensions a unique mass dimension, introduce (arbitrary) mass parameter $\mu$.
+\begin{align}
+   \lag_{\text{QED}} = - \frac{1}{4} (F_{\mu\nu})^2 + \bar\psi (i \slashed{\partial} - m) \psi - e \mu^{2-d/2} \bar\psi \gamma_\mu \psi A^\mu 
+\end{align}
+with $[A] = (d-2)/2$, $[\psi] = (d-1)/2$ and $[e] = 0$.
+
+Repeat the two important formula. Feynman parameter
+\begin{align}
+   \frac{1}{A B} = \int_0^1 \frac{\dd{z}}{ \left[ zA + (1-z)B \right]^2 }
+\end{align}
+Dimensional regularisation formula
+\begin{align}
+   \frac{1}{i} \int \frac{\dd[d]{k}}{(2\pi)^d} \frac{1}{[k^2 - \Delta^2]^n} = \frac{(-1)^n}{(4\pi)^{d/2}} \frac{\Gamma(n-d/2)}{\Gamma(n)} \Delta^{d/2 - n}
+\end{align}
+
+\paragraph{Electron self-energy}
+\begin{align*}
+   & \feynmandiagram[layered layout, horizontal=i1 to v1, medium, baseline=i1]{ i1 --[fermion, momentum=\(p\)] v1 --[fermion, momentum'=\(p-k\)] v2 --[fermion, momentum=\(p\)] f1, v1 --[half left, photon, momentum=\(k\)] v2}; = -i \Sigma(p) = \mu^{4-d} \int \frac{\dd[d]{k}}{(2\pi)^d} ie \gamma_\mu \frac{i(\slashed{p} - \slashed{k} + m)}{ (p-k)^2 - m^2} ie\gamma_\nu \frac{-ig^{\mu\nu}}{k^2}
+\end{align*}
+\begin{align*}
+   \Sigma(p) &=  e^2 \mu^{4-d} \frac{1}{i} \int \frac{\dd[d]{k}}{(2\pi)^d} \frac{\gamma_\mu  (\slashed{p} - \slashed{k} + m )\gamma^\mu}{ ((p-k)^2 - m^2) k^2} 
+\shortintertext{Introduce Feynman parameter $z$}
+             &= e^2 \mu^{4-d} \int_0^1 \dd{z} \frac{1}{i} \int \frac{\dd[d]{k}}{(2\pi)^d} \frac{\gamma_\mu (\slashed{p} - \slashed{k} + m) \gamma^\mu}{ \left[ (p-k)^2 z - m^2z + k^2 (1-z) \right]^2}
+\shortintertext{Make substituition $k' = k-zp$}
+             &= e^2 \mu^{4-d} \int_0^1 \dd{z} \frac{i}{i} \int \frac{\dd[d]{k'}}{(2\pi)^d} \frac{\gamma_\mu (\slashed{p} (1-z) - \slashed{k}' + m) \gamma^\mu}{ \left[ k'^2 - m^2 z + z(1-z) p^2 \right]^2} \\
+\shortintertext{Because of parity of integral $k' \leftrightarrow -k'$, the term linear in $k'$ vanishes.}
+             &= e^2 \mu^{4-d} \int_0^1 \dd{z} \gamma_\mu (\slashed{p}(1-z) + m )\gamma^\mu \frac{1}{i} \int \frac{\dd[d]{k'}}{(2\pi)^d} \frac{1}{  \left[ k'^2 - m^2 z + z(1-z) p^2 \right]^2 }
+             \shortintertext{Use dimensional regularization formula}
+             &= \mu^{4-d} e^2 \frac{\Gamma(2-d/2)}{(4\pi)^{d/2}} \int^1_0 \dd{z} \gamma_\mu (\slashed{p}(1-z) + m) \gamma^\mu \left[ m^2 z - p^2 z (1-z) \right]^{d/2-2}
+\shortintertext{set $\epsilon = 4-d$, use identities $\gamma_\mu \gamma^\mu = d$, $\gamma_\mu \slashed{p} \gamma^\mu = (2-d)\slashed{p}$}
+             &= \frac{e^2}{(4\pi)^2} \Gamma \left(\frac{\epsilon}{2} \right) \int_0^1 \dd{z} \left\{ 2 \slashed{p} (1-z) - 4m - \epsilon \left[ \slashed{p}(1-z) - m \right] \right\} \left( \frac{m^2 z - p^2 z (1-z)}{4\pi \mu^2} \right)^{-\epsilon/2} 
+\shortintertext{use $\Gamma(\epsilon/2) = \frac{2}{\epsilon} - \gamma_E + \order{\epsilon}$}
+             &= \frac{e^2}{8\pi^2 \epsilon} (- \slashed{p} + 4 m) + \frac{e^2}{16\pi^2} \left[ \slashed{p} (1+\gamma_E) - 2m (1+2\gamma_E) + 2\int_0^1 \dd{z} (\slashed{p}(1-z) - 2m) \ln(\frac{m^2z - p^2z(1-z)}{4\pi \mu^2}) + \order{\epsilon} \right] \\
+             &= \frac{e^2}{8\pi^2 \epsilon} (- \slashed{p} + 4 m) + \text{finite}
+\end{align*}
+
+\paragraph{Photon self-energy}
+\begin{align*}
+   & \feynmandiagram[baseline=i1, layered layout, horizontal=i1 to v1, medium]{
+      i1[particle={\(k, \mu\)}] --[photon] v1 --[fermion, half left, momentum=\(p-k\)] v2 --[photon] f1[particle={\(k, \nu\)}],
+   v2 -- [fermion, half left, reversed momentum=\(p\)] v1,
+   };
+   = i \Pi_{\mu\nu}(k) \\
+                                                                                                                                                                    &= - \mu^{4-d} e^2 \int \frac{\dd[d]{p}}{(2\pi)^d} \tr[\gamma_\mu \frac{1}{\slashed{p} - m} \gamma_\nu \frac{1}{\slashed{p} - \slashed{k} - m}] \\
+                                                                                                                                                                    &= - \mu^{4-d} e^2 \int \frac{\dd[d]{p}}{(2\pi)^d} \frac{\tr[\gamma_\mu (\slashed{p} + m) \gamma_\nu (\slashed{p} - \slashed{k} + m)]}{(p^2 - m^2) ((p-k)^2 - m^2)}
+   \shortintertext{same Feynman parameter trick $p' = p-kz$}
+                                                                                                                                                                    &= - \mu^{4-d} e^2 \int_0^1 \dd{z} \frac{1}{i} \int \frac{\dd[d]{p'}}{(2\pi)^d} \frac{\tr[\gamma_\mu (\slashed{p}' + \slashed{k}z + m) \gamma_\nu (\slashed{p}' - \slashed{k}(1+z) + m)]}{ \left[p'^2 - m^2 + z (1-z) k^2 \right]^2}
+\end{align*}
+
+Linear terms in $p'$ drop out. Focus on the numerator
+\begin{align*}
+   N &= \left[ p'^{\kappa} p'^{\lambda} - k^\kappa k^\lambda z (1-z) \right] \tr(\gamma_\mu \gamma_\kappa \gamma_\nu \gamma_\lambda ) + m^2 \tr(\gamma_\mu \gamma_\nu) \\
+     &= 4 \left[ 2 p'_\mu p'_\nu - 2 z(1-z) (k_\mu k_\nu - k^2 g_{\mu\nu}) - g_{\mu\nu} (p'^2 - m^2 + z(1-z)k^2 ) \right] \\
+\end{align*}
+
+Therefore
+\begin{align*} 
+   \Pi_{\mu\nu}(k) &= -\mu^{4-d} e^2 4 \int_0^1 \dd{z} \frac{1}{i} \int \frac{\dd[d]{p}}{(2\pi)^d} \left\{ \frac{2p_\mu p_\nu}{[p^2 - m^2 + z(1-z)k^2]^2} - \frac{2z(1-z)(k_\mu k_\nu - k^2 g_{\mu\nu})}{[p^2 - m^2 + z(1-z) k^2]^2} - \frac{g_{\mu\nu}}{p^2 - m^2 + z(1-z)k^2 } \right\}\\
+   \shortintertext{Dimensional regularisation}
+    & \frac{1}{i} \int \frac{\dd[d]{p}}{(2\pi)^d} \frac{p_\mu p_\nu}{(p^2 - \Delta^2)^n} = \frac{g_{\mu\nu}}{2(n-1)} \frac{1}{i} \int \frac{\dd[d]{p}}{(2\pi)^d} \frac{1}{(p^2 - \Delta)^{n-1}}
+   \shortintertext{so the first and third term cancel!}
+   \Pi_{\mu\nu}(k) &= \frac{e^2}{2\pi^2} (k_\mu k_\nu - g_{\mu\nu}k^2 ) \left[ \frac{1}{3\epsilon} - \frac{\gamma_E}{6} - \int_0^1 \dd{z} z(1-z) \log(\frac{m^2 - z(1-z) k^2}{4\pi\mu^2}) \right]  \\
+                   &= \frac{e^2}{6\pi^2} (k_\mu k_\nu - k^2 g_{\mu\nu}) \left( \frac{1}{\epsilon} + \text{finite const.} + \frac{k^2}{10m^2} + \dots \right)
+\end{align*}
+
+\paragraph{Vertex graph}
+\begin{align*}
+   \feynmandiagram[medium, horizontal= v3 to f, baseline=(f.base)]{
+      i1[particle=\(p\)] --[anti fermion] v1 --[anti fermion] v3 --[photon] f[label=270:\(q\)],
+      i2[particle=\(p'\)] --[fermion] v2 --[fermion] v3 ,
+      v1 --[photon] v2,
+   };
+   &= ie \mu^{2-d/2} \Lambda_\mu (p, q, p')  \\
+   \Lambda(p, q, p') &= \frac{e^2}{8 \pi^2 \epsilon} \gamma_\mu + \text{finite}
+\end{align*}
+Remember "finite" include a new Dirac structure anomalous magnetic moment
+\begin{align*}
+  \frac{\alpha }{2\pi} \frac{i\sigma_{\mu\nu} q^\nu}{ 2m} 
+\end{align*}
+It has to be finite!
+
+\paragraph{Summary of all divergences}
+\begin{align}
+   \Sigma(p) &= \frac{e^2}{8\pi^2 \epsilon} (- \slashed{p} + 4m) + \text{finite} \\
+   \Pi_{\mu\nu}(p) &= \frac{e^2}{6\pi^2 \epsilon} (k_\mu k_\nu - g_{\mu\nu} k^2 ) + \text{finite} \\
+   \Lambda_\mu (p , q, p') &= \frac{e^2}{8\pi^2 \epsilon} \gamma_\mu + \text{finite}
+\end{align}
+
+Electron propagator combines tree, loop and counter-terms.
+\begin{align*}
+   \Gamma^{(2)}(p) &= i S_F^{-1}(p) = \slashed{p} - m - \frac{e^2}{8 \pi^2 \epsilon} (-\slashed{p} + 4m) + (\delta_2 \slashed{p} - \delta_m) \\
+                   &= \slashed{p} \left(1 + \frac{e^2}{8\pi^2 \epsilon} + \delta_2 \right) -m  \left(1+ \frac{e^2}{2\pi^2 \epsilon} \right) - \delta_m \\
+                   &\stackrel{!}{=} \text{finite}
+\end{align*}
+
+Comparing the coefficients leads to 
+\begin{align}
+   \delta_2 &= -\frac{e^2}{8\pi^2 \epsilon} \\
+   \delta_m &= - \frac{me^2}{2\pi^2 \epsilon}
+   \shortintertext{Or}
+   \psi &= \sqrt{Z_2} \psi_r \\
+   Z_2 &= 1+ \delta_2 = 1 - \frac{e^2}{8\pi^2 \epsilon} \\
+   m_0 &= Z_2^{-1} (m+\delta_m) = m  \left( 1-\frac{3e^2}{8\pi^2 \epsilon} \right)
+\end{align}
+Note for $m_0$ approximation is implicit applied. It doesn't matter in the end, since no physics is dependent on the this factor.
+
+This kind of renormalization, to cancel only the infinite terms $\propto 1/(d-4) \propto 1(\epsilon)$ by the counter-terms, is called \underline{minimal subtraction} (MS). Alternative is \underline{modified minimal subtraction} ($\overline{\text{MS}}$). It subtracts terms proportional to 
+\begin{align*}
+  \frac{1}{\epsilon} - \frac{1}{2} \left(\gamma_E - \log(4\pi) \right) 
+\end{align*}
+
+\paragraph{Photon propagator}
+The modified photon propagator is (using Feynman gauge!)
+\begin{align*}
+   % photon prog + photon self energy + counterterms
+   \feynmandiagram[inline=(a.base), layered layout, small, horizontal=a to x]{ a--[photon] x[blob] --[photon] b,};
+   &= \feynmandiagram[inline=(a.base), layered layout, small, horizontal=a to x]{ a--[photon] x --[photon] b,};
+   + \feynmandiagram[inline=(i1.base), small, baseline=i1, layered layout, horizontal=i1 to v1, medium]{
+      i1 --[photon] v1 --[fermion, half left] v2 --[photon] f1,
+   v2 -- [fermion, half left] v1,
+   };
+   + \feynmandiagram[inline=(a.base), layered layout, small, horizontal=a to x]{ a--[photon] x[crossed dot] --[photon] b,}; \\
+   D'_{\mu\nu}(k) &= D_{\mu\nu}(k)(1-\delta_3) - D_{\mu\alpha}(k) \Pi^{\alpha \beta}(k) D_{\beta\nu}(k) -\frac{\delta_\xi}{k^2} \frac{k_\mu k_\nu}{k^2} \\
+                  &= - \frac{g_{\mu\nu}}{k^2} (1-\delta_3) - \frac{g_{\mu\alpha}}{k^2} \frac{e^2}{6\pi^2} \left[ (k^\alpha k^\beta - k^2 g^{\alpha\beta}) \left(\frac{1}{\epsilon } + \frac{k^2 }{10m^2} + \dots \right) \right]  \frac{g_{\beta\nu}}{k^2} - \frac{\delta_\xi}{k^2} \frac{k_\mu k_\nu}{k^2} \\
+                  &= - \frac{g_{\mu\nu}}{k^2} \left(1- \delta_3 - \frac{e^2}{6\pi^2 \epsilon} - \frac{e^2}{60\pi^2} \frac{k^2}{m^2} \right) - \left(\delta_\xi + \frac{e^2}{6 \pi^2 \epsilon} \right) \frac{1}{k^2} \frac{k_\mu k_\nu}{k^2} + \dots
+\end{align*}
+resulting propagator \underline{not} automatically in Feynman gauge, which it should be, since we use Feynman gauge along the way. Need gauge counter-term 
+\begin{align}
+  \delta_\xi = -\frac{e^2}{6\pi^2 \epsilon} = \delta_3  
+\end{align}
+
+Wave function renormalization of the photon 
+\begin{align}
+  Z_3 = 1 + \delta_3 = 1- \frac{e^2}{6 \pi^2 \epsilon} 
+\end{align}
+
+Note that renormalization does not generate a photon mass term!
+
+Renormalization does not eliminate the finite effect.
+\begin{align}
+   D'_{\mu\nu} = -g_{\mu\nu} \left( \frac{1}{k^2} - \frac{e^2}{60\pi^2m^2} + \order{k^2} \right)
+\end{align}
+Fourier transform yields the potential between two charges
+\begin{align}
+   V(r) = \frac{e^2}{4\pi r} + \frac{e^4}{60 \pi^2 m^2 } \delta^{(3)}(\pmb{r})
+\end{align}
+The second shifts the S-levels in hydrogen, \underline{Lamb shift}!
+
+\paragraph{Vertex function}
+\begin{align}
+   \begin{split}
+    \Gamma_\mu(p, q, p') &= \gamma_\mu (1+\delta_1) + \Lambda_\mu (p,q, p') \\
+                        &= \gamma_\mu (1+\delta_1 + \frac{e^2}{8\pi^2 \epsilon}) + \text{finite}
+   \end{split}\\
+   Z_1 &= 1 + \delta_1 = 1 - \frac{e^2}{8\pi^2 \epsilon} = Z_2
+\end{align}
+
+The resulting charge renormalization is
+\begin{align}
+   e_0 &= \mu^{\epsilon/2} \frac{Z_1}{Z_2} Z_3^{-1/2} e = \mu^{\epsilon/2} Z_3^{-1/2} e  \notag \\
+   e_0 &= \mu^{\epsilon/2} \left( 1+\frac{e^2}{12 \pi^2 \epsilon} e \right)
+\end{align}
+
+Charge renormalization and fermionic field renormalization are related $Z_1 = Z_2$. It is no coincidence, but a result of the Ward identity
+\begin{align*}
+   \Gamma_\mu (p, 0, p) = \pdv{iS_F^{-1}}{p^\mu}
+\end{align*}
+By renormalization $\Gamma_\mu \mapsto Z_1 \gamma_\mu$ and $S_F \mapsto Z_2^{-1} S_F$. Thus $Z_1 = Z_2$
+
+Conclusion: charge renormalization only depends on the photon vacuum polarisation $\sim Z_3$. Essential many particles have the same charge $e$, electron, muon, proton and so on. If $e$ depends, via $Z_1$ $Z_2$, on the properties (masses, type of photon coupling) of the particles conserved, this would be a huge coincidence! It is a consequence of Ward identity, i.e.~gauge invariance.
+
+\paragraph{Summary}
+We have shown that the Lagrangian density
+\begin{align*}
+   \lag_{\text{QED}} &= - \frac{1}{4} (F_r^{\mu\nu})^2 - \frac{1}{2\xi} (\partial_\mu A_r^\mu)^2 - \bar\psi_r (i \slashed{\partial} - m) \psi_r - e \bar\psi_r \gamma_\mu \psi_r A_r^\mu \\
+   &\quad- \frac{\delta_3}{4} (F_r^{\mu\nu})^2 - \frac{\delta_2 - \delta_\xi}{2 \xi} (\partial_\mu A^\mu_r)^2 + \bar\psi_r (i\delta_2 \slashed{\partial} - \delta_m) \psi_r - e \delta_1 \bar\psi_r \gamma_\mu \psi_r A_r^\mu 
+\end{align*}
+\begin{itemize}
+   \item leads to \underline{finite} physical observable 
+   \item can be written as
+      \begin{align}
+         -\frac{1}{4} (F_\text{bare}^{\mu\nu})^2 - \frac{1}{2\xi_0} (\partial_\mu A^\mu_\text{bare})^2 + \bar\psi_{\text{bare}} (i \slashed{\partial} - m_0) \psi_{\text{bare}} - e_0 \bar\psi_{\text{bare}} A^\mu_\text{bare}
+      \end{align}
+      which is form-identical to the original. QED up to one loop is renormalizable!
+\end{itemize}
+
+Predictions of one-loop QED beyond pure renormalization
+\begin{itemize}
+   \item anomalous magnetic moment 
+   \item Lamb shift
+   \item asymptotic behaviour of QED for large energies. Detailed discussion in renormalization group chapter.
+\end{itemize}

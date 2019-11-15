@@ -4,7 +4,6 @@
 
 \usepackage[utf8]{inputenc}               
 \usepackage[T1]{fontenc}                  
-\usepackage[autostyle=true]{csquotes}     
 \usepackage[varg]{txfonts}  			  %	Times-like fonts in support of mathematics
 \usepackage{siunitx}   	  				  
 \usepackage{enumitem}				      %	extra enumerate options
@@ -34,6 +33,13 @@
 \usepackage{slashed} % feynman slash notation
 \usepackage{simplewick} % wick contraction
 \usepackage{tikz-feynman} % feynman diagrams
+
+% Externalizing plots
+\usetikzlibrary{external}
+\tikzexternalize[ prefix=tikz-figs/, 
+                  mode=list and make, 
+                  system call={ lualatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname="\image" "\texsource"  || rm "\image.pdf"},
+]
 
 %restart footnotes every page
 \usepackage{perpage}
