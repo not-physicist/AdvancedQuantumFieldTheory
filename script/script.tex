@@ -36,8 +36,8 @@
 
 % Externalizing plots
 \usetikzlibrary{external}
-\tikzexternalize[ prefix=tikz-figs/, 
-                  mode=list and make, 
+\tikzexternalize[ prefix=tikz-figs/,
+                  mode=list and make,
                   system call={ lualatex \tikzexternalcheckshellescape -halt-on-error -interaction=batchmode -jobname="\image" "\texsource"  || rm "\image.pdf"},
 ]
 

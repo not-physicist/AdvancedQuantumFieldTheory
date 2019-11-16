@@ -1192,7 +1192,7 @@ Dimensional regularisation formula
 
 \paragraph{Electron self-energy}
 \begin{align*}
-   & \feynmandiagram[layered layout, horizontal=i1 to v1, medium, baseline=i1]{ i1 --[fermion, momentum=\(p\)] v1 --[fermion, momentum'=\(p-k\)] v2 --[fermion, momentum=\(p\)] f1, v1 --[half left, photon, momentum=\(k\)] v2}; = -i \Sigma(p) = \mu^{4-d} \int \frac{\dd[d]{k}}{(2\pi)^d} ie \gamma_\mu \frac{i(\slashed{p} - \slashed{k} + m)}{ (p-k)^2 - m^2} ie\gamma_\nu \frac{-ig^{\mu\nu}}{k^2}
+   & \feynmandiagram[layered layout, horizontal=i1 to v1, medium, inline=(i1.base)]{ i1 --[fermion, momentum=\(p\)] v1 --[fermion, momentum'=\(p-k\)] v2 --[fermion, momentum=\(p\)] f1, v1 --[half left, photon, momentum=\(k\)] v2}; = -i \Sigma(p) = \mu^{4-d} \int \frac{\dd[d]{k}}{(2\pi)^d} ie \gamma_\mu \frac{i(\slashed{p} - \slashed{k} + m)}{ (p-k)^2 - m^2} ie\gamma_\nu \frac{-ig^{\mu\nu}}{k^2}
 \end{align*}
 \begin{align*}
    \Sigma(p) &=  e^2 \mu^{4-d} \frac{1}{i} \int \frac{\dd[d]{k}}{(2\pi)^d} \frac{\gamma_\mu  (\slashed{p} - \slashed{k} + m )\gamma^\mu}{ ((p-k)^2 - m^2) k^2} 
@@ -1213,7 +1213,7 @@ Dimensional regularisation formula
 
 \paragraph{Photon self-energy}
 \begin{align*}
-   & \feynmandiagram[baseline=i1, layered layout, horizontal=i1 to v1, medium]{
+   & \feynmandiagram[inline=(i1.base), layered layout, horizontal=i1 to v1, medium]{
       i1[particle={\(k, \mu\)}] --[photon] v1 --[fermion, half left, momentum=\(p-k\)] v2 --[photon] f1[particle={\(k, \nu\)}],
    v2 -- [fermion, half left, reversed momentum=\(p\)] v1,
    };
@@ -1292,7 +1292,7 @@ The modified photon propagator is (using Feynman gauge!)
    % photon prog + photon self energy + counterterms
    \feynmandiagram[inline=(a.base), layered layout, small, horizontal=a to x]{ a--[photon] x[blob] --[photon] b,};
    &= \feynmandiagram[inline=(a.base), layered layout, small, horizontal=a to x]{ a--[photon] x --[photon] b,};
-   + \feynmandiagram[inline=(i1.base), small, baseline=i1, layered layout, horizontal=i1 to v1, medium]{
+   + \feynmandiagram[inline=(i1.base), small, layered layout, horizontal=i1 to v1, medium]{
       i1 --[photon] v1 --[fermion, half left] v2 --[photon] f1,
    v2 -- [fermion, half left] v1,
    };
