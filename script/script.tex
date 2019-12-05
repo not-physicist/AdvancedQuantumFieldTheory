@@ -8,11 +8,12 @@
 \usepackage{siunitx}   	  				  
 \usepackage{enumitem}				      %	extra enumerate options
 
-\renewcommand{\familydefault}{\rmdefault} % font to sans serif
+% \renewcommand{\familydefault}{\rmdefault} % font to sans serif
 
 %import external graphics and where to find these
 \usepackage{graphicx}					  
 \graphicspath{{figs/}}
+% \usepackage{epstopdf}
 
 \RequirePackage[backend=biber, style=numeric]{biblatex}
 \addbibresource{refs.bib}
@@ -32,8 +33,9 @@
 \usepackage{braket}
 \usepackage{slashed} % feynman slash notation
 \usepackage{simplewick} % wick contraction
+\usepackage{tikz}
 \usepackage{tikz-feynman} % feynman diagrams
-
+\usepackage{here} % figure[H]
 % Externalizing plots
 \usetikzlibrary{external}
 \tikzexternalize[ prefix=tikz-figs/,
@@ -83,6 +85,7 @@
 \newcommand{\diag}{\text{diag}}
 \newcommand{\sgn}{\text{sgn}}
 \newcommand{\cl}{\text{cl}}
+\newcommand{\eff}{\text{eff}}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%% SETTINGS %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \numberwithin{equation}{section}

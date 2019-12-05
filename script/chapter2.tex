@@ -870,7 +870,7 @@ Fourier transform the result we have $i=\tilde{G}(p)\tilde{\Gamma}(p)$, or $\til
    \shortintertext{graphically}
                          &\includegraphics[width=0.7\linewidth]{./3point-IR/1.eps}
 \end{align*}
-In word, $\Gamma(\omega,y,u)$ is the 1-particle irreducible version of $G(x,z,v)$!
+In word, $\Gamma(\omega,y,u)$, third derivative of $\Gamma[\phi]$, is the 1-particle irreducible (amputated and fully connected) version of $G(x,z,v)$! (Only two-point function has non-1PI part?)
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Lecture date: 19-11-06
@@ -887,7 +887,7 @@ Generating functional of QED
                         &\quad  \underbrace{- \frac{1}{2\xi} (\partial_\mu A^\mu)^2 + j_\mu A^\mu + \bar\psi \eta + \bar\eta \psi}_{\lag_1}
    \end{split}
 \end{align}
-Two observations are seemly contradicting to each other
+Two observations are seemingly contradicting to each other
 \begin{itemize}
    \item $\lag_{\text{eff}}$ is obviously \underline{not} gauge invariant, since we have introduced a gauge fixing term.
    \item On the other hand, physics as expressed through Green's functions \underline{must} be independent of gauge.
@@ -946,7 +946,7 @@ Take functional derivative $\fdv{\bar\psi} \fdv{\psi}$ and subsequently put $\ba
 
 This becomes more intuitive in momentum space. First define
 \begin{align}
-   \int \dd[4]{x} \dd[4]{x_1} \dd[4]{y_1} \exp[i(p'x_1 - py_1 - qx)] \frac{\delta^3 \Gamma}{ \delta \bar\psi (x_1) \delta \psi(y_1) \delta A^\mu(x)} = e (2\pi)^4(p'-p-q) \Gamma(p, q, p')
+   \int \dd[4]{x} \dd[4]{x_1} \dd[4]{y_1} \exp[i(p'x_1 - py_1 - qx)] \frac{\delta^3 \Gamma}{ \delta \bar\psi (x_1) \delta \psi(y_1) \delta A^\mu(x)} = e (2\pi)^{4} \delta^{(4)}(p'-p-q) \Gamma(p, q, p')
 \end{align}
 Know already the one-particle irreducible two-point function
 \begin{align}
@@ -983,7 +983,7 @@ In the limit $q^\mu \rightarrow 0$, we obtain \underline{Ward identity}
    \Gamma^\mu (p,0,p) = \pdv{iS_F^{-1}}{p_\mu}
 \end{align}
 
-There are more Ward identities that can be derived using different functional derivatives. Start again with \ref{math:wardPDE} and differentiate with respect to $j_0(y)$, then put $\eta = \bar\eta = j = 0$
+There are more Ward identities that can be derived using different functional derivatives. Start again with \ref{math:wardPDE} and differentiate with respect to $j_\nu(y)$, then put $\eta = \bar\eta = j = 0$
 \begin{align}
    - \frac{1}{\xi} \partial^2 \partial_x^\mu \frac{\delta^2 E}{\delta j^\mu (x) \delta j^\nu (y)} &= \partial^\mu_x g_{\mu\nu} \delta^{(4)}(x-y) \notag
    \shortintertext{Remember photon propagtor is given by}
@@ -1192,7 +1192,10 @@ Dimensional regularisation formula
 
 \paragraph{Electron self-energy}
 \begin{align*}
-   & \feynmandiagram[layered layout, horizontal=i1 to v1, medium, inline=(i1.base)]{ i1 --[fermion, momentum=\(p\)] v1 --[fermion, momentum'=\(p-k\)] v2 --[fermion, momentum=\(p\)] f1, v1 --[half left, photon, momentum=\(k\)] v2}; = -i \Sigma(p) = \mu^{4-d} \int \frac{\dd[d]{k}}{(2\pi)^d} ie \gamma_\mu \frac{i(\slashed{p} - \slashed{k} + m)}{ (p-k)^2 - m^2} ie\gamma_\nu \frac{-ig^{\mu\nu}}{k^2}
+   & \feynmandiagram[layered layout, horizontal=i1 to v1, medium, inline=(i1.base)]{ 
+   i1 --[fermion, momentum=\(p\)] v1 --[fermion, momentum'=\(p-k\)] v2 --[fermion, momentum=\(p\)] f1, 
+   v1 --[half left, photon, momentum=\(k\)] v2}; 
+   = -i \Sigma(p) = \mu^{4-d} \int \frac{\dd[d]{k}}{(2\pi)^d} ie \gamma_\mu \frac{i(\slashed{p} - \slashed{k} + m)}{ (p-k)^2 - m^2} ie\gamma_\nu \frac{-ig^{\mu\nu}}{k^2}
 \end{align*}
 \begin{align*}
    \Sigma(p) &=  e^2 \mu^{4-d} \frac{1}{i} \int \frac{\dd[d]{k}}{(2\pi)^d} \frac{\gamma_\mu  (\slashed{p} - \slashed{k} + m )\gamma^\mu}{ ((p-k)^2 - m^2) k^2} 
@@ -1367,3 +1370,418 @@ Predictions of one-loop QED beyond pure renormalization
    \item Lamb shift
    \item asymptotic behaviour of QED for large energies. Detailed discussion in renormalization group chapter.
 \end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lecture date: 19-11-20
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section[Renormalization of QED to All Orders]{Renormalization of QED to All Orders\footnote{see also in Ryder Ch. 9.7, P\& S Ch. 10.4, Weinberg  Ch. 12.3, Schwatz Ch 21.1.3 or Jauch \& Rohrlich Ch. 10}}
+Here is just a sketch of proof using ward identity.
+
+Dressed propagator $S'_F$ contains all possible numbers of self-energy diagrams. It can be written as geometric series
+\begin{align*}
+   i S'_F  &= iS_F + iS_F (-i\Sigma) iS_F + \dots \\
+         &= \frac{S_F}{1 - \Sigma S_F} \\
+   {S'}_F^{-1} &= S_F^{-1} - \Sigma
+\end{align*}
+
+Consider the following relations for inverse electron propagator, inverse photon propagators and vertex function including Ward identity. The divergent parts have been separated from the free parts.
+\begin{align}
+\begin{split}
+    {S'}_F^{-1} (p) &= S_F^{-1}(p) - \Sigma(p)  \\
+   {D'}_F^{-1}(k) &= D_F^{-1}(k) - \Pi (k) \\
+   \Gamma_\mu (p, q, p')  &= \gamma_\mu + \Lambda_\mu(p, q, p') \\
+   - \pdv{\Sigma(p)}{p^\mu} &= \Lambda_\mu (p,0,p)
+\end{split}\label{math:QEDRe1}
+\end{align}
+where metric tensor is taken out off the (dressed and free) photon propagator without indices 
+\begin{align*}
+   D_{\mu\nu}^{(1)} &= g_{\mu\nu} D^{(1)}\\
+   \Pi_{\mu\nu} (k) &= - g_{\mu\nu} \Pi(k)
+\end{align*}
+$\Sigma$ , $\Pi$ and $\Lambda_\mu$ are all divergent as it was shown in the one-loop case.
+
+To show that all divergences can be removed by multiplicative renormalization, i.e.~we can define finite propagators and vertex functions like
+\begin{align}
+   \begin{split}
+      \tilde{S}_F &= Z_2^{-1} S'_F \\
+      \tilde{D} &= Z_3^{-1} D'_F \\
+      \tilde{\Gamma}_\mu &= Z_1 \Gamma_\mu
+   \end{split} \label{math:QEDRe2}
+\end{align}
+and all divergences are included in $Z_1$ , $Z_2$, $Z_3$ and mass renormalization.
+
+Steps to proceed are
+\begin{enumerate}
+   \item Isolated divergences
+      \begin{enumerate}
+         \item in irreducible diagrams \label{item:step1a}
+         \item in reducible diagrams\label{item:step1b}
+      \end{enumerate}
+   \item Define finite propagators and vertex function and show that they satisfy (\ref{math:QEDRe1}) \label{item:step2}
+\end{enumerate}
+
+\paragraph{Define} \underline{irreducible diagrams} as a subclass of the one-particle-irreducible ones.
+
+The \underline{skeleton} $F_S$ of a Feynman diagram $F$ arises from $F$, if we replace all \underline{sub}graphs according to the rules. 
+\begin{align*}
+   \feynmandiagram[layered layout, inline=(a.base), horizontal=a to v]{ a--[photon] v[blob] --[photon] b,}; &\mapsto
+   \feynmandiagram[layered layout, inline=(a.base), horizontal=a to v]{ a--[photon] v --[photon] b,}; \\
+   \feynmandiagram[layered layout, inline=(a.base), horizontal=a to v]{ a--[fermion] v[blob] --[fermion] b,}; &\mapsto
+   \feynmandiagram[layered layout, inline=(a.base), horizontal=a to v]{ a--[fermion] v --[fermion] b,}; \\
+   \feynmandiagram[layered layout, inline=(a.base), horizontal=a to v]{ a--[fermion] v[blob] --[fermion] b, {[same layer]c --[photon] v,},}; &\mapsto
+   \feynmandiagram[layered layout, inline=(a.base), horizontal=a to v]{ a--[fermion] v[dot] --[fermion] b, { [same layer]c --[photon] v,},};
+\end{align*}
+
+Graphs are irreducible if $F_S = F$.
+\paragraph{Example}
+The sole irreducible self-energy graphs are one-loop electron and photon self-energy graphs, which we have analysed in one-loop case.
+\begin{align*}
+   \feynmandiagram[layered layout, horizontal=i1 to v1, medium, inline=(i1.base)]{ 
+      i1 --[fermion] v1 --[fermion] v2 --[fermion] f1, 
+      v1 --[half left, photon] v2,
+   }; \quad
+   \feynmandiagram[inline=(i1.base), layered layout, horizontal=i1 to v1, medium]{
+      i1 --[photon] v1 --[fermion, half left] v2 --[photon] f1,
+      v2 -- [fermion, half left] v1,
+   };
+\end{align*}
+
+There are numerous irreducible vertex graphs, e.g.~
+\begin{figure}[H]
+   \centering
+   \includegraphics[width=0.2\linewidth]{irgraph/1.eps}%
+   \includegraphics[width=0.28\linewidth]{irgraph/2.eps}
+   \caption{Example of irreducible graphs}%
+   \label{fig:irgraph}
+\end{figure}
+
+In (\ref{item:step1a}) (for the irreducible case), we only need to show this step for the vertex graphs. Graphs related to $\Lambda_\mu (p, q, p')$ have all a \textit{superficial} degree of divergence $0$ (logarithmically divergent). To expand in momenta, only one infinite constant appears.
+\begin{align}
+   \Lambda_\mu = \underbrace{L}_{\text{infinite}} \gamma_\mu + \underbrace{\Lambda_\mu^{(\text{f})}}_{\text{finite}}
+   \label{math:QEDRe3}
+\end{align}
+Although the superficial degree of divergence is $D=0$, there are still sub-divergences. For formal treatment, see Jauch and Rohrlich.
+The separation is defined by 
+\begin{align*}
+  \bar{u}(p) \Lambda_\mu^{(\text{f})} (p,0,p) u(p) = 0 
+\end{align*}
+Separating finite term from infinite quantity is not unique. This condition make sure it is not ambiguous.
+
+In step (\ref{item:step1b}) we focus on the reducible vertex graphs. They are obtainable from the skeleton by the replacements
+\begin{align*}
+   S_F &\mapsto S'_F\\
+   D_F &\mapsto D'_F \\ 
+   \gamma &\mapsto \Gamma
+   \shortintertext{In vertex function, to replace an arbitrary graph by its skeleton connected by dressed propagators}
+   \Lambda^\mu(p,p'; S_F, D_F, \gamma, e) &\mapsto \Lambda_s^\mu (p,p'; S'_F, D'_F, \Gamma, e)
+\end{align*}
+Hence
+\begin{align}
+   \begin{split}
+   \Gamma^\mu (p,p') = \gamma^\mu + \Lambda^\mu_s (p,p',S'_F, D'_F, \Gamma, e)   \end{split}\label{math:QEDRe4}
+\end{align}
+
+Reducible self-energy diagrams have the problem of \underline{overlapping divergences}, since it is not included in vertex function.
+\begin{align*}
+   \includegraphics[width=0.8\linewidth]{overlappDiv/1.eps}
+\end{align*}
+The overlapping divergences are the main difficulty in isolating divergences.
+
+Solution here is to apply the ward identity in order to reduce them to the (eventually will be solved) vertex problem.
+\begin{align}
+   {S'}_F(p) - {S'}_F^{-1}(p_0) = (p-p_0)^\mu \Gamma_\mu (p, p_0) \label{math:QEDRe5}
+\end{align}
+The ward identity in (\ref{math:QEDRe1}) is simply in the limit of $p \rightarrow p_0$.
+
+\ref{math:QEDRe4} and \ref{math:QEDRe5} form coupled equations for the electron self energy and propagators. For the first overlapping divergent graph, three diagrams are obtained by differentiating with respect to external momentum $p$.
+\begin{align*}
+   \includegraphics[width=0.8\linewidth]{overlappDiv/2.eps}
+\end{align*}
+
+The second overlapping divergent diagram is for photon self-energy. Analogously for the photon propagator. Define operator $\Delta_\mu$ (analogous to $\Lambda_\mu$) as 
+\begin{align}
+   \Delta_\mu (k) = - \pdv{\Pi(k)}{k^\mu} \label{math:QEDRe6}
+\end{align}
+(analogous to $\Lambda_\mu = - \dd \Sigma(p) / \dd  p^\mu$).
+
+Similar as before, we get three-photon diagrams differentiating with respect to external momentum $k$
+\begin{align*}
+   \includegraphics[width=0.6\linewidth]{overlappDiv/3.eps}
+\end{align*}
+Furry's theorem only states that the \underline{sum} of diagrams with odd number of photons must vanish. Not that a single diagram does so!
+
+Analogously to $\Gamma_\mu = \gamma_\mu + \Lambda_\mu$ here we have
+\begin{align}
+   W_\mu (k) = -2k_\mu + \Delta_\mu (k) \label{math:QEDRe7}
+\end{align}
+Note $\pdv{k^\mu} (-k^2) = -2 k_\mu$.
+The total photon propagator
+\begin{align*}
+   D'_F &= D_F + D_F \Pi D_F + \dots \\
+        &= \frac{D_F}{1- \Pi D_F} \\
+   (D'_F)^{-1} &= D_F^{-1} - \Pi
+\end{align*}
+Thus 
+\begin{align}
+   \begin{split}
+      \pdv{(D'_F)^{-1}}{k^\mu} &= \pdv{k^\mu} \left( -k^2 + \Pi \right) \\
+                               &= -2 k_\mu + \Delta_\mu (k) \\
+                               &= W_\mu (k) 
+   \end{split}\label{math:QEDRe8}
+\end{align}
+
+Analogous to \ref{math:QEDRe4}, the 3-photon vertex function $\Delta_\mu$ satisfy $\Delta_\mu [k; S_F, D_F, k, e]  = \Delta_{S \, \mu} [k; S'_F, D'_F, W, e] $
+\begin{align}
+   W_\mu (k) = -2 k_\mu + \Delta_{s \, \mu} [k; S'_F, D'_F, W, e]  \label{math:QEDRe9}
+\end{align}
+
+Go to step \ref{item:step2}. We have four coupled equation: \ref{math:QEDRe4}, \ref{math:QEDRe5}, \ref{math:QEDRe8} and \ref{math:QEDRe9} for $S'_F$, $D'_F$, $\Gamma_\mu$ and $W_\mu$. All these quantities are divergent. Task is to find the corresponding set of equations for finite quantities.
+
+Vertex function $\Lambda_\mu$, $\Delta_\mu$ are logarithmically divergent. Finite (denoted by tilde) after a single subtraction
+\begin{align}
+   \begin{split}
+      \tilde{\Lambda}_p (p,p') &= \Lambda_{s\, \mu}(p,p') - \eval{\Lambda_{s\,\mu}(p_0, p_0)}_{\slashed{p}_0 = m} \\
+      \tilde{\Delta}_\mu (k^2) &= \Delta_{s \, \mu} (k^2) - \Delta_{s\, \mu}(\mu^2)
+   \end{split} \label{math:QEDRe10}
+\end{align}
+with $\mu$ invariant photon mass and $p_0$ on-shell photon mass.
+
+From $\Lambda_\mu = L \gamma_\mu + \Lambda_\mu^{(f)}$ in equation (\ref{math:QEDRe3}), we get $\eval{\Lambda_{s\, \mu}(p_0, p_0)}_{\slashed{p}_0 = m} = L \gamma_\mu$ with $L$ infinite.
+
+Use this result to define vertex functions and finite propagators
+\begin{align}
+   \begin{split}
+      \tilde{\Gamma}_\mu (p, p') &= \gamma_\mu + \tilde{\Lambda}_{s\,\mu} [p,p', \tilde{S}_F, \tilde{D}_F, \tilde{\Gamma}, e_r]  \\
+      \tilde{S}_F^{-1}(p) - \tilde{S}_F^{-1}(p_0) &= (p-p_0)^\mu \tilde{\Gamma}_\mu (p, p_0) \\
+      \tilde{W}_\mu (k) &= -2k_\mu + \tilde{\Delta}_{s\,\mu}[k; \tilde{S}_F, \tilde{D}_F, \tilde{W}, e_r] \\
+      \pdv{\tilde{D}_F^{-1} (k)}{k^\mu} &= \tilde{W}_\mu(k)
+   \end{split} \label{math:QEDRe11}
+\end{align}
+
+Normalization of the electron and photon propagators
+\begin{align*}
+   \tilde{S}_F^{-1}(p_0) = \slashed{p}_0 - m \\
+   \eval{k^2 \tilde{D}_F(k^2) }_{k^2 = \mu^2} = 1
+\end{align*}
+
+It is left to show that $\tilde{\Gamma}_\mu$, $\tilde{S}_F$, $\tilde{D}_F$ and $\tilde{W}_\mu$ are connected by multiplicative renormalization factor with $\Gamma_\mu$, $S'_F$, $D'_F$ and $W_\mu$, if the charge is renormalized as $e_r^2 = Z_3 e^2$.
+
+Consider $\Gamma_\mu$ or $\Lambda_\mu$ at order $e^{2n}$ (apart from bare vertex) 
+\begin{align*}
+   V &= 2n+1 \\
+   P_e &= \frac{1}{2}(2V - N_e) = 2n \\
+   P_\gamma &= \frac{1}{2} (V- N_\gamma) = n 
+\end{align*}
+There are $(2n)$ electron propagator $S_F$, $(n)$ photon propagator $D_F$, $(2n+1)$ factors of $\gamma_\mu$ with the transformation
+\begin{align}
+   \begin{split}
+      S'_F &\mapsto Z_2^{-1} S'_F = \tilde{S}_F \\
+      D'_F &\mapsto Z_3^{-1} D'_F = \tilde{D}_F \\
+      \Gamma_\mu &\mapsto Z_1 \Gamma_\mu = \tilde{\Gamma}_\mu \\
+      e^2 &\mapsto Z_3 e^2 = e_r^2 
+\end{split} \label{math:QEDRe12}
+\end{align}
+
+Then 
+\begin{align}
+   \Lambda_{s\,\mu} &\mapsto Z_2^{-2n} Z_3^{-n} Z_1^{2n+1} Z_3^{n} \Lambda_{s\,\mu} = Z_1 \Lambda_{s\,\mu} \notag
+   \shortintertext{or}
+   \Lambda_{s\,\mu}&[Z_2^{-1} S'_F, Z_3^{-1}D'_F, Z_1 \Gamma_\nu, Z_3 e^2] = Z_1 \Lambda_{s\,\mu} [S'_F, D'_F, \Gamma_\nu, e^2]  \label{math:QEDRe13}
+\end{align}
+
+Also using \ref{math:QEDRe11} and \ref{math:QEDRe10} with \ref{math:QEDRe3}
+\begin{align*}
+   \tilde{\Gamma}_\mu &= \gamma_\mu + \tilde{\Lambda}_{s\,\mu} = \gamma_\mu \Lambda_{s\,\mu} - L \gamma_\mu \\
+                      &= \underbrace{(1-L)}_{Z_1} \left(\gamma_\mu + \frac{1}{1-L} \Lambda_{s\,\mu} \right) \\
+                      &= Z_1 \left\{ \gamma_\mu + \frac{1}{Z_1} \Lambda_{s\,\mu} [\tilde{S}_F, \tilde{D}_F, \tilde{\Gamma}_\nu, e^2_r] \right\}
+   \shortintertext{using \ref{math:QEDRe13}} 
+                      &= Z_1 \left\{ \gamma_\mu + \Lambda_{s\,\mu} [{S'}_F, {D'}_F, {\Gamma}_\nu, e^2_r] \right\} \\
+                      &= Z_1 \Gamma_\mu
+\end{align*}
+
+So we see that multiplicative renormalization works and it is equivalent to the subtraction \ref{math:QEDRe10}. Similarly it can be shown that $\tilde{W}_\mu = -2 k_\mu + \tilde{\Delta}_s [k; \tilde{S}_F, \tilde{D}_F, \tilde{W}, e_r]  $ works, if 
+\begin{align}
+   \tilde{W}_\mu(k) = Z_3 W_\mu  \label{math:QEDRe14}
+\end{align}
+where $Z_3 = 1 + \frac{1}{2} \Delta_s (\mu^2)$ and $\Delta_{s\,\mu} = k_\mu \Delta_s$.
+Furthermore, the second subtraction in \ref{math:QEDRe10} can be rewritten as multiplicative renormalization. Everything is consistent.
+
+Explicitly a three-point function with three external photons contains $[2(2n+1)-0]/2 = 2n+1$ fermion propagator and $[2n+1-3]/2=n-1$ photon propagators. Thus
+\begin{align}
+   \Delta_{s\,\mu} \mapsto Z_2^{-(2n+1)} Z_3^{-(n-1)} Z_1^{2n+1} Z_3^{n} \Delta_{s\,\mu} = Z_3 \Delta_{s\,\mu} \notag \\
+   \Delta_{s\,\mu}[Z_2^{-1}S_F^{-1}, Z_3^{-1}D'_F, Z_1 \Gamma, Z_3 e^2] = Z_3 \Delta_{s\, \mu} [S'_F, D'_F, \Gamma, e^2] \label{math:QEDRe15}
+\end{align}
+
+\begin{align*}
+   \tilde{W}(k) &= -2 k_\mu + \Delta_{s\,\mu}(k^2) - \Delta_{s\,\mu} (\mu^2) \\
+                &= -2 k_\mu \left[ 1 + \frac{1}{2} \Delta_s (\mu^2) \right] + \Delta_{s\,\mu}(k^2) \\
+                &= Z_3 \left[ -2 k_\mu + \frac{1}{Z_3} \Delta_{s\,\mu}(k^2)  \right] \\
+   \shortintertext{use \ref{math:QEDRe15}}
+                &= Z_3 W_\mu(k)
+\end{align*}
+with $Z_3 = 1 + \Delta_s(\mu^2)/2$ and $\Delta_{s\,\mu} = k_\mu \Delta_s $.
+
+Complete version of proof in J.M.Jauch and F.Rohrlich \textit{The theory of photons and electrons}.
+
+\section{Infrared divergences}
+All the divergences we have discussed so far (in the context of the renormalization program) are UV divergences. They all stem from \underline{large} loop momenta. There are also other, infrared (IR) divergences coming from very soft loop momenta in theories involving \underline{massless particles} (photons, gluons; Goldstone bosons, chiral fermions, etc.~)
+
+\paragraph{Example} in QED, photon joining two external electron lines
+\begin{align*}
+   \begin{tikzpicture}
+    \begin{feynman}
+       \vertex (i1) {\(p\)};
+      \vertex[right=1cm of i1] (v1);
+      \vertex[right=2cm of i1, blob] (v2) {\( \)};
+      \vertex[right=3cm of i1] (v3);
+      \vertex[right=4cm of i1] (f1) {\(p'\)};
+      \diagram*{
+         (i1) -- [fermion] (v1) -- (v2)[blob] -- (v3) --[fermion] (f1);
+         (v1) --[photon, half left, momentum=\(l\)] (v3);
+      };    
+   \end{feynman}
+   \end{tikzpicture}
+   &\sim \int \frac{\dd[4]{l}}{(2\pi)^4} \frac{1}{[(p+l)^2 - m^2]  [(p'-l)^2-m^2] l^2} \\
+   &= \int \frac{\dd[4]{l}}{(2\pi)^4} \frac{1}{[2p\cdot l + l^2][-2p'\cdot l + l^2]l^2} \\
+   &\sim  \int \frac{\dd[4]{l}}{l^4}
+\end{align*}
+It is logarithmically divergent. There are two essential ingredients here.
+\begin{itemize}
+   \item massless particles (photon), otherwise $1/(l^2 - m^2)$ regulator.
+   \item on-shell relation $p'^2 = p^2 = m^2$. No such divergences in for example photon self-energy.
+\end{itemize}
+
+Another important, although slightly less obvious, IR-divergent QED effects exist in electron self-energy diagram
+\begin{align*}
+   & \feynmandiagram[layered layout, horizontal=i1 to v1, medium, inline=(i1.base)]{ 
+   i1 --[fermion, momentum=\(p\)] v1 --[fermion, momentum'=\(p-k\)] v2 --[fermion, momentum=\(p\)] f1, 
+   v1 --[half left, photon, momentum=\(k\)] v2}; 
+= -i \Sigma(p) = \int \frac{\dd[4]{k}}{(2\pi)^4} \frac{1}{[(p-k)^2-m^2]}\frac{1}{k^2}
+\end{align*}
+The diagram itself is IR-finite. What is divergent is precisely $\Sigma'(m^2) = \eval{\dv{\Sigma(p^2)}{p^2}}_{p^2=m^2}$.
+% A part of wave-function renormalization
+
+To check the plausibility: remember analytic structure of the spectral function
+\usetikzlibrary{decorations.pathmorphing, patterns,shapes}
+\tikzset{zigzag/.style={decorate, decoration=zigzag}}
+\usetikzlibrary{decorations.markings}
+\tikzset{decoration={
+    markings,
+    mark=at position 0.5 with {\arrow{>}}}}
+\begin{center}
+\begin{tikzpicture}[scale=1, transform shape]
+	\draw [fill] (1,0) circle [radius=0.05];
+	\node [below] at (1,0) {$m^2$};
+   \draw [fill] (1,0) circle [radius=0.05];
+	\node [above, align=center] at (1, 0) {\small single\\ \small particle};
+
+   \draw [thick, zigzag] (3, 0) -- (5.5,0);
+   \draw [fill] (3,0) circle [radius=0.05];
+   \node [above, align=center] at (3, 0) {$p^2 = (\sum m_i)^2$};
+
+	\draw [thick, <->] (0,4) -- (0,0) -- (5.5,0);	
+   \node [above] at (0,4) {$\Im(p^2)$};
+   \node [below] at (5.5,0) {$\Re(p^2)$};
+\end{tikzpicture}
+\end{center}
+Multi-particle threshold starts at $p^2=(\sum_i m_i)^2$.
+
+\begin{align}
+   \Im \Sigma(p^2) &\sim \sqrt{p^2 - (m_1 + m_2)^2} \Theta(p^2-(m_1+m_2)^2) \\
+   \Re \Sigma(p^2) &\sim -\sqrt{(m_1+m_2)^2 - p^2} \text{ below threshold}
+\end{align}
+\begin{center}
+\begin{tikzpicture}[scale=1, transform shape]
+	\draw [fill] (2,0) circle [radius=0.05];
+   \node [below] at (2,0) {$(m_1+m_2)^2$};
+   
+   \draw (0,0) to[out=30, in=225] (2, 2) to[out=0, in=200] (5, 3);
+   \node [above] at (2,2) {$\Re$};
+   \draw (2,0) to[out=45, in=180] (5,2);
+   \node [above] at (2,0) {$\Im$};
+
+	\draw [thick, <->] (0,4) -- (0,0) -- (5.5,0);	
+   \node [above] at (0,4) {$\Im(p^2)$};
+   \node [below] at (5.5,0) {$\Re(p^2)$};
+\end{tikzpicture}
+\end{center}
+Derivative is singular at threshold$\eval{\dv{\Sigma}{p^2}}_{p^2 = (m_1+m_2)^2}$.
+
+In the case above, electron and photon threshold coincides with electron pole position $(m_e + m_\gamma)^2=m_e^2$.
+
+There is another class of process in QED that contain IR divergences: bremsstrahlung, i.e.~radiation of soft photons off asymptotic charged particles.
+\begin{align*}
+   \feynmandiagram[layered layout, horizontal=i1 to v1, baseline=(v2.base)]{
+      i1 --[photon] v1[dot];
+      v1 -- f1;
+      v1 --[momentum=\(p+l\)] v2[dot] --[photon] f2[particle=\(l\)];
+      v2 -- f3[particle=\(p\)];
+      {[same layer] f2, f3};
+   };
+&\sim \frac{1}{(p+l)^2-m^2} = \frac{1}{p\cdot l} 
+\shortintertext{In phase space integral (when calculating cross section)}
+&\sim \int \frac{\dd[3]{l}}{(2\pi)^3 2l^0} \frac{1}{(2p\cdot l)^2} \sim \int \frac{\dd[3]{l}}{l^3}
+\end{align*}
+Also IR divergent!
+
+Physical arguments to counter the divergences: we cannot measure arbitrary soft (low-energy) particles. Photons with energies below a certain detector resolution $E_\text{max}$ necessarily will pass undetected. So instead of measuring $\sigma(A \rightarrow B)$, one in fact measures $\sigma(A \rightarrow B) + \sigma \eval{(A \rightarrow B \gamma)}_{E_{\gamma} < E_\text{max}} + \dots$. These quantities turn out to be IR-finite at each order in $\alpha_{\text{QED}}$.
+
+For example at $\order{\alpha}$
+\begin{align*}
+   &\int \dd{\Pi} \left| 
+   \vcenter{\hbox{
+   \includegraphics[width=0.7\linewidth]{./IRdivergence/1.eps} 
+   }}
+   \right|^2  \\
+   & + \int \dd{\Pi} 
+   \left|  
+   \vcenter{\hbox{
+   \includegraphics[width=0.4\linewidth]{./IRdivergence/3.eps} 
+   }}\right|^2
+\end{align*}
+Note: cancellation on the cross section, not on the amplitude level! The first term contain interference term at $\order{\alpha}$ ($\sim \alpha$ when calculating cross section)
+\begin{align*}
+   \includegraphics[width=0.4\linewidth]{./IRdivergence/2.eps} 
+\end{align*}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lecture date: 19-11-27
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\paragraph{Example} regulate with finite photon mass $m_\gamma$. Virtual (loop) corrections $\sim \ln(\frac{m_\gamma}{m_{(e)}})$. Bremsstrahlung $\sim \int_{m_\gamma}^{E_\text{max}} \frac{\dd[2]{l}}{l^3} ~ \ln(\frac{E_\text{max}}{m_\gamma})$. In total $\sim \ln(E_\text{max}/ m)$. Its IR-finite!
+
+\paragraph{Concrete Example}
+%TODO
+\begin{align*}
+   &\includegraphics[width=0.7\linewidth]{./IRConcrete/1.eps}  \\
+  &  = \vcenter{\hbox{\includegraphics[width=0.22\linewidth]{./IRConcrete/2.eps}}} \cdot \frac{\alpha}{\pi} \left( \frac{1+\sigma^2}{2 \sigma} \ln \frac{1+\sigma}{1-\sigma} - 1 \right)\ln \frac{m_\gamma}{m}  + \dots 
+\end{align*}
+with $\sigma = \sqrt{1-\frac{4m^2}{s}} < 1$.
+\begin{align*}
+   & \int \frac{\dd[3]{l}}{2l} \left| \vcenter{\hbox{\includegraphics[width=0.45\linewidth]{./IRConcrete/3.eps} }} \right|^2 \\
+  & = \left|\vcenter{\hbox{\includegraphics[width=0.22\linewidth]{./IRConcrete/2.eps}}} \right| \cdot \frac{2 \alpha}{\pi} \left( \frac{1+\sigma^2}{2\sigma} \ln \frac{1+\sigma}{1-\sigma} - 1 \right) \ln \frac{E_\text{max}}{m_\gamma} + \dots
+\end{align*}
+Cancellation mechanism is identified diagram-wise.
+
+Another way to see this problem using optical theorem.
+\begin{align*}
+&\int \dd{\text{ps}} |\M|^2 + \int \dd{\text{ps}^\gamma} |\M_\gamma|^2   \\
+&\sim \vcenter{\hbox{\includegraphics[width=0.7\linewidth]{./IRConcrete/4.eps}}} \\ 
+&\sim \vcenter{\hbox{\includegraphics[width=0.35\linewidth]{./IRConcrete/5.eps}}}
+\end{align*}
+with $\dd{\text{ps}}$ phase space integral and red lines as cuts.
+
+This IR cancellation mechanism can be shown to work at all orders (see e.g. Weinberg Ch13, P\& S Ch.6). Re-summation of all $\ln(E_\text{mas}/m)$ terms possible.
+
+Advanced calculation in QED regulate also IR divergences dimensionally (instead of using $m_\gamma$). It also leads to poles in $1/(d-4)$. Formally, UV convergences only for $d<4$, Ir convergence for $d>4$.
+
+There are further divergences due to small masses in many process, $E \gg m_e $, so effectively $m_e \approx 0$. Consider Bremsstrahlung pole or propagator again
+\begin{align*}
+   \frac{1}{p\cdot l} &= \frac{1}{(p^0 - |\pmb{p}| z)|\pmb{l}|} \approx \frac{1}{|\pmb{p}||\pmb{l}| (1-z)} \\
+p^0 &= \sqrt{m_e^2 + |\pmb{p}|^2} \approx |\pmb{p}|
+\end{align*}
+with $z = \cos(\theta_{e \gamma})$. It divergences for $z = 1$. Collinear singularity $\sim \ln(\frac{m_e}{E})$ enhancement.
+
+\paragraph{Kinoshita-Lee-Navenberg theorem}
+no such mass singularityes can survice in total/inclusive transition probabilities.
+
