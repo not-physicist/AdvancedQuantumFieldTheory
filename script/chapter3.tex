@@ -227,7 +227,7 @@ Illustrate RG flow for $\phi^4$ in 3 cases
       \begin{align*}
          \lambda' = \frac{\lambda + \Delta \lambda}{b^{4-d} (1+\Delta Z)^2} = \lambda - \frac{3\lambda^2}{16\pi^2} \ln(1/b) + \order{\lambda^3}
       \end{align*}
-      $\lambda$ slowly decreases as high-momentum modese are integrated out. Coupling goes to zero $\phi^4$ becomes non-interacting in $d=4$.
+      $\lambda$ slowly decreases as high-momentum modes are integrated out. Coupling goes to zero $\phi^4$ becomes non-interacting in $d=4$.lambda
    \item \underline{$d < 4$} $\lambda$ is relevant! Coupling grows. Non-linear effects are important. 
       \begin{align*}
          \lambda' = b^{d-4} \left[ \lambda = \frac{3\lambda^2}{(4\pi)^{d/2}} \frac{1}{\Gamma(d/2)} \frac{b^{d-4} - 1}{4-d} \Lambda^{d-4} \right]
@@ -244,6 +244,257 @@ Illustrate RG flow for $\phi^4$ in 3 cases
 
 \paragraph{Remarks}
 \begin{itemize}
-   \item for $d<4$ but "close", the new fixed point will be "close" to the free fixed point. Then perturbation theory still make sense. Could have stronly=coupled theories as a fixed point. More difficult, study exactly solvable models.
-   \item $m^2 d^2$ im $\phi^4$ always relevant, diverges quickly, naturally $m \mapsto \Lambda$.Problems for theories with elementary scales (Higgs in Standard Model)
+   \item for $d<4$ but "close", the new fixed point will be "close" to the free fixed point. Then perturbation theory still make sense. Could have strongly-coupled theories as a fixed point. More difficult, study exactly solvable models.
+   \item $m^2 d^2$ in $\phi^4$ always relevant, diverges quickly, naturally $m \mapsto \Lambda$.Problems for theories with elementary scales (Higgs in Standard Model)
 \end{itemize}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lecture date: 19-12-11
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\section{Callan-Symanzik Equation}
+We want to avoid technically complicated calculations with cutoffs (violate [gauge] symmetries!). Looking for a method to extract RG information from \underline{renormalized} Green's functions (limit $\Lambda \rightarrow \infty$ already taken). Cannot extract RG from $\Lambda$-dependence any more use dependence on renormalization scale $\mu$ instead!
+
+\paragraph{$\phi^4$-theory near the critical point $m=0$}
+Renormalization conditions so far, on-shell, $s=t=u=\frac{4}{3}m^2$ for $4$-point function, are problematic in the massless case. Use arbitrary (unphysical) space-like reference point $-\mu^2$
+\begin{enumerate}
+   \item $\Sigma_{1\text{PI}}(p^2 = -\mu^2) = 0$
+   \item $\dv{p^2} \eval{\Sigma_{1\text{PI}}}_{p^2 = -\mu^2} = 0$
+   \item \feynmandiagram[layered layout, inline=(v.base)]{x1 -- v[blob] -- x2; x3--v--x4;}; $=-i\lambda$ at $s = (p_1+p_2)^2 = -\mu^2$, $t = -\mu^2$, $u=-\mu^2$
+\end{enumerate}
+Call $\mu$ \underline{renormalization scale}.
+
+Consequence of first two
+\begin{align}
+   \braket{0 | \phi(p) \phi(-p) | 0} = \eval{\frac{i}{p^2}}_{p^2 = -\mu^2} 
+\end{align}
+in terms of the bare field $\phi_0 = \sqrt{Z}\phi$
+\begin{align}
+   \braket{0 | \phi_0(p) \phi_0(-p) | 0} = \eval{\frac{iZ}{p^2}}_{p^2 = -\mu^2}
+\end{align}
+Do renormalized perturbation theory as before, adjusting the counterterms to the conditions above.
+
+Note that renormalization scale $\mu$ is arbitrary; one could have chosen different value for $\mu$!
+
+Green's functions for bare and renormalized fields
+\begin{align*}
+   G_{\text{base}}^{(n)} &= \braket{0 | T \phi_0 (x_1) \dots \phi_0(x_n) | 0 } \\
+   G_{\text{ren}}^{(n)} &= \braket{0 | T \phi (x_1) \dots \phi(x_n) | 0 } \\
+   \phi &= Z^{-1/2} \phi_0
+\end{align*}
+Then we have the relation
+\begin{align}
+   G_\text{ren}^{(n)} &= Z^{-n/2} G_\text{bare}^{(n)}
+\end{align}
+
+The 1PI vertex functions have $n$ external legs amputated.
+\begin{align}
+   \Gamma_\text{ren}^{(n)} = Z^{n/2} \Gamma_\text{bare}^{(n)}
+\end{align}
+
+Now shift the renormalization scale $\mu \mapsto \mu + \dd{\mu}$. Shift couplings to obtain the same physics
+\begin{align*}
+   \lambda \mapsto \lambda + \dd{\lambda} \\
+   Z \mapsto Z + \dd{Z} \\
+   [m \mapsto m + \dd{m} ] 
+\end{align*}
+while the bare quantities $\lambda_0, [m_0] $ remain unchanged.
+
+\begin{align}
+   \Gamma_\text{ren}^{(n)}(x_1, \dots, x_n, \lambda + \dd{\lambda}, [m + \dd{m}], \mu + \dd{\mu}) &= (Z+ \dd{Z})^{n/2} \Gamma_\text{bare}^{(n)}(x_1,\dots, x_n, \lambda_0, [m_0,] (\Lambda))
+\end{align}
+The infinitesimal changes are
+\begin{align*}
+   \dd{\Gamma}_\text{ren}^{(n)} &= \pdv{\Gamma_\text{ren}^{(n)}}{\mu} \dd{\mu} + \pdv{\Gamma^{(n)}_\text{ren}}{\lambda} \dd{\lambda} \left( + \pdv{\Gamma_\text{ren}^{(n)}}{m} \dd{m} \right) \\
+                                &= \frac{n}{2} Z^{n/2-1} \dd{Z} (Z+ \dd{Z})^{n/2} \Gamma_\text{bare}^{(n)}(x_1,\dots, x_n, \lambda_0, [m_0,] (\Lambda))
+\end{align*}
+Thus
+\begin{align*}
+   \mu \pdv{\Gamma_\text{bare}^{(n)}} &= 0 \\
+   \mu \pdv{\Gamma_\text{ren}^{(n)}}{\mu} + \underbrace{ \mu \pdv{\lambda}{\mu}  }_{\beta} \pdv{\Gamma_\text{ren}^{(n)}}{\lambda} \Bigg[ + \underbrace{\mu \pdv{m}{\mu}}_{m \gamma_m} \pdv{\Gamma_\text{ren}^{(n)}}{m} \Bigg] &= \underbrace{\frac{n}{2} \frac{\mu}{Z} \pdv{Z}{\mu}}_{n \gamma} \underbrace{Z^{n/2} \Gamma_\text{bare}^{(n)}}_{\Gamma_\text{ren}^{(n)}}
+\end{align*}
+
+\underline{Callan-Symanzik Equation}
+\begin{align}
+   \left[ \mu \pdv{\mu} + \beta \pdv{\lambda} \left( + m \gamma_m \pdv{m} \right) - n \gamma \right] \Gamma_\text{ren}^{(n)} = 0
+\end{align}
+for Green's function $G_\text{ren}^{(n)}$ there is a sign change $+n\gamma$.
+
+Per definition $\beta$ and $\gamma$ are independent of $n$. Since $\Gamma^{(n)}_\text{ren}$ is used, they are independent of cutoff $\Lambda$. For dimensional reasons, also independent of $\mu$ (in the massless case $m=0$!). $\beta$ and $\gamma$ are only functions of the dimensionless coupling constant $\lambda$! 
+
+Compute $\beta$ and $\lambda$ in loop expansion (dimensional regularization and $\overline{\text{MS}}$) in $\phi^4$; $2$- and $4$-functions must satisfy CS-equation.
+\paragraph{Tree level}
+\begin{align*}
+   i \Gamma_\text{tree}^{(2)} = i p^2 \\
+   i \Gamma_\text{tree}^{(4)} = -i \lambda
+\end{align*}
+There is no $\mu$-dependence, $\beta= \gamma=0$ at tree level
+
+\paragraph{One-loop}
+\begin{align*}
+   i \Gamma_\text{one-loop}^{(2)} &= i (p^2 - \Sigma(p^2))  \\
+                                  &= \dots \\
+                                  %TODO: diagram
+                                  &= ip^2 - \frac{i\lambda \mu^{4-d}}{2} \underbrace{\int \frac{\dd[d]{q}}{(2\pi)^d} \frac{i}{q^2}}_{=0} - \delta_m^{(1)} + ip^2 \delta_Z^{(1)}
+\end{align*}
+If it is massive theory, the loop integral is $\sim m^2$. So the renormalization condition is fulfilled for $\delta_m^{(1)} = 0$, $\delta_Z^{(1)} = 0$, then
+\begin{align}
+   i\Gamma_\text{one-loop}^{(2)} = i \Gamma_\text{tree}^{(2)} = i p^2
+\end{align}
+
+See result from last term
+\begin{align*}
+   i \eval{\Gamma^{(4)}_\text{one-loop}}_{s = t=u=-\mu^2} &= -i\lambda - \frac{3i\lambda^2 \mu^{4-d} }{16\pi^2} \Bigg[ \frac{1}{d-4} + \frac{1}{2} \Bigg( \gamma_E - \ln(4\pi) + \underbrace{\int_0^1 \ln(x(1-x))}_{=-2} \Bigg) \Bigg] - i \delta_\lambda \\
+   &\stackrel{!}{=} -i \lambda
+\end{align*}
+
+\begin{align}
+   \delta_\lambda = - \frac{3\lambda^2}{16\pi^2} \mu^{4-d} \left[ \frac{1}{d-4} + \frac{1}{2} \left( \gamma_E - \ln(4\pi) \right) - 1\right]
+\end{align}
+
+Then the fully renormalized result is
+\begin{align}
+   i\Gamma_\text{one-loop}^{(4)}(s,t,u) &= -i\lambda - \frac{i\lambda^2}{32\pi^2} \mu^{4-d} \sum_{q^2 = s, t, u} \left[ \int \dd{x} \ln(\frac{-q^2 x(1-x)}{\mu^2}) + 2 \right] \notag \\
+                                        &\stackrel{d=4}{=} -i\lambda - \frac{i\lambda^2}{32\pi^2} \sum_{q^2 = s, t, u} \left[ \int \dd{x} \ln(\frac{-q^2 x(1-x)}{\mu^2}) + 2 \right]
+\end{align}
+
+Note on the convergence of the perturbative series: corrections can be large if $\lambda \ll 1$, but $\ln(\frac{q^2}{\mu^2}) \gg 1$. Choose $\mu^2$ of the order of the typical momentum scale of the process. So large logarithm. 
+
+Conversion to different process with different momenta $q'^2 \neq q^2$ need CS-equation.
+
+Now evaluate CS equations
+\begin{align*}
+   i\Gamma_\text{one-loop}^{(2)} = ip^2 \\
+   \left[ \mu \pdv{\mu} + \beta \pdv{\lambda} - n\gamma \right] p^2 = 0
+\end{align*}
+Thus 
+\begin{align}
+   \gamma = 0
+\end{align}
+at one-loop level.
+
+\begin{align*}
+   \left[ \mu \pdv{\mu} + \beta \pdv{\lambda} - n \gamma \right] \Gamma_\text{one-loop}^{(n)} = 0\\
+   \left[ \mu \pdv{\mu} + \beta \pdv{\lambda} \right] \left[ - \lambda - \frac{\lambda^2}{32\pi^2} \left( 6 + \sum_{q^2 = s,t,u} \int_0^1 \dd{x} \ln \frac{-q^2 x (1-x)}{\mu^2} \right) \right]  = 0 \\
+   \mu \left[ 0 - \frac{\lambda^2}{32\pi^2} \left(- \frac{6}{\mu} \right) \right] + \beta ( - 1 +\order{\lambda}) = \frac{3\lambda^2}{16\pi^2} - \beta(1+\order{\lambda}) = 0
+\end{align*}
+Thus
+\begin{align}
+   \beta = \frac{3\lambda^2}{16\pi^2} + \order{\lambda^3} 
+\end{align}
+
+Can we obtain this (expression for $\beta$) in an easier way? Yes! $\beta$ is determined by the $\mu$-dependence of the counterterm:
+\begin{align}
+   \mu \pdv{\mu} \delta_\lambda^{(1)} &= \mu \pdv{\mu} \left( - \frac{3\lambda^2}{16 \pi^2} \mu^{4-d} \left[ \frac{1}{d-4} + \dots \right] \right) \\
+   \shortintertext{$\mu^{4-d} = 1 + (4-d)\ln(\mu)$}
+   &= \frac{3\lambda^2}{16\pi^2} = \beta
+\end{align}
+It only works at one-loop, scheme dependence at higher loop orders.
+
+\paragraph{The meaning of $\beta$ and $\gamma$}
+\begin{align*}
+   \beta = \mu \pdv{\mu} \lambda \\
+   \dd{\lambda} = \beta(\lambda) \frac{\dd{\mu}}{\mu}
+\end{align*}
+It characterises rate of change in renormalized coupling for fixed bare coupling $\lambda_0$.  Associate $\lambda(\mu)$ with coupling $\lambda'$ of the Wilsonian RG: $\beta$ is rate of RG flow for $\lambda$
+\begin{itemize}
+   \item $\beta > 0$ coupling grows  at large momenta and shrinks at small momenta
+   \item $\beta < 0$ the opposite
+\end{itemize}
+
+\begin{align}
+   \gamma(\lambda) = \frac{1}{2} \frac{\mu}{Z} \pdv{Z}{\mu} = \frac{1}{2} \mu \pdv{\mu} \ln(Z)
+\end{align}
+is the rate of change in field strength rescaling.
+
+\paragraph{CS Equation for QED with $m_e = 0$}
+\begin{align*}
+   \left[\mu \pdv{\mu} + \beta(e) \pdv{e} - n\gamma_2(e) - m\gamma_3(e) \right] \Gamma_\text{ren}^{(n,m)} = 0
+\end{align*}
+with $n$ number of electron fields and $m$ number of photon fields. 
+\begin{align*}
+   \beta (e) &= \mu \pdv{\mu} e = \frac{e^3}{12\pi^2} > 0 \\
+   \gamma_2 (e) &= \frac{\mu}{2} \pdv{\mu} \ln(Z_2) = \frac{e^2}{16\pi^2} \\
+   \gamma_3(e) &= \frac{\mu}{2} \pdv{\mu} \ln(Z_3) = \frac{e^2}{12\pi^2}
+\end{align*}
+
+\section{RG, Scaling of $\Gamma$ and the Running Coupling}
+We will study the behaviour under rescaling of \underline{external momenta}
+\begin{align}
+   \Gamma_\text{ren}^{(n)} \left( \left\{ p_i \right\}; m, \lambda, \mu \right) \mapsto  \Gamma_\text{ren}^{(n)} \left( s \left\{ p_i \right\}; m, \lambda, \mu \right)
+\end{align}
+
+First rescale all dimensionfull quantities
+\begin{align}
+   \Gamma_\text{ren}^{(n)} \left( s\left\{ p_i \right\}; m, \lambda, \mu \right) = s^{4-n} \Gamma_\text{ren}^{(n)} \left( \left\{ p_i \right\}; m, \lambda, \mu \right)
+\end{align}
+according to mass dimensional of $\Gamma^{(n)}$ from dimensional analysis. For example $\Gamma^{(2)} = p^2 - m^2$, $\Gamma^{(4)} = - \lambda$
+
+Expand around $s=1$: $s = 1+\dd{s}$, so 
+\begin{align*}
+   p'_i = (1+\dd{s}) p_i \\
+   m' = (1+\dd{s})m \\
+   \mu' = (1+\dd{s})\mu
+\end{align*}
+
+\begin{align}
+   \Gamma_\text{ren}^{(n)} \left( \left\{ p'_i \right\}; m', \lambda, \mu' \right) = \left[ 1+(4-n)\dd{s} \right]  \Gamma_\text{ren}^{(n)} \left( \left\{ p_i \right\}; m, \lambda, \mu \right)
+\end{align}
+as a consequence
+\begin{align}
+   \left\{ \sum_i p_i \pdv{p_i} + m\pdv{m} + \mu \pdv{\mu} - (4-n) \right\} \Gamma_\text{ren}^{(n)} \left( \left\{ p_i \right\}; m, \lambda, \mu \right) = 0 \notag
+   \shortintertext{or, slightly more elegantly}
+   \left\{ s \pdv{s} + m\pdv{m} + \mu \pdv{\mu} - (4-n) \right\} \Gamma_\text{ren}^{(n)} \left( s \left\{ p_i \right\}; m, \lambda, \mu \right) = 0
+\end{align}
+This equation expresses homogeneity properties of $\Gamma$, because $\Gamma$ has mass dimension.
+
+We also have the CS equation
+\begin{align}
+   \left\{ \mu \pdv{\mu} + \beta \pdv{\lambda} + m \gamma_m \pdv{m} - n\gamma \right\} \Gamma_\text{ren}^{(n)}(s \left\{ p_i \right\}; m, \lambda, \mu) = 0
+\end{align}
+
+Combine these two equations together to eliminate $\mu \pdv{\mu}$
+\begin{align}
+   \left\{ -s \pdv{s} + \beta \pdv{\lambda} + m(\gamma_m - 1) \pdv{m} - n\gamma + (4-n) \right\} \Gamma_\text{ren}^{(n)}(s \left\{ p_i \right\}; m, \lambda, \mu) = 0
+\end{align}
+
+Solution
+\begin{align}
+   \Gamma_\text{ren}^{(n)} \left( s \left\{ p_i \right\}; m, \lambda, \mu \right) = s^{4-n} \Gamma_\text{ren}^{(n)} \left(  \left\{ p_i \right\}; \overline{m}(s), \overline{\lambda}(s), \mu \right) \exp[-n \int_1^s \frac{\dd{s'}}{s'} \gamma(\overline{\lambda}(s'))]
+\end{align}
+with $s^{4-n}$ naive scaling according to engineering dimension. The exponential is anomalous scaling dimension, from rescaling of $Z$-factors. 
+\begin{itemize}
+   \item $\overline{\lambda}$ running coupling, $s \pdv{\overline{\lambda}}{s}(s) = \beta(\overline{\lambda}(s))$ and $\overline{\lambda}(1) = \lambda$
+   \item $\overline{m}$ running mass, $s \pdv{\overline{\lambda}}{s}(s) = (\gamma_m - 1)\overline{m}(s)$ and $\overline{m}(1) = m$
+\end{itemize}
+Note: this is only solvable because $\beta$, $\gamma_m$ and $\gamma$ depend only on $\lambda$, but not on $m$! Consequence of a mass-independent renormalization scheme (not true in general).
+
+\paragraph{Example} massless $\phi^4$ at one-loop, $\beta = \frac{3\lambda^2}{16 \pi^2}$ and $\gamma=0$
+\begin{align*}
+   \left\{ -s \pdv{s} + \beta \pdv{\lambda} + (4-n) \right\} \Gamma_\text{ren}^{(n)} \left( s \left\{ p_i \right\}; \lambda, \mu \right) = 0\\
+   \Gamma_\text{ren}^{(n)} \left(  s \left\{ p_i \right\}; \lambda, \mu \right) = s^{4-n} \Gamma_\text{ren}^{(n)} \left( \left\{ p_i \right\}; \overline{\lambda}(s), \mu \right) \cdot 1
+\end{align*}
+\begin{align*}
+   s \pdv{s} \overline{\lambda} = \frac{3 \overline{\lambda}^2}{ 16 \pi^2 }\\
+   \pdv{t} \overline{\lambda} = \frac{3 \overline{\lambda}^2}{16 \pi^2}
+\end{align*}
+$t = \ln(s)$ RG equation for coupling
+
+Integrate 
+\begin{align*}
+   \int_{\lambda}^{\overline{\lambda}} \frac{\dd{\overline{\lambda}'}}{\overline{\lambda}'^2} &= \int_0^t \dd{t'} \frac{3}{16 \pi^2} \\
+   - \frac{1}{\overline{\lambda}} + \frac{1}{\lambda} &= \frac{3t}{16 \pi^2} \\
+   \overline{\lambda}(t) &= \frac{1}{1/\lambda - 3t / 16\pi^2} \\
+   \overline{\lambda}(s) &= \frac{\lambda}{1-\frac{3\lambda}{16\pi^2} \ln s}
+\end{align*}
+at $\ln s_0 = t_0 = \frac{16\pi^2}{3\lambda}$ or $s_0 = \exp(\frac{16\pi^2}{3\lambda})$ the denominator vanishes. It is called \textit{Landau pole}, where perturbation theory breaks down.
+
+\paragraph{Practical application}
+Want to predict observables for $p^2$ very different from $\mu^2$. Large logs $\ln \frac{p^2}{\mu^2}$ slows down perturbation theory.
+
+Use running coupling with $s = \sqrt{p^2 / m^2} = p / \mu$, then
+\begin{align*}
+   \overline{\lambda}(p) &= \frac{\lambda}{1 - \frac{3\lambda}{16\pi^2 \ln(\frac{p}{\mu})}} \\
+                         &= \lambda \left[ 1 + \frac{3\lambda}{16 \pi^2} \ln \frac{p}{\mu} + \dots \right]
+\end{align*}
+$\lambda$ is fixed at $p^2 = \mu^2$. Naive breakdown of perturbation theory can be deferred by re-summing "leading logarithms" (But no help if $\lambda$ is large).

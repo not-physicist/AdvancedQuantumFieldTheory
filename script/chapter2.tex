@@ -262,8 +262,8 @@ On the other hand, $iS_{\cl}$ can be rewritten as
 Connection to the S-matrix
 \begin{align}
    S &= U(-\infty, \infty) \notag\\
-     &= \lim_{t_i \mapsto -\infty(1-i\epsilon)}\lim_{t_f \mapsto +\infty(1-i\epsilon)} T \exp(-i\int^{t_f}_{t_i} \dd{t} \ham_{int} (t)) \notag\\
-   &= T \exp(-i\int \dd[4]{x}\ham_{int} (x)) \notag\\
+     &= \lim_{t_i \mapsto -\infty(1-i\epsilon)}\lim_{t_f \mapsto +\infty(1-i\epsilon)} T \exp(-i\int^{t_f}_{t_i} \dd{t} \ham_\text{int} (t)) \notag\\
+   &= T \exp(-i\int \dd[4]{x}\ham_\text{int} (x)) \notag\\
    &= T \exp(i\int \dd[4]{x} \phi(x) j(x)) \notag\\
    &= T \sum_{n=0}^{\infty} \frac{i^n}{n!} \int \dd[4]{x_1} \dots \dd[4]{x_n} j(x_1) \dots j(x_n) \phi(x_1) \dots \phi(x_n) \notag\\
    \braket{0 | S | 0} &= \sum_{n=0}^{\infty} \frac{i^n}{n!} \int \dd[4]{x_1} \dots \dd[4]{x_n}  j(x_1) \dots j(x_n)G_n^0 (x_1, \dots, x_n)
