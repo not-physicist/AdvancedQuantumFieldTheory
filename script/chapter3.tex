@@ -256,11 +256,11 @@ Illustrate RG flow for $\phi^4$ in 3 cases
 We want to avoid technically complicated calculations with cutoffs (violate [gauge] symmetries!). Looking for a method to extract RG information from \underline{renormalized} Green's functions (limit $\Lambda \rightarrow \infty$ already taken). Cannot extract RG from $\Lambda$-dependence any more use dependence on renormalization scale $\mu$ instead!
 
 \paragraph{$\phi^4$-theory near the critical point $m=0$}
-Renormalization conditions so far, on-shell, $s=t=u=\frac{4}{3}m^2$ for $4$-point function, are problematic in the massless case. Use arbitrary (unphysical) space-like reference point $-\mu^2$
+Renormalization conditions so far, on-shell, $s=t=u=\frac{4}{3}m^2$ for $4$-point function, are problematic in the massless case. Use arbitrary (unphysical) space-like reference point $-\mu^2$. Then the two- and four-point functions are
 \begin{enumerate}
-   \item $\Sigma_{1\text{PI}}(p^2 = -\mu^2) = 0$
-   \item $\dv{p^2} \eval{\Sigma_{1\text{PI}}}_{p^2 = -\mu^2} = 0$
-   \item \feynmandiagram[layered layout, inline=(v.base)]{x1 -- v[blob] -- x2; x3--v--x4;}; $=-i\lambda$ at $s = (p_1+p_2)^2 = -\mu^2$, $t = -\mu^2$, $u=-\mu^2$
+   \item $\Sigma_{1\text{PI}}(p^2 = -\mu^2) = 0$,
+   \item $\dv{p^2} \eval{\Sigma_{1\text{PI}}}_{p^2 = -\mu^2} = 0$,
+   \item \feynmandiagram[layered layout, inline=(v.base)]{x1 -- v[blob] -- x2; x3--v--x4;}; $=-i\lambda$ at $s = (p_1+p_2)^2 = -\mu^2$, $t = -\mu^2$, $u=-\mu^2$.
 \end{enumerate}
 Call $\mu$ \underline{renormalization scale}.
 
@@ -310,7 +310,7 @@ The infinitesimal changes are
 \end{align*}
 Thus
 \begin{align*}
-   \mu \pdv{\Gamma_\text{bare}^{(n)}} &= 0 \\
+   \mu \pdv{\Gamma_\text{bare}^{(n)}}{\mu} &= 0 \\
    \mu \pdv{\Gamma_\text{ren}^{(n)}}{\mu} + \underbrace{ \mu \pdv{\lambda}{\mu}  }_{\beta} \pdv{\Gamma_\text{ren}^{(n)}}{\lambda} \Bigg[ + \underbrace{\mu \pdv{m}{\mu}}_{m \gamma_m} \pdv{\Gamma_\text{ren}^{(n)}}{m} \Bigg] &= \underbrace{\frac{n}{2} \frac{\mu}{Z} \pdv{Z}{\mu}}_{n \gamma} \underbrace{Z^{n/2} \Gamma_\text{bare}^{(n)}}_{\Gamma_\text{ren}^{(n)}}
 \end{align*}
 
@@ -474,6 +474,7 @@ Note: this is only solvable because $\beta$, $\gamma_m$ and $\gamma$ depend only
    \left\{ -s \pdv{s} + \beta \pdv{\lambda} + (4-n) \right\} \Gamma_\text{ren}^{(n)} \left( s \left\{ p_i \right\}; \lambda, \mu \right) = 0\\
    \Gamma_\text{ren}^{(n)} \left(  s \left\{ p_i \right\}; \lambda, \mu \right) = s^{4-n} \Gamma_\text{ren}^{(n)} \left( \left\{ p_i \right\}; \overline{\lambda}(s), \mu \right) \cdot 1
 \end{align*}
+\textcolor{red}{HOW?}
 \begin{align*}
    s \pdv{s} \overline{\lambda} = \frac{3 \overline{\lambda}^2}{ 16 \pi^2 }\\
    \pdv{t} \overline{\lambda} = \frac{3 \overline{\lambda}^2}{16 \pi^2}
@@ -498,3 +499,112 @@ Use running coupling with $s = \sqrt{p^2 / m^2} = p / \mu$, then
                          &= \lambda \left[ 1 + \frac{3\lambda}{16 \pi^2} \ln \frac{p}{\mu} + \dots \right]
 \end{align*}
 $\lambda$ is fixed at $p^2 = \mu^2$. Naive breakdown of perturbation theory can be deferred by re-summing "leading logarithms" (But no help if $\lambda$ is large).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lecture date: 19-12-18
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Running Coupling: Sign of the $\beta$-function}
+RG equation 
+\begin{align*}
+   \pdv{\ln \frac{p}{\mu}} \bar{\lambda} = \beta(\bar{\lambda})
+\end{align*}
+There are three qualitatively different behaviour
+\begin{enumerate}
+\item $\beta(\lambda) > 0 $ at one-loop order
+\begin{align}
+ &\phi^4 &  \beta(\lambda) &= \frac{3\lambda^2}{16\pi^2} > 0  \\
+ &\text{QED} & \beta(e) &= \frac{e^3}{12\pi^2} 
+\end{align}
+
+In QED the running coupling would be
+\begin{align*}
+   \int_e^{\bar{e}} \frac{\dd{e'}}{e'^3} &= \frac{1}{12\pi^2} \int_0^{\ln p/\mu} \dd{s}, \\
+   - \frac{1}{2} \left( \frac{1}{\bar{e}^2} - \frac{1}{e^2} \right) &= \frac{\ln(p/\mu)}{12\pi^2}, \\
+   \bar{e}^2(p) &= \frac{e^2}{1 - \frac{e^2}{6\pi^2} \ln(p/\mu)}.
+\end{align*}
+
+Coupling is often written in terms of $\alpha = e^2/4\pi$
+\begin{align}
+   \bar{\alpha}(p) = \frac{\alpha}{1 - \frac{2\alpha}{3\pi} \ln(p / \mu)}.
+\end{align}
+It also has Landau pole. Coupling goes to zero in the IR limit, it becomes large in the UV limit. Long distance behaviour calculable in perturbation theory, but short-distance is not.
+
+\item $\beta(\lambda) = 0 $ and 
+coupling does not flow. $\bar{\lambda}$ is independent of $p$, no UV divergences in relations between couplings, only divergences associated with $z$-factors, which are cancelled in the $S$-matrix elements. It leads to \textit{finite QFTs}.  Not very physical cases; gauge theories with extended supersymmetry.
+
+\item $\beta(\lambda) < 0 $ with QCD as an example.
+The $\beta$-function is
+\begin{align}
+   \beta(g) &= - \frac{\beta_0 g^3}{16 \pi^2}, \\
+   \beta_0 &= 11 - \frac{2}{3} n_F, \notag
+\end{align}
+with $n_F$ number of quark flavours. For $n_F = 6$, $\beta_0 > 0$.
+The running coupling is
+\begin{align}
+   \bar{\alpha}_s (p) &= \frac{\bar{g}^2 (p)}{4\pi} \\
+   \bar{\alpha}_s(p) &= \frac{\alpha_s}{1 + \frac{\alpha_s}{2\pi}\beta_0 \ln (p / \mu)}
+\end{align}
+Coupling \underline{decreases} as momentum scale increases. It is called \underline{asymptotic freedom}. (Noble Prize 2004). It means that short-distance or high-energy behaviour perturbatively calculable, but not the long-distance one (confinement).
+\end{enumerate}
+
+\paragraph{Non-trivial Fixed Points}
+Possible forms of $\beta(\lambda)$
+%TODO: diagram
+\begin{center}
+   \begin{tikzpicture}[scale=1, transform shape, baseline=(x1.base)]
+   \draw (0,0) to[out=30, in=200] (2, 2) to[out=20, in=150] (4, 0) to[out=-30, in=150] (5,-1);
+	\draw [thick, <->] (0,4) -- (0,0) -- (5.5,0);	
+   \node [above] at (0,4) {$\beta(\lambda)$};
+   \node (x1) [below] at (5.5,0) {$\lambda$};
+   \draw [fill] (4,0) circle [radius=0.05];
+   \node [above] at (4,0) {$\lambda_*$};
+\end{tikzpicture}%
+\begin{tikzpicture}[scale=1, transform shape, baseline=(x2.base)]
+   \draw (0,0) to[out=-30, in=200] (2, -2) to[out=20, in=-150] (4, 0) to[out=30, in=150] (5,1);
+	\draw [thick, <->] (0,4) -- (0,0) -- (5.5,0);	
+   \node [above] at (0,4) {$\beta(\lambda)$};
+   \node (x2) [below] at (5.5,0) {$\lambda$};
+   \draw [fill] (4,0) circle [radius=0.05];
+   \node [below] at (4,0) {$\lambda_*$};
+\end{tikzpicture}
+\end{center}
+
+
+Near fixed point, one can approximate 
+\begin{align}
+  \beta(\lambda) = - B (\lambda - \lambda_*)  \\
+  \text{with}
+  \begin{cases}
+     B > 0 \\
+     B < 0
+  \end{cases} \notag
+\end{align}
+
+So the RG for $\lambda$ becomes
+\begin{align*}
+   \dv{\ln(p/\mu)} \bar{\lambda} \approx - B (\bar{\lambda} - \lambda_*) \\
+   \frac{\dd{\bar{\lambda}}}{\bar{\lambda} - \lambda_*} = - B \dd{\ln(p/\mu)} \\
+   \ln(\bar{\lambda} - \lambda_*) = C' - B \ln(p/\mu) \\
+   \bar{\lambda} = \lambda_* + C \left( \frac{p}{\mu} \right)^{-B}
+\end{align*}
+
+So with $B > 0$,
+\begin{align*}
+   \lim_{p \rightarrow \infty} \bar{\lambda} (p) = \lambda_*.
+\end{align*}
+It is a \underline{UV-stable} fixed point.
+
+So with $B < 0$,
+\begin{align*}
+   \lim_{p \rightarrow 0} \bar{\lambda} (p) = \lambda_*.
+\end{align*}
+It is a \underline{IR-stable} fixed point.
+
+Note also that behaviour of the Green's functions
+\begin{align}
+   \Gamma_\text{ren}^{(n)} (s \left\{ p_i \right\}; \lambda, \mu) &= s^{4-n} \exp[-n\int_1^s \frac{\dd{s'}}{s'} \gamma(\bar{\lambda}(s'))] \Gamma_\text{ren}^{(n)} ( \left\{ p_i \right\}; \bar{\lambda}(s), \mu )
+   \shortintertext{for $\bar\lambda$ near a fixed point, $\int_1^s \frac{\dd{s'}}{s'} \gamma(\bar{\lambda}(s')) \approx \gamma(\lambda_*) \ln s$}
+   \Gamma_\text{ren}^{(n)} ( s \left\{ p_i \right\}; \lambda, \mu) &= s^{4-n-n\gamma(\lambda_*)} \Gamma_\text{ren}^{(n)} ( \left\{ p_i \right\}; \lambda_*, \mu) \\
+   \Gamma_\text{ren}^{(4)} (p) &\propto \left( \frac{p}{\mu} \right)^{4-n-n\gamma(\lambda_*)}
+\end{align}
+Simple power law, but with a different dimension from "engineering dimension" $4-n$. Hence $\gamma(\lambda_*)$ is called \underline{ anomalous dimension}.

@@ -1,0 +1,236 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lecture date: 19-12-18
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\chapter{Non-abelian Gauge Theories}
+
+\section{Reminder: Gauge invariance}
+Demand invariance of Dirac theory under \underline{local} phase transformation
+\begin{align*}
+   \psi (x) \mapsto \euler^{i\alpha(x)}\psi(x).
+\end{align*}
+
+To have invariant Lagrangian density, mass term $- m \bar\psi (x) \psi (x)$ causes no problem. Definition of directional derivative by
+\begin{align}
+   n^\mu \partial_\mu \psi = \lim_{\epsilon \rightarrow 0} \frac{1}{\epsilon} \left[ \psi(x+\epsilon n) + \psi(x) \right].
+\end{align}
+$\psi(x+\epsilon n )$ and $\psi(x)$ have different behaviour under local phase (gauge) transformation. 
+
+Compensate this by introducing an operator
+\begin{align}
+   U(y , x) \mapsto \euler^{i\alpha(y)} U(y,x) \euler^{-i\alpha(x)}, \label{math:Utrafo}
+\end{align}
+with $U(x,x) = 1$ and $U(y,x) = \euler^{i\phi(x,y)}$.
+
+Then define \underline{covariant derivative}
+\begin{align}
+   n^\mu D_\mu \psi = \lim_{\epsilon \rightarrow 0} \frac{1}{\epsilon} \left[ \psi(x + \epsilon n ) - U(x+\epsilon n, x) \psi(x) \right].
+\end{align}
+Infinitesimally,
+\begin{align}
+   U(x+\epsilon n , x) = 1+ ie \epsilon n^\mu A_\mu (x) + \order{\epsilon^2}. \label{math:UInf}
+\end{align}
+It defines vector field $A_\mu$. The covariant derivative is 
+\begin{align}
+   D_\mu \psi (x) = \partial_\mu \psi (x) - ie A_\mu (x) \psi (x).
+\end{align}
+
+Combine (\ref{math:Utrafo}) and (\ref{math:UInf}), 
+\begin{align*}
+   1 + i e \epsilon n \cdot A(x) &\rightarrow ( 1 + i\alpha(x + \epsilon n)) (1 + ie \epsilon n \cdot A(x)) (1 - i\alpha(x)), \\
+                                 & = 1+ ie \epsilon n \cdot  \left( A(x) + \frac{1}{e} \partial\alpha(x) \right) + \order{\epsilon^2}.
+\end{align*}
+Hence the vector field transforms according to
+\begin{align}
+   A_\mu (x) \mapsto A_\mu (x) + \frac{1}{e } \partial_\mu \alpha(x)
+\end{align} 
+
+Covariant derivative is indeed covariant
+\begin{align*}
+   D_\mu \psi(x) &\mapsto \left[ \partial_\mu - ie \left( A_\mu + \frac{1}{e} \partial_\mu \alpha(x) \right) \right] \euler^{i\alpha(x)} \psi(x), \\
+                 &= \euler^{i\alpha(x)} \left( \partial_\mu - ie A_\mu \right) \psi (x), \\
+                 &= \euler^{i \alpha(x)} D_\mu \psi(x).
+\end{align*}
+In this way, we can construct derivative terms invariant under local phase transformation $i \bar{\psi} \slashed{D} \psi$ and potentially higher derivative if we don't care about renormalizability.
+
+The field $A_\mu(x)$ also need kinetic term(s). Also second covariant derivatives are covariant, in particular,
+\begin{align*}
+   \left[ D_\mu, D_\nu \right] \psi &\mapsto \euler^{i \alpha(x)} \left[ D_\mu, D_\nu \right] \psi (x), \\
+                                    &= \comm{\partial_\mu, \partial_\nu} \psi - ie \left( \comm{\partial_\mu}{A_\nu} - \comm{\partial_\nu}{A_\mu} \right) \psi - e^2 \comm{A_\mu}{A_\nu} \psi, 
+                                    \shortintertext{We are dealing with classical theory at the moment. The commutator of the fields is zero.}
+                                    &= -ie \left( \partial_\mu A_\nu - \partial_\nu A_\mu \right) \psi, \\
+                                    &= -ie F_{\mu\nu}.
+\end{align*}
+Conclude $F_{\mu\nu}$ is invariant under local phase transformation.
+
+All operators up to dimension $4$
+\begin{align}
+   \lag_4 = i \bar{\psi}  \slashed{D} \psi - m \bar{\psi} \psi - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} - e \epsilon_{\mu \nu \alpha \beta} F^{\mu\nu} F^{\alpha \beta}
+\end{align}
+
+\section{Yang-Mills Fields}
+It is the simplest example for a non-abelian gauge theory and was originally gauge theory for isospin.
+
+Consider $\psi$ with spinor in Minkowski space and "isospinor" in isospin space 
+\begin{align}
+   \psi (x) = \begin{pmatrix} \psi_1 (x) \\ \psi_2 (x)\end{pmatrix}
+\end{align}
+
+Promote standard isospin invariant to a local transformation
+\begin{align}
+   \psi(x) &\mapsto V(x) \psi(x), \\
+   V(x) &= \exp(i\alpha^i(x) \sigma^i / 2),
+\end{align}
+with $\sigma^i$ Pauli matrices and $V(x) \in \mathbf{SU}(2) $. It is non-abelian, because different elements of $\mathbf{SU}(2)$ in general don't commute.
+
+Repeat the construction from the previous section here. The transformation of an unitary matrix 
+\begin{align}
+   U(y, x) \mapsto V(y) U(y ,x) V(x)^\dagger,
+\end{align}
+with $U(x,x) = \id$. It is used for the construction of a covariant derivative. Infinitesimally,
+\begin{align}
+   U(x+\epsilon n, x) = \id + ig \epsilon n^\mu A_\mu^i \sigma^i /2 + \order{\epsilon^2}.
+\end{align}
+There are three vector fields $A_\mu^i$ with $i=1,2,3$.
+
+Covariant derivative 
+\begin{align}
+   D_\mu = \partial_\mu - ig A_\mu^i \sigma^i /2
+\end{align}
+The transformation of $A_\mu^i$ is
+\begin{align*}
+   1 + ig \epsilon n^\mu A_\mu^i \sigma^i /2 &\mapsto V(x + \epsilon n) (1 + ig\epsilon n^\mu A_\mu^i \sigma^i /2) V(x)^\dagger. 
+   \shortintertext{Expand this to linear order in $\epsilon$,}
+   V(x + \epsilon n ) V(x)^\dagger &= \left[ (1+\epsilon n^\mu \partial_\mu) V(x) \right] V(x)^\dagger + \order{\epsilon^2} \\
+                                   & = \id + \epsilon n^\mu (\partial_\mu V(x)) V(x)^\dagger + \order{\epsilon^2} \\
+                                   &= \id - \epsilon n^\mu V(x) (\partial_\mu V(x)^\dagger) + \order{\epsilon^2}
+\end{align*}
+Hence
+\begin{align}
+   A_\mu^i \sigma^i / 2 \mapsto V(x) \left[ A_\mu^i \sigma^i / 2 + \frac{i}{g} \partial_\mu \right] V(x)^\dagger .
+\end{align}
+
+For infinitesimal transformation $V(x) = \id + i \alpha^i (x) \sigma^i / 2 + \order{\alpha^2}$. We find
+\begin{align}
+   A_\mu^i \sigma^i / 2 &\mapsto A_\mu^i \sigma^i / 2 + \frac{1}{g} (\partial_\mu \alpha^i) \sigma^i /2 + i \comm{\alpha^i \sigma^i / 2}{A_\mu^j \sigma^j / 2} \\
+   A_\mu^i &\mapsto A_\mu^i + \frac{1}{g} \partial_\mu \alpha^i - \epsilon^{ijk} \alpha^j A_\mu^k
+\end{align}
+Second terms acts like a gauge field and third like an isovector. The isovector term is  new compared to the abelian theory. Consequence of the non-commuting local transformation.
+
+Introducing notation $\tilde{X} = X^i \sigma^i / 2$.
+Covariant derivative is now  
+\begin{align}
+   D_\mu \psi &\mapsto \left( \partial_\mu - ig \tilde{A}_\mu - i \partial_\mu \tilde{\alpha} + g \comm{\tilde{\alpha}}{A} \right) (1 + i \tilde{\alpha}) \psi(x), \notag \\
+              &= (1 + i \tilde{\alpha}) (\partial_\mu - ig \tilde{A}_\mu) \psi, \notag \\
+              &= (1+ i\tilde{\alpha}) D_\mu \psi + \order{\alpha^2}.
+\end{align}
+\textcolor{red}{Some mistakes here?}
+
+Introduce field strength through  commutator of two covariant derivatives
+\begin{align}
+   \comm{D_\mu}{D_\nu} = -ig \tilde{F}_{\mu\nu}
+\end{align}
+with
+\begin{align}
+   \tilde{F}_{\mu\nu} &= \partial_\mu \tilde{A}_\nu - \partial_\nu \tilde{A}_\mu - ig \comm{\tilde{A}_\mu}{\tilde{A}_\nu} \\
+   F_{\mu\nu}^i &= \partial_\mu A_\nu^i - \partial_\nu A_\mu^i + g \epsilon^{ijk} A^j_\mu A^k_\nu
+\end{align} 
+
+Transformation behaviour of $\tilde{F}_{\mu\nu}$ from $\psi \mapsto V\psi$, $\comm{D_\mu}{D_\nu} \psi \mapsto V \comm{D_\mu}{D_\nu} \psi$
+\begin{align*}
+   \tilde{F}_{\mu\nu}(x) \mapsto V(x) \tilde{F}_{\mu\nu}(x) V(x)^\dagger.
+\end{align*}
+$\tilde{F}_{\mu\nu}$ is not gauge invariant any more.
+
+Gauge invariant Lagrangian terms are however easily constructed
+\begin{align}
+   \lag = -\frac{1}{2} \tr (\tilde{F}_{\mu\nu} \tilde{F}^{\mu\nu}) =  -\frac{1}{4} F^i_{\mu\nu} F^{i \; \mu\nu}.
+\end{align}
+Trace is taken in isospin space: $\tr(\sigma^i \sigma^j) = 2\delta^{ij}$.
+
+Note that in contrast to the abelian case, $\tr \tilde{F}\tilde{F}$ contains cubic and quartic terms in $A_\mu^i$, hence already describes an \underline{interacting} theory, not a free one.
+
+Complete YM Lagrangian density
+\begin{align}
+   \lag = - \frac{1}{2} \tr (\tilde{F}_{\mu\nu} \tilde{F}^{\mu\nu}) + \bar\psi ( i \slashed{D} - m) \psi.
+\end{align}
+Field equations are 
+\begin{align*}
+   (i\slashed{D} - m) \psi  &= 0, \\
+   \comm{D^\mu}{\tilde{F}_{\mu\nu}} &= -g \tilde{j}_\nu,
+\end{align*}
+with $j_\nu^i = \bar\psi \gamma_\nu \sigma^i \psi / 2$. These are highly non-linear set of equations.
+
+Now
+\begin{align*}
+   \comm{D_\mu}{\comm{D_\nu}{\tilde{F}^{\mu\nu}}} &= \frac{1}{2} \left\{ \comm{D_\mu}{\comm{D_\nu}{\tilde{F}^{\mu\nu}}}  - \comm{D_\nu}{\comm{D_\mu}{\tilde{F}^{\mu\nu}}}\right\} \\
+                                                  &= \frac{1}{2} \comm{\comm{D_\mu}{D_nu}}{\tilde{F}^{\mu\nu}}  \\
+                                                  &= 0
+\end{align*}
+Hence, from the second equation of motion
+\begin{align}
+   \comm{D^\mu}{\tilde{j}_\mu} = \partial^\mu \tilde{j}_mu - ig \comm{\tilde{A}^\mu}{\tilde{j}_\mu} = 0.
+\end{align}
+This is the analogue of current conservation in Yang-Mills theory.
+
+All this can be generalized to other (than $\mathbf{SU}(2)$) local symmetry group with 
+\begin{align*}
+   \sigma^i / 2 \mapsto t^a,
+\end{align*}
+a new set of hermitian generators and the general \underline{structure constants} $f^{abc}$
+\begin{align}
+   \comm{t^a}{t^b} = i f^{abc} t^c,
+\end{align}
+instead of $\epsilon^{ijk}$.
+
+\section{Feynman Rules for Non-abelian Gauge theories}
+\begin{align}
+   \lag = \bar{\psi} \left( i \slashed{D} - m \right)\psi - \frac{1}{4} F_{\mu\nu}^a F^{a\; \mu\nu}
+\end{align}
+with 
+\begin{align*}
+   F^a_{\mu\nu} &= \partial_\mu A_\nu^a - \partial_\nu A^a_\mu + g f^{abc} A_\mu^v A_\nu^c  \\
+   D_\mu & = \partial_\mu - igA_\mu^a t^a
+\end{align*}
+
+Fermion propagator is as before but with an internal quantum number
+\begin{align}
+   \braket{0 | T \psi_A (x) \bar{\psi}_B(y) | 0} = \int \frac{\dd[4]{k}}{(2\pi)^4} \frac{i\delta_{AB}}{\slashed{k}-m} \euler^{-ik(x-y)} 
+\end{align}
+Fermion fields are (in) fundamental representation for $\SU(n)$ with $A,B=1,\dots,n$.
+
+Suspect that there is an analogous gauge field propagator in Feynman gauge 
+\begin{align}
+   \braket{0 | T A_\mu^a (x) A_\nu^b (y) | 0} = \int \frac{\dd[4]{k}}{(2\pi)^4} \frac{-ig_{\mu\nu} \delta^{ab}}{k^2} \euler^{-ik(x-y)}
+\end{align}
+Fields $A_\mu(x)$ are in adjoint representation for $\SU(n)$ with $a,b = 1, \dots, n^2 - 1$.
+
+Interaction terms are
+\begin{align}
+   \lag = \lag_0 + g A_\lambda^a \bar\psi \gamma^\lambda t_a \psi - g f^{abc} (\partial_{\kappa} A_\lambda^a) A^{\kappa \;b} A^{\lambda \; c} - \frac{1}{4} g^2 \left( f^{eab} A^a_\kappa A^b_\lambda \right) \left( f^{ecd} A^{\kappa \; c} A^{\lambda \; d} \right)
+\end{align}
+
+Feynman rules are as follows:
+\begin{align}
+   \feynmandiagram[inline=(v.base), vertical=a to v]{
+      a[particle={\(a, \mu\)}] --[gluon] v --[anti fermion] b, 
+   v --[fermion] c,
+   };
+    &= ig \gamma^\mu t_a
+\end{align}
+It acts in Dirac space and on gauge group indices.
+
+Functional derivatives or contractions generate $3! = 6$ terms and derivative turns into momentum. With all permutations
+\begin{align}
+  \feynmandiagram[inline=(v.base), vertical=a to v]{
+     a[particle={\(a, \mu\)}] --[gluon, momentum'=\(k\)] v --[gluon, momentum=\(p\)] b[particle={\(b, \nu\)}], 
+     v --[gluon, momentum=\(q\)] c[particle={\(c, \rho\)}],
+   };
+  &= g f^{abc} \left[ g^{\mu\nu} (k-p)^\rho + g^{\nu\rho} (p-q)^\mu + g^{\rho\mu} (q-k)^\nu \right] 
+\end{align}
+
+Altogether $4!=24$ permutations for the last term. Only $4$ each generate same contributions.
+\textcolor{red}{Missing the diagram}
+\begin{align}
+   &= -ig^2 \left\{ f^{abe}f^{cde} \left( g^{\mu\rho}g^{\nu\sigma} - g^{\mu\rho}g^{\nu\rho} \right)  + f^{ace} f^{bde} \left( g^{\mu\nu} g^{\rho \sigma} - g^{\mu\sigma} g^{\nu\rho} \right) + f^{ade}f^{bce} \left( g^{\mu\nu} g^{\rho\sigma} - g^{\mu\rho}g^{\nu\sigma} \right)\right\}
+\end{align}
+By construction, as a consequence of gauge invariance, the same coupling $g$ appears in three types of vertices.
