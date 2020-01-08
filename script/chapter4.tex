@@ -106,33 +106,33 @@ The transformation of $A_\mu^i$ is
 \end{align*}
 Hence
 \begin{align}
-   A_\mu^i \sigma^i / 2 \mapsto V(x) \left[ A_\mu^i \sigma^i / 2 + \frac{i}{g} \partial_\mu \right] V(x)^\dagger .
+   \frac{1}{2}A_\mu^i \sigma^i \mapsto V(x) \left[ \frac{1}{2} A_\mu^i \sigma^i + \frac{i}{g} \partial_\mu \right] V(x)^\dagger .
 \end{align}
 
-For infinitesimal transformation $V(x) = \id + i \alpha^i (x) \sigma^i / 2 + \order{\alpha^2}$. We find
+For infinitesimal transformation $V(x) = \id + \frac{i}{2} \alpha^i (x) \sigma^i  + \order{\alpha^2}$. We find
 \begin{align}
-   A_\mu^i \sigma^i / 2 &\mapsto A_\mu^i \sigma^i / 2 + \frac{1}{g} (\partial_\mu \alpha^i) \sigma^i /2 + i \comm{\alpha^i \sigma^i / 2}{A_\mu^j \sigma^j / 2} \\
-   A_\mu^i &\mapsto A_\mu^i + \frac{1}{g} \partial_\mu \alpha^i - \epsilon^{ijk} \alpha^j A_\mu^k
+   \frac{1}{2}A_\mu^i \sigma^i &\mapsto \frac{1}{2} A_\mu^i \sigma^i + \frac{1}{2g} (\partial_\mu \alpha^i) \sigma^i + \frac{i}{4} \alpha^i A_\mu^j \comm{\sigma^i}{\sigma^j}, \\
+   A_\mu^i &\mapsto A_\mu^i + \frac{1}{g} \partial_\mu \alpha^i - \epsilon^{ijk} \alpha^j A_\mu^k.
 \end{align}
-Second terms acts like a gauge field and third like an isovector. The isovector term is  new compared to the abelian theory. Consequence of the non-commuting local transformation.
+Third terms acts like a gauge field and third like an isovector. The isovector term is  new compared to the abelian theory. Consequence of the non-commuting local transformation.
 
-Introducing notation $\tilde{X} = X^i \sigma^i / 2$.
-Covariant derivative is now  
+Introducing notation $\tilde{X} = \frac{1}{2} X^i \sigma^i $. Covariant derivative is now  
 \begin{align}
-   D_\mu \psi &\mapsto \left( \partial_\mu - ig \tilde{A}_\mu - i \partial_\mu \tilde{\alpha} + g \comm{\tilde{\alpha}}{A} \right) (1 + i \tilde{\alpha}) \psi(x), \notag \\
-              &= (1 + i \tilde{\alpha}) (\partial_\mu - ig \tilde{A}_\mu) \psi, \notag \\
+   D_\mu \psi &\mapsto \left( \partial_\mu - ig \tilde{A}_\mu - i \partial_\mu \tilde{\alpha} + g \comm{\tilde{\alpha}}{\tilde A} \right) (1 + i \tilde{\alpha}) \psi(x), \notag \\
+              &= \left(\partial_\mu + i \tilde{\alpha}\partial_\mu - ig \tilde{A}_\mu + g \tilde{A}_\mu \tilde{\alpha} + g \comm{\tilde{\alpha}}{\tilde{A}} + \order{\alpha^2}\right) \psi, \notag \\
+              &= (1 + i \tilde{\alpha}) (\partial_\mu - ig \tilde{A}_\mu) \psi + \order{\alpha^2}, \notag \\
               &= (1+ i\tilde{\alpha}) D_\mu \psi + \order{\alpha^2}.
 \end{align}
-\textcolor{red}{Some mistakes here?}
+\textcolor{red}{Work out the details!}
 
 Introduce field strength through  commutator of two covariant derivatives
 \begin{align}
-   \comm{D_\mu}{D_\nu} = -ig \tilde{F}_{\mu\nu}
+   \comm{D_\mu}{D_\nu} = -ig \tilde{F}_{\mu\nu},
 \end{align}
 with
 \begin{align}
-   \tilde{F}_{\mu\nu} &= \partial_\mu \tilde{A}_\nu - \partial_\nu \tilde{A}_\mu - ig \comm{\tilde{A}_\mu}{\tilde{A}_\nu} \\
-   F_{\mu\nu}^i &= \partial_\mu A_\nu^i - \partial_\nu A_\mu^i + g \epsilon^{ijk} A^j_\mu A^k_\nu
+   \tilde{F}_{\mu\nu} &= \partial_\mu \tilde{A}_\nu - \partial_\nu \tilde{A}_\mu - ig \comm{\tilde{A}_\mu}{\tilde{A}_\nu}, \\
+   F_{\mu\nu}^i &= \partial_\mu A_\nu^i - \partial_\nu A_\mu^i + g \epsilon^{ijk} A^j_\mu A^k_\nu.
 \end{align} 
 
 Transformation behaviour of $\tilde{F}_{\mu\nu}$ from $\psi \mapsto V\psi$, $\comm{D_\mu}{D_\nu} \psi \mapsto V \comm{D_\mu}{D_\nu} \psi$
@@ -145,9 +145,7 @@ Gauge invariant Lagrangian terms are however easily constructed
 \begin{align}
    \lag = -\frac{1}{2} \tr (\tilde{F}_{\mu\nu} \tilde{F}^{\mu\nu}) =  -\frac{1}{4} F^i_{\mu\nu} F^{i \; \mu\nu}.
 \end{align}
-Trace is taken in isospin space: $\tr(\sigma^i \sigma^j) = 2\delta^{ij}$.
-
-Note that in contrast to the abelian case, $\tr \tilde{F}\tilde{F}$ contains cubic and quartic terms in $A_\mu^i$, hence already describes an \underline{interacting} theory, not a free one.
+Trace is taken in isospin space: $\tr(\sigma^i \sigma^j) = 2\delta^{ij}$. Note that in contrast to the abelian case, $\tr(\tilde{F}\tilde{F})$ contains cubic and quartic terms in $A_\mu^i$, hence already describes an \underline{interacting} theory, not a free one.
 
 Complete YM Lagrangian density
 \begin{align}
@@ -158,7 +156,7 @@ Field equations are
    (i\slashed{D} - m) \psi  &= 0, \\
    \comm{D^\mu}{\tilde{F}_{\mu\nu}} &= -g \tilde{j}_\nu,
 \end{align*}
-with $j_\nu^i = \bar\psi \gamma_\nu \sigma^i \psi / 2$. These are highly non-linear set of equations.
+with $j_\nu^i =\frac{1}{2} \bar\psi \gamma_\nu \sigma^i \psi $. These are highly non-linear set of equations.
 
 Now
 \begin{align*}
@@ -168,7 +166,7 @@ Now
 \end{align*}
 Hence, from the second equation of motion
 \begin{align}
-   \comm{D^\mu}{\tilde{j}_\mu} = \partial^\mu \tilde{j}_mu - ig \comm{\tilde{A}^\mu}{\tilde{j}_\mu} = 0.
+   \comm{D^\mu}{\tilde{j}_\mu} = \partial^\mu \tilde{j}_\mu - ig \comm{\tilde{A}^\mu}{\tilde{j}_\mu} = 0.
 \end{align}
 This is the analogue of current conservation in Yang-Mills theory.
 
@@ -234,3 +232,238 @@ Altogether $4!=24$ permutations for the last term. Only $4$ each generate same c
    &= -ig^2 \left\{ f^{abe}f^{cde} \left( g^{\mu\rho}g^{\nu\sigma} - g^{\mu\rho}g^{\nu\rho} \right)  + f^{ace} f^{bde} \left( g^{\mu\nu} g^{\rho \sigma} - g^{\mu\sigma} g^{\nu\rho} \right) + f^{ade}f^{bce} \left( g^{\mu\nu} g^{\rho\sigma} - g^{\mu\rho}g^{\nu\sigma} \right)\right\}
 \end{align}
 By construction, as a consequence of gauge invariance, the same coupling $g$ appears in three types of vertices.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lecture date: 20-01-08
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Faddeev-Popov Quantization}
+We saw already for abelian gauge theory that invariance of the Lagrangian density makes the action under 
+\begin{align}
+   A^a_\mu &\mapsto A^a_\mu + \frac{1}{g} \partial_\mu \alpha^a - f^{abc} \alpha^b A_\mu^c, \\
+           &= A^a_\mu + \frac{1}{g}D_{\mu}^{ab}\alpha^b ,
+\end{align}
+leads to terribly divergent  path integral for the generating functional
+\begin{align*}
+   Z = \int \D A_\mu^a \euler^{iS}.
+\end{align*}
+
+Solution is to separate the gauge group volume by gauge fixing.
+\begin{enumerate}
+   \item Gauge fixing of the form $F[A_\mu^a] = 0 $, e.g.~generalised Lorenz gauge 
+      \begin{align}
+      F[A_\mu^a] = \partial^\mu A_\mu^a (x) + C^a (x) = 0.
+      \end{align}
+   \item Define
+      \begin{align}
+         \Delta_F^{-1}[A_\mu^a] = \int \D \alpha \delta(F[A_\mu^a]).
+      \end{align}
+      and insert $1 = \Delta_F[A_\mu^a] \int \D \alpha \delta(F[A_\mu^a])$ into the path integral. $\Delta_F[A_\mu^a]$ is  gauge invariant. Exchange order of integration $\D A_\mu^a \D \alpha$
+      \begin{align}
+         Z = \int \D \alpha \int \D A_\mu^a \Delta_F[A_\mu^a] \delta(F[A_\mu^a]) \euler^{iS}.
+      \end{align}
+   \item $\Delta_F[A_\mu^a]$ can be written as a functional determinant $\Delta_F[A_\mu^a] = \det \left|\frac{\delta F}{\delta \alpha}\right|_{F=0} =: \det(iM)$.
+From the transformation of gauge field and the generalised Lorenz gauge, we find
+\begin{align}
+   \frac{\delta F}{\delta \alpha} = \frac{1}{g}  \partial^\mu D_\mu.
+\end{align}
+In the abelian case: $\D_\mu \mapsto \partial_\mu$ independent of $A_\mu$, but not true here any more! $\det(iM)$ cannot simply be pulled out of the path integral!
+\item Faddeev and Popov wrote $\det(iM)$ as a functional integral over (anti-commuting) Grassmann fields $\eta^a$, $\bar \eta^a$
+   \begin{align}
+      \det(iM) = \int \D \bar \eta \D \eta \exp(-i \int \dd[4]{x} \bar \eta^a M_{ab} \eta^b).
+   \end{align}
+\item Multiply $Z$ with a constant $\int \D C \exp(- \frac{i}{\xi} \int \dd[4]{x} C^2(x))$ and evaluate the delta functional. Result (in Lorenz gauge) 
+   \begin{align}
+      \begin{split}
+       Z &= N \int \D A_\mu^a \D \bar{\eta} \D \eta \exp{i \int \dd[4]{x} \left[\lag - \frac{1}{2\xi}(\partial^\mu A_\mu^a)^2 - \eta^a M_{ab} \eta^b \right] }, \\
+        &= N \int \D A^a_\mu \D \bar{\eta} \D \eta \exp(i \int \dd[4]{x} \lag_\eff),
+      \end{split}
+        \shortintertext{where}
+        \begin{split}
+       \lag_\eff &= \lag + \lag_{\text{GF}} + \lag_{\text{FPG}}, \\
+                &= \lag - \frac{1}{2\xi} (\partial^\mu A_\mu^a)^2 - \bar \eta^a \partial^\mu D_\mu^{ab} \eta^b.
+        \end{split}
+   \end{align}
+   A factor $\sqrt{g}$ is absorbed in normalization of $\eta$ and $\bar \eta$.
+\end{enumerate}
+
+\paragraph{Interpretation}
+Gauge fixing $\lag_{\text{GF}}$ is the same as in QED and it leads to gauge field propagator
+\begin{align*}
+   \braket{0 | T A_\mu^a (x) A_\nu^b (y) | 0 } = \int \frac{\dd[4]{k}}{(2\pi)^4} \frac{-i}{k^2 + i \epsilon} \left( g_{\mu\nu}  - (1-\xi) \frac{k_\mu k_\nu}{k^2} \right) \delta^{ab} \euler^{-ik(x-y)}.
+\end{align*}
+
+We also introduced Faddeev-Popov ghost fields. We find that they are anti-commuting (Grassmann-valued) but a scalar under Lorentz transformation. (It is scalar by construction!) \textcolor{red}{Anything forbids us to adding Spinor structure in ghost fields?} It violates the spin-statistics theorem. It cannot appear as external, asymptotic fields, but only in closed loops. (It should be later clear why they can only exist in loops.) It provides additional Feynman rules from $\lag_{\text{FPG}}$
+\begin{align}
+   \lag_{\text{FPG}} &= - \bar{\eta}^a \partial^\mu D_\mu^{ab} \eta^b, \\
+                     &= - \bar{\eta}^a \left( \delta^{ab} \partial^2 - g f^{abc} (\partial^\mu A_\mu^c) - gf^{abc} A_\mu^c \partial^\mu \right) \eta^b .
+\end{align}
+First term leads to ghost propagator
+\begin{align}
+   \braket{0 | T \eta^a(x) \bar{\eta}^b (y) | 0 } = \int \frac{\dd[4]{k}}{(2\pi)^4} \frac{i}{k^2 + i \epsilon} \delta^{ab} \euler^{-ik (x-y)}.
+\end{align}
+Second and third terms introduce ghost-gauge-field interaction
+%TODO: diagram
+\begin{align*}
+   \feynmandiagram[vertical=c to v, inline=(v.base)]{
+      c[particle={\(c,\mu\)}] --[photon] v,
+      a[particle={\(a\)}] --[ghost, momentum'=p] v,
+      v --[ghost, momentum'=q] b[particle={\(b\)}],
+   }; \sim -g f^{abc}p_\mu
+\end{align*}
+Note that due to anticommuting properties, there is an overall minus sign for any closed ghost loop.
+
+\paragraph{Remark} In the abelian case, we just ignored $\det(iM)$. We would have found only the kinetic terms the ghosts, no interaction. Ghost fields decouple from other firelds in QED.
+
+Is there a gauge with which we might achieve this decoupling also in the non-abelian case? It leads to the axial gauge.
+Gauge condition $r^\mu A_\mu^a = 0$ with $r^\mu$ a space-like vector. Then the gauge fixing condition would be $F[A_\mu^a] = r^\mu A_\mu^a$.
+Under gauge transformation 
+\begin{align}
+   A_\mu^a &\mapsto A_\mu^a + \frac{1}{g} \partial_\mu \alpha^a - f^{abc} \alpha^b A_\mu^c, \\
+   \shortintertext{we have}
+   \eval{\frac{\delta F^a}{\delta \alpha^b}}_{F=0} &= \frac{1}{g} r^\mu \partial_\mu \delta^{ab}.
+\end{align}
+Independent of $A_\mu^a$, ghosts decouple and it can be integrated out of the path integral again!
+
+Disadvantage: complication gauge field propagator
+\begin{align}
+   \lag + \lag_\text{GF} = -\frac{1}{4} F_{\mu\nu}^a F^{a \, \mu\nu} - \frac{1}{2\xi}  (r^\mu A_\mu^a)^2
+\end{align}
+Quadratic part of the action is 
+\begin{align*}
+   \frac{1}{2} \int \dd[4]{x} A_\mu^a &\left( g^{\mu\nu} \partial^2 - \partial^\mu \partial^\nu - \frac{1}{\xi} r^\mu r^\nu \right) A_\nu^b
+   \shortintertext{in momentum space}
+   \dots &\left(  -g^{\mu\nu} k^2 + k^\mu k^\nu - \frac{1}{\xi} r^\mu r^\nu \right) \dots 
+\end{align*}
+Its inverse is the propagator
+\begin{align}
+   \feynmandiagram[horizontal=a to b]{
+      a[particle={\(\mu, a\)}] --[photon, momentum=\(k\)] b[particle={\(\nu, b\)}],
+}; 
+\sim
+-\frac{i}{k^2} \left( g^{\mu\nu} + \frac{(r^2 + \xi k^2 ) k^\mu k^\nu}{(k\cdot r )^2} - \frac{k^\mu r^\nu + r^\mu k^\nu }{k \cdot r} \right).
+\end{align}
+Complicated, not manifestly Lorentz-invariance.
+
+\section{BRST Symmetry}
+Rewrite the complete non-abelian Lagrangian (inclusive $\lag_\text{GF} + \lag_\text{FPG}$) with the help of the \textit{auxiliary field} $B^a$
+\begin{align}
+   \lag = -\frac{1}{4} F_{\mu\nu}^a F^{a\, \mu\nu} + \bar\psi (i \slashed{D} - m) \psi + \frac{\xi}{2} (B^a)^2 + B^a \partial^\mu A_\mu^a - \bar{\eta}^a \partial^\mu D_\mu^{ab}\eta^b. \label{math:BRSTLag}
+\end{align}
+
+No kinetic term for $B^a$, so it doesn't propagate but can be eliminated through the equation of motion 
+\begin{align}
+   B^a = - \frac{1}{\xi} \partial^\mu A_\mu^a.
+   \label{math:BRSTEOM}
+\end{align}
+It leads back to original form of $\lag$.
+
+We know that $\lag$ in equation \ref{math:BRSTLag} is not invariant  under (infinitesimal) gauge transformations
+\begin{align}
+   \delta A_\mu^a = \frac{1}{g} D_\mu^{ab} \alpha^b, \quad \delta \psi = i \tilde{\alpha} \psi.
+   \label{math:BRST3a}
+\end{align}
+In QED, we used this to derive Ward-Takahashi identities.
+
+Do something different here. In equation \ref{math:BRST3a}, set
+\begin{align*}
+   \alpha^a = g \lambda \eta^a \Rightarrow \delta A_\mu^a = \lambda D_\mu^{ab} \eta^b.
+\end{align*}
+$\eta^a$ is the Grassmann-valued ghost field. Since $\alpha \in \R$, $\lambda$ is an (infinitesimal) Grassmann number.
+
+Show the invariance under the generalized transformation
+\begin{align}
+   \begin{split}
+      \delta \eta^a &= - \frac{g}{2} f^{abc} \lambda \eta^b \eta^c \\
+      \delta \bar \eta^a &= \lambda B^a \\
+      \delta B^a &= 0
+   \end{split}
+   \label{math:BRST3b}
+\end{align}
+In principle, this is a supersymmetric transformation, as it links commuting and anti-commuting fields.
+
+How the invariance of equation under \ref{math:BRST3a} and \ref{math:BRST3b}
+\begin{itemize}
+   \item $-\frac{1}{4} F^{a\, \mu\nu} F^a_{\mu\nu} + \bar\psi (i \slashed{D} - m) \psi$ are invariant, as we are just using re-parametrized gauge transformations.
+   \item $+ \frac{\xi}{2} (B^a)^2$ is trivially invariant as $\delta B^a = 0$.
+\end{itemize}
+What remains is
+\begin{align}
+   \delta \lag &= B^a \delta^\mu \delta A^a_\mu -  (\delta \bar \eta^a) \partial^\mu D_\mu^{ab} \eta^b - \bar\eta^a \partial^\mu \delta(D^{ab}_\mu \eta^b)  \notag \\
+            &= \underbrace{B^a \partial^\mu D_\mu^{ab} \lambda \eta^b - \lambda B^a \partial^\mu D_\mu^{ab} \eta^b}_{=0} - \bar{\eta}^a \delta^\mu \delta(D_\mu^{ab} \eta b )  \label{math:BRST4}
+\end{align}
+\begin{align}
+   \delta D_\mu^{ab} \eta^b &= \partial(\delta \eta^a) + g f^{abc} \left[ (\delta A_\mu^b) \eta^c + A_\mu^b (\delta \eta^c) \right], \notag \\
+                         &= - \frac{g}{2} \lambda \partial_\mu (f^{abc} \eta^b \eta^c ) + g f^{abc} \lambda (\partial_\mu \eta^b) \eta^c + g^2 \lambda f^{abc} f^{bde} A_\mu^d \eta^e \eta^c - \frac{1}{2} \lambda f^{abc} f^{cde} A_\mu^b \eta^d \eta^e \label{math:BRST5}.
+\end{align}
+In $\order{g}$, $\partial_\mu (\eta^b \eta^c) = (\partial_\mu \eta^b) \eta^c - (\partial_\mu \eta^c) \eta^b$ and use antisymmetry of structure constant to cancel.
+Terms in $\order{g^2}$ can be rewritten as
+$-\frac{1}{2} g^2 \lambda f^{abc} f^{cde} \left( A_\mu^b \eta^d \eta^e + A_\mu^d \eta^e \eta^b + A_\mu^e \eta^b \eta^d \right)$, which vanished accounting for the Jacobi identity
+$f^{ade} f^{bcd} + f^{bde} f^{cad} + f^{cde} f^{abd} = 0 $.
+
+BRST transformation is a global symmetry of the gauge-fixed Lagrangian (for arbitrary $\xi$). The corresponding conserved Noether current, charge $Q$ is the generator of BRST symmetry transformation (with $\phi$ an arbitrary field)
+\begin{align*}
+   \delta \phi = \lambda Q \phi,
+\end{align*}
+e.g.~$Q A_\mu^a = D_\mu^{ab} \eta^b$.
+
+What we have shown in equation \ref{math:BRST5} amounts to $Q^2 A_\mu^a = 0$. In addition $Q^2 \bar{\eta}^a = 0$ as $Q B^a = 0$. Further $Q^2 \eta^a = 0$ because of 
+\begin{align*}
+   \delta Q \eta^a &= - \frac{g^2}{2} f^{abc} \left[ (\delta \eta^b) \eta^c + \eta^b (\delta \eta^c) \right],  \\
+                   &= \frac{g^2}{4} f^{abc} \left[ \lambda f^{bde} \eta^d \eta^e \eta^c + \eta^b \lambda f^{cde} \eta^d \eta^e \right], \\
+                   &= \frac{g^2}{2} \lambda f^{abc} f^{nde} \eta^c \eta^d \eta^e + \text{Jacobi identity}.
+\end{align*}
+
+Finally $Q^2 \psi = 0$ because of 
+\begin{align*}
+   \delta (Q \psi) &= i (\delta \eta^a) t^a \psi i \eta^a t^a (\delta \psi), \\
+                 &= - \frac{i}{2} g \lambda f^{abc} \eta^b \eta^c t^a \psi + g \lambda \eta^a t^a \eta^b t^b \psi, \\
+                 &= - \frac{i}{2} g \lambda f^{abc} \eta^b \eta^c t^a \psi + g \lambda\frac{1}{2} \eta^a \eta^b \comm{t^a}{t^b} = \frac{i}{2} \eta^a \eta^b f^{abc} t^c, \\
+                 &= 0.
+\end{align*}
+
+Altogether we have proven the operator identity
+\begin{align}
+   Q^2 = 0
+\end{align}
+The BRST charge operator is nilpotent and commutes with the Hamiltonian.
+
+$Q$ divides the space of eigenstates of $H$ into three subspaces
+\begin{align*}
+   \hil_1 &= \left\{ \ket{\psi_1} \mid Q \ket{\psi_1} \neq 0 \right\} \\
+   \hil_2 &= Q \hil_1 \\
+   \hil_0 &= \hil - \hil_1 - \hil_2
+\end{align*} 
+
+Note $\ket{\psi_{2(a/b)}} \in \hil_2$, $\ket{\psi_0} \in \hil_0$
+\begin{align*}
+   \braket{\psi_{1a} | Q | \psi_{2b}} = 0 \\
+   \braket{\psi_2 | \psi_0} = \braket{\psi_1 | Q | \psi_0} = 0
+\end{align*}
+
+States in $\hil_2$ have zero overlap with each other and with  states in $\hil_0$. Investigate which subpspaces the different polarization states of gauge bosons belong to: gauge bosons of momentum $k^\mu = (k^0, \pmb{k})$ and $k^2 = 0$.
+
+There two transverse polarization states, $\epsilon^T_{i \mu}$ and $\epsilon_{i\mu}^T k^\mu = 0$ with $i=1,2$. And two longitudinal ones $\epsilon^{+\mu} \propto k^\mu$, $\epsilon^+\mu k^\mu = 0$, forward polarization. $\epsilon^{-\mu} \propto (k_0, -\pmb{k})$ and $\epsilon^-_\mu k^\mu = 0$ backward polarization. They form a complete basis.
+
+Consider equation \ref{math:BRST3a} and \ref{math:BRST3b} for $g=0$:
+\begin{align*}
+   Q A_\mu^a &= \partial_\mu \eta^a \propto k_\mu &\text{forward polarization} \\
+   Q \eta^a &= 0, \; Q\bar{\eta}^a = B^a = - \frac{1}{\xi} \partial^\mu A_\mu^a \propto \epsilon_\mu k^\mu &\text{backward polarization}
+\end{align*}
+
+\paragraph{Interpretation}
+$Q$ transforms forward-polarization gauge bosons to ghost, ghosts to zero, anti-ghosts into backward-polarization gauge bosons.
+\begin{align*}
+   \bar{\eta}, A^+_\mu &\in \hil_1 \\ 
+ \eta, A^-_\mu &\in \hil_2 \\ 
+ A_\mu^T &\in \hil_0
+\end{align*}
+This holds in general. States with (anti-)ghosts and unphysical gauge-boson polarization states belong to $\hil_{1/2}$; asymptotic states in $\hil_0$ only contain physical states (transverse gauge bosons and fermions).
+
+\paragraph{Consequence} for the unitarity relation of the $S$-matrix. Let $A^T, B^T \in \hil_0$ be asymptotic, physical states, then
+\begin{align*}
+   \braket{ A^T | \id | B^T} = \sum_{C^T \in \hil_0} \braket{A^T| S^\dagger | C^T} \braket{C^T | S | B^T} 
+\end{align*}
+i.e.~only physical intermediate states contribute, while unphysical states (longitudinal ghosts $\in \hil_{1/2}$) drop out (exercise!).
+
+Proof: as $A^T, B^T \in \hil_0$, we know $Q \ket{A^T} = 0$. Since $\comm{Q}{H} = 0$ and hence $\comm{Q}{S} = 0$.
+$Q S \ket{A^T} = 0$, therefore $S \ket{A^T} \in \hil_0$ or $\hil_2$. But states in $\hil_2$ have zero overlap with $\hil_0$. Thus only $\hil_0$-states contribute!

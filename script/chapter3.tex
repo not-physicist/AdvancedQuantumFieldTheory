@@ -572,20 +572,21 @@ Possible forms of $\beta(\lambda)$
 
 Near fixed point, one can approximate 
 \begin{align}
-  \beta(\lambda) = - B (\lambda - \lambda_*)  \\
-  \text{with}
+   \beta(\lambda) = - B (\lambda - \lambda_*) + \order{\lambda^2}
+   \quad
+  \text{with }
   \begin{cases}
      B > 0 \\
      B < 0
-  \end{cases} \notag
+  \end{cases}
 \end{align}
 
 So the RG for $\lambda$ becomes
 \begin{align*}
-   \dv{\ln(p/\mu)} \bar{\lambda} \approx - B (\bar{\lambda} - \lambda_*) \\
-   \frac{\dd{\bar{\lambda}}}{\bar{\lambda} - \lambda_*} = - B \dd{\ln(p/\mu)} \\
-   \ln(\bar{\lambda} - \lambda_*) = C' - B \ln(p/\mu) \\
-   \bar{\lambda} = \lambda_* + C \left( \frac{p}{\mu} \right)^{-B}
+   \dv{\ln(p/\mu)} \bar{\lambda} &\approx - B (\bar{\lambda} - \lambda_*) \\
+   \frac{\dd{\bar{\lambda}}}{\bar{\lambda} - \lambda_*} &= - B \dd{\ln(p/\mu)} \\
+   \ln(\bar{\lambda} - \lambda_*) &= C' - B \ln(p/\mu) \\
+   \bar{\lambda} &= \lambda_* + C \left( \frac{p}{\mu} \right)^{-B}
 \end{align*}
 
 So with $B > 0$,
