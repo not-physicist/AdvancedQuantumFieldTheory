@@ -2,7 +2,6 @@
 % Lecture date: 19-12-18
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \chapter{Non-abelian Gauge Theories}
-
 \section{Reminder: Gauge invariance}
 Demand invariance of Dirac theory under \underline{local} phase transformation
 \begin{align*}
@@ -123,7 +122,6 @@ Introducing notation $\tilde{X} = \frac{1}{2} X^i \sigma^i $. Covariant derivati
               &= (1 + i \tilde{\alpha}) (\partial_\mu - ig \tilde{A}_\mu) \psi + \order{\alpha^2}, \notag \\
               &= (1+ i\tilde{\alpha}) D_\mu \psi + \order{\alpha^2}.
 \end{align}
-\textcolor{red}{Work out the details!}
 
 Introduce field strength through  commutator of two covariant derivatives
 \begin{align}
@@ -266,7 +264,7 @@ From the transformation of gauge field and the generalised Lorenz gauge, we find
 \begin{align}
    \frac{\delta F}{\delta \alpha} = \frac{1}{g}  \partial^\mu D_\mu.
 \end{align}
-In the abelian case: $\D_\mu \mapsto \partial_\mu$ independent of $A_\mu$, but not true here any more! $\det(iM)$ cannot simply be pulled out of the path integral!
+In the abelian case: $D_\mu \mapsto \partial_\mu$ and independent of $A_\mu$, but not true here any more! $\det(iM)$ cannot simply be pulled out of the path integral (of $A_\mu$)!
 \item Faddeev and Popov wrote $\det(iM)$ as a functional integral over (anti-commuting) Grassmann fields $\eta^a$, $\bar \eta^a$
    \begin{align}
       \det(iM) = \int \D \bar \eta \D \eta \exp(-i \int \dd[4]{x} \bar \eta^a M_{ab} \eta^b).
@@ -302,20 +300,19 @@ First term leads to ghost propagator
    \braket{0 | T \eta^a(x) \bar{\eta}^b (y) | 0 } = \int \frac{\dd[4]{k}}{(2\pi)^4} \frac{i}{k^2 + i \epsilon} \delta^{ab} \euler^{-ik (x-y)}.
 \end{align}
 Second and third terms introduce ghost-gauge-field interaction
-%TODO: diagram
 \begin{align*}
    \feynmandiagram[vertical=c to v, inline=(v.base)]{
       c[particle={\(c,\mu\)}] --[photon] v,
       a[particle={\(a\)}] --[ghost, momentum'=p] v,
       v --[ghost, momentum'=q] b[particle={\(b\)}],
-   }; \sim -g f^{abc}p_\mu
+   }; \sim -g f^{abc}q_\mu
 \end{align*}
 Note that due to anticommuting properties, there is an overall minus sign for any closed ghost loop.
 
 \paragraph{Remark} In the abelian case, we just ignored $\det(iM)$. We would have found only the kinetic terms the ghosts, no interaction. Ghost fields decouple from other firelds in QED.
 
 Is there a gauge with which we might achieve this decoupling also in the non-abelian case? It leads to the axial gauge.
-Gauge condition $r^\mu A_\mu^a = 0$ with $r^\mu$ a space-like vector. Then the gauge fixing condition would be $F[A_\mu^a] = r^\mu A_\mu^a$.
+Gauge condition $r^\mu A_\mu^a = 0$ with $r^\mu$ a space-like vector. Then the gauge fixing condition would be $F[A_\mu^a] = r^\mu A_\mu^a$. One can choose $r^\mu = (0,0,0,1)$ and the gauge condition is $A_3^a = 0$.
 Under gauge transformation 
 \begin{align}
    A_\mu^a &\mapsto A_\mu^a + \frac{1}{g} \partial_\mu \alpha^a - f^{abc} \alpha^b A_\mu^c, \\
@@ -324,7 +321,7 @@ Under gauge transformation
 \end{align}
 Independent of $A_\mu^a$, ghosts decouple and it can be integrated out of the path integral again!
 
-Disadvantage: complication gauge field propagator
+Its Disadvantage is complication gauge field propagator
 \begin{align}
    \lag + \lag_\text{GF} = -\frac{1}{4} F_{\mu\nu}^a F^{a \, \mu\nu} - \frac{1}{2\xi}  (r^\mu A_\mu^a)^2
 \end{align}
@@ -342,10 +339,10 @@ Its inverse is the propagator
 \sim
 -\frac{i}{k^2} \left( g^{\mu\nu} + \frac{(r^2 + \xi k^2 ) k^\mu k^\nu}{(k\cdot r )^2} - \frac{k^\mu r^\nu + r^\mu k^\nu }{k \cdot r} \right).
 \end{align}
-Complicated, not manifestly Lorentz-invariance.
+It is complicated and the theory is not manifestly Lorentz-invariant.
 
 \section{BRST Symmetry}
-Rewrite the complete non-abelian Lagrangian (inclusive $\lag_\text{GF} + \lag_\text{FPG}$) with the help of the \textit{auxiliary field} $B^a$
+Rewrite the complete non-abelian Lagrangian (inclusive $\lag_\text{GF} + \lag_\text{FPG}$) with the help of the \textit{auxiliary (scalar) field} $B^a$
 \begin{align}
    \lag = -\frac{1}{4} F_{\mu\nu}^a F^{a\, \mu\nu} + \bar\psi (i \slashed{D} - m) \psi + \frac{\xi}{2} (B^a)^2 + B^a \partial^\mu A_\mu^a - \bar{\eta}^a \partial^\mu D_\mu^{ab}\eta^b. \label{math:BRSTLag}
 \end{align}
@@ -355,7 +352,7 @@ No kinetic term for $B^a$, so it doesn't propagate but can be eliminated through
    B^a = - \frac{1}{\xi} \partial^\mu A_\mu^a.
    \label{math:BRSTEOM}
 \end{align}
-It leads back to original form of $\lag$.
+It leads back to original form of $\lag$. Alternative (better) approach is to complete the square in $\lag$ and integrate out $B^a$. It still leads to the original $\lag$. For this reason, it is auxiliary.
 
 We know that $\lag$ in equation \ref{math:BRSTLag} is not invariant  under (infinitesimal) gauge transformations
 \begin{align}
@@ -408,7 +405,7 @@ e.g.~$Q A_\mu^a = D_\mu^{ab} \eta^b$.
 
 What we have shown in equation \ref{math:BRST5} amounts to $Q^2 A_\mu^a = 0$. In addition $Q^2 \bar{\eta}^a = 0$ as $Q B^a = 0$. Further $Q^2 \eta^a = 0$ because of 
 \begin{align*}
-   \delta Q \eta^a &= - \frac{g^2}{2} f^{abc} \left[ (\delta \eta^b) \eta^c + \eta^b (\delta \eta^c) \right],  \\
+   \delta  (Q \eta^a) &= - \frac{g^2}{2} f^{abc} \left[ (\delta \eta^b) \eta^c + \eta^b (\delta \eta^c) \right],  \\
                    &= \frac{g^2}{4} f^{abc} \left[ \lambda f^{bde} \eta^d \eta^e \eta^c + \eta^b \lambda f^{cde} \eta^d \eta^e \right], \\
                    &= \frac{g^2}{2} \lambda f^{abc} f^{nde} \eta^c \eta^d \eta^e + \text{Jacobi identity}.
 \end{align*}
@@ -417,32 +414,40 @@ Finally $Q^2 \psi = 0$ because of
 \begin{align*}
    \delta (Q \psi) &= i (\delta \eta^a) t^a \psi i \eta^a t^a (\delta \psi), \\
                  &= - \frac{i}{2} g \lambda f^{abc} \eta^b \eta^c t^a \psi + g \lambda \eta^a t^a \eta^b t^b \psi, \\
-                 &= - \frac{i}{2} g \lambda f^{abc} \eta^b \eta^c t^a \psi + g \lambda\frac{1}{2} \eta^a \eta^b \comm{t^a}{t^b} = \frac{i}{2} \eta^a \eta^b f^{abc} t^c, \\
+                 &= - \frac{i}{2} g \lambda f^{abc} \eta^b \eta^c t^a \psi + g \lambda\frac{1}{2} \eta^a \eta^b \comm{t^a}{t^b}, \\
+                 &= \frac{i}{2} \eta^a \eta^b f^{abc} t^c, \\
                  &= 0.
 \end{align*}
 
 Altogether we have proven the operator identity
 \begin{align}
-   Q^2 = 0
+   Q^2 = 0.
 \end{align}
 The BRST charge operator is nilpotent and commutes with the Hamiltonian.
 
 $Q$ divides the space of eigenstates of $H$ into three subspaces
 \begin{align*}
-   \hil_1 &= \left\{ \ket{\psi_1} \mid Q \ket{\psi_1} \neq 0 \right\} \\
-   \hil_2 &= Q \hil_1 \\
-   \hil_0 &= \hil - \hil_1 - \hil_2
+   \hil_1 &= \left\{ \ket{\psi_1} \mid Q \ket{\psi_1} \neq 0 \right\}, \\
+   \hil_2 &= Q \hil_1, \\
+   \hil_0 &= \hil - \hil_1 - \hil_2.
 \end{align*} 
 
-Note $\ket{\psi_{2(a/b)}} \in \hil_2$, $\ket{\psi_0} \in \hil_0$
+Arbitrary states $\ket{\psi_{2(a/b)}} \in \hil_2$, $\ket{\psi_0} \in \hil_0$ and
 \begin{align*}
-   \braket{\psi_{1a} | Q | \psi_{2b}} = 0 \\
-   \braket{\psi_2 | \psi_0} = \braket{\psi_1 | Q | \psi_0} = 0
+   \braket{\psi_{1a} | Q | \psi_{2b}} = 0, \\
+   \braket{\psi_2 | \psi_0} = \braket{\psi_1 | Q | \psi_0} = 0.
 \end{align*}
 
-States in $\hil_2$ have zero overlap with each other and with  states in $\hil_0$. Investigate which subpspaces the different polarization states of gauge bosons belong to: gauge bosons of momentum $k^\mu = (k^0, \pmb{k})$ and $k^2 = 0$.
+States in $\hil_2$ have zero overlap with each other and with  states in $\hil_0$. Investigate which subspaces the different polarization states of gauge bosons belong to: gauge bosons of momentum $k^\mu = (k^0, \pmb{k})$ and $k^2 = 0$.
 
-There two transverse polarization states, $\epsilon^T_{i \mu}$ and $\epsilon_{i\mu}^T k^\mu = 0$ with $i=1,2$. And two longitudinal ones $\epsilon^{+\mu} \propto k^\mu$, $\epsilon^+\mu k^\mu = 0$, forward polarization. $\epsilon^{-\mu} \propto (k_0, -\pmb{k})$ and $\epsilon^-_\mu k^\mu = 0$ backward polarization. They form a complete basis.
+There two transverse polarization states, $\epsilon^T_{i \mu}$ and $\epsilon_{i\mu}^T k^\mu = 0$ with $i=1,2$. And two longitudinal ones 
+\begin{itemize}
+   \item  forward polarization $ \epsilon^{+\mu} \propto k^\mu$, $\epsilon^+_\mu k^\mu = 0 $,
+   \item 
+backward polarization
+$\epsilon^{-\mu} \propto (k_0, -\pmb{k})$, $\epsilon^-_\mu k^\mu = 0$.
+\end{itemize}
+They form a complete basis.
 
 Consider equation \ref{math:BRST3a} and \ref{math:BRST3b} for $g=0$:
 \begin{align*}
@@ -467,3 +472,339 @@ i.e.~only physical intermediate states contribute, while unphysical states (long
 
 Proof: as $A^T, B^T \in \hil_0$, we know $Q \ket{A^T} = 0$. Since $\comm{Q}{H} = 0$ and hence $\comm{Q}{S} = 0$.
 $Q S \ket{A^T} = 0$, therefore $S \ket{A^T} \in \hil_0$ or $\hil_2$. But states in $\hil_2$ have zero overlap with $\hil_0$. Thus only $\hil_0$-states contribute!
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Lecture date: 20-01-15
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Non-abelian Gauge Theories to One Loop}
+Checking the mass dimension of operators we find that non-abelian theories are renormalizable. We can pursue renormalization program (couplings, field strength, mass) as in QED by making use of results from section \ref{sec:2-9} (with emphasis on differences) is possible. Feynman gauge $\xi=1$ is used throughout this discussion.
+
+\paragraph{Fermion self-energy} is
+\begin{align*}
+   \feynmandiagram[horizontal=i1 to v1, layered layout, inline=(i1.base)]{
+      i1[particle={\(p, b\)}] -- v1 --[edge label'={\(p-k, d\)}] v2 -- f1[particle={\(p,a\)}];
+      v1 --[half left, gluon, edge label={\(k, c\)}] v2;
+   };
+   &= -i \Sigma_{ab}(p) ,\\
+   &= -g^2 \mu^{4-d} \int \frac{\dd[d]{k}}{(2\pi)^d} \gamma_\mu \frac{1}{\slashed{p} - \slashed{k} - m} \gamma_\nu \frac{g^{\mu\nu}}{k^2} (t^c)_{ad} (t^c)_{d b}, \\
+   &= -i (t^c t^c)_{ab} \Sigma_{\text{QED}}(p).
+\end{align*}
+
+From group theory, we know
+\begin{align*}
+   (t^c t^c) = C_2(F) \delta_{ab}, \\
+   C_2 (F) = \frac{N^2 - 1}{2N},
+\end{align*}
+for $\SU(N)$ gauge group.
+
+Thus we have
+\begin{align}
+   \Sigma_{ab}(p) &= C_2 (F) \frac{g^2}{2\pi^2 \epsilon} (- \slashed{p} + 4m) + \text{finite}, \\
+   Z_2 &= 1 - C_2(F) \frac{g^2}{8 \pi^2 \epsilon},
+\end{align}
+as fermion wave function renormalization. 
+
+\paragraph{Gauge boson self-energy} (vacuum polarization)
+is more complicated. There are four diagrams at one loop order
+\begin{align*}
+   \feynmandiagram[horizontal=i1 to v1, layered layout, baseline=(v1.base)]{
+      i1 --[gluon] v1[blob] --[gluon] f1;
+   }; &= 
+   \feynmandiagram[horizontal= v1 to v2, layered layout, baseline=(v1.base)]{
+      i1 --[gluon] v1 --[half left, ghost] v2 --[gluon] f1;
+      v1 -- [half right, ghost] v2;
+   }; + 
+   \feynmandiagram[horizontal= v1 to v2, layered layout, baseline=(v1.base)]{
+      i1 --[gluon] v1 --[fermion, half left] v2 --[gluon] f1;
+      v1 -- [anti fermion, half right] v2;
+   };   \\
+   &\quad + \feynmandiagram[horizontal= v1 to v2, layered layout, baseline=(v1.base)]{
+      i1 --[gluon] v1 --[fermion, half left] v2 --[gluon] f1;
+      v1 -- [anti fermion, half right] v2;
+   }; +
+   \feynmandiagram[horizontal=i1 to v1, layered layout, baseline=(v1.base), medium]{
+   i1 --[gluon] v1 --[gluon] i2;
+   {[same layer] v1 --[gluon, half left] v2 --[gluon, half left] v1};
+   };
+\end{align*}
+(1), (2), (4) are new compared to QED! 
+One can show the integral of (4) is of the form
+\begin{align*}
+   \int \frac{\dd[d]{p}}{p^2}
+\end{align*}
+Remember from the dimensional regularization formula,  $\int \dd[d]{k} (k^2 - \Delta)^{-n} \propto \Delta^{-n+d/2}$. Here $\Delta = 0$, so with $d=4$, diagram (4) vanishes. 
+
+\begin{align*}
+   \feynmandiagram[horizontal= v1 to v2, layered layout, baseline=(v1.base)]{
+      i1[particle={\(p, \mu, a\)}] --[gluon] v1 --[half left, gluon, edge label={\(p_k, \rho, c\)}] v2 --[gluon] f1[particle={\(p,\nu, b\)}];
+      v1 -- [half right, edge label'={\(k, \sigma, d\)}, gluon] v2;
+   };
+   &= i \Pi^{ab}_{(1)\, \mu\nu}(p), \\
+   &= - \frac{1}{2} g^2 \mu^{4-d} f^{acd} f^{bdc} \int \frac{\dd[d]{k}}{(2\pi)^d} \frac{E_{\mu\nu}}{(p+k)^2 k^2},
+   \shortintertext{with $\frac{1}{2}$ is symmetry factor and}
+   E_{\mu\nu} &= \left[ (-2p - k)_\sigma g_{\mu\rho} + (p+2k)_\mu g_{\sigma \rho} + (p-k)_\rho g_{\mu \sigma} \right] \\
+              & \quad \times \left[ (p-k)^\rho g^\sigma_\nu + (p+2k)_\nu g^{\sigma \rho} + (-k-2p)^\sigma g^\rho_\nu \right], \\
+              &= p_\mu p_\nu (d-6) + (p_\mu k_\nu + p_\nu k_\mu)(2d-3) \\ 
+              &\quad + k_\mu k_\nu (4d-6) + g_{\mu\nu} \left[ (2p + k)^2 + (p-k)^2 \right].
+\end{align*}
+
+Standard procedure is to use Feynman parameters, integrate in $d$-dimension and extract pole terms. Group theoretical factor is
+\begin{align*}
+   f^{acd} f^{bcd} &= C_2(G)\delta^{ab}, \\
+   C_2(G) &= N,
+\end{align*}
+for $\SU (N)$.
+
+In the end, we get
+\begin{align}
+   \Pi_{(1) \mu\nu}^{ab} = - \frac{g^2}{16\pi^2 \epsilon} C_2 (G) \left( \frac{11}{3} p_\mu p_\nu - \frac{19}{6} g_{\mu\nu} p^2 \right) \delta^{ab}.
+\end{align}
+Note that this quantity is not of the form $(p_\mu p_\nu - g_{\mu\nu} p^2)$ as demanded by gauge invariance! (It comes from Slavnov-Taylor identities). Other (ghost) diagram is to rescue.
+
+\begin{align*}
+   \feynmandiagram[horizontal= v1 to v2, layered layout, baseline=(v1.base)]{
+      i1[particle={\(p, \mu, a\)}] --[gluon] v1 --[half left, ghost, edge label={\(p_k, c\)}] v2 --[gluon] f1[particle={\(p,\nu, b\)}];
+      v1 -- [half right, edge label'={\(k, d\)}, ghost] v2;
+   };
+   &= i \Pi^{ab}_{(2)\, \mu\nu}(p), \\ 
+   &= g^2 f^{cad}f^{dbc} \mu^{4-d} \int \frac{\dd[4]{k}}{(2\pi)^d} \frac{(p+k)_\mu k_\nu}{(p+k)^2 k^2}, \\
+   \Pi^{ab}_{(2)\, \mu\nu}(p) &= \frac{g^2}{16\pi^2 \epsilon} (\frac{1}{3} p_\mu p_\nu + \frac{1}{6} g_{\mu\nu} p^2) \delta^{ab}.
+\end{align*}
+
+Together it is gauge invariant
+\begin{align}
+   \Pi^{ab}_{(1)\, \mu\nu}(p) +  \Pi^{ab}_{(2)\, \mu\nu}(p) = \frac{g^2}{8\pi^2 \epsilon} C_2(G) \frac{5}{3} \left(g_{\mu\nu} p^2 - p_\mu p_\nu \right) \delta^{ab}.
+\end{align}
+
+With fermion and anti-fermion inside the loop, we have
+\begin{align*}
+   \feynmandiagram[horizontal= v1 to v2, layered layout, baseline=(v1.base)]{
+      i1[particle={\(p, \mu, a\)}] --[gluon] v1 --[fermion, edge label={\(p_k, c\)}, half left] v2 --[gluon] f1[particle={\(p,\nu, b\)}];
+      v1 -- [anti fermion, edge label={\(k, d\)}, half right] v2;
+   };
+   &= i \Pi_{(3) \, \mu\nu}^{ab} (p), \\
+   &= - g^2 \mu^{4-d} \int \frac{\dd[d]{k}}{(2\pi)^d} (t^a)_{dc} (t^b)_{cd}\tr[\gamma_\mu \frac{1}{\slashed{p} + \slashed{k} - m} \gamma_\nu \frac{1}{\slashed{k} - m }], \\
+   &= \tr(t^a t^b) i \Pi_{\mu\nu}^{\text{QED}}, \\
+   &= \frac{i}{2} \delta^{ab} \Pi_{\mu\nu}^{\text{QED}}.
+\end{align*}
+
+\begin{align}
+   \Pi_{(3) \, \mu\nu}^{ab} = \frac{g^2}{12 \pi^2 \epsilon} (p_\mu p_\nu - p^2 g_{\mu\nu}) \delta^{ab}.
+\end{align}
+We haven't specified the fermion contents of our theory yet.  For $n_F$ fermions ("flavor"), the contribution (3) to vacuum polarization is to be multiplied with $n_F$.
+
+Then all together the gluon self-energy is 
+\begin{align}
+   \Pi_{\mu \nu}^{ab}  = \frac{g^2}{8\pi^2 \epsilon} (g_\mu p^2 p_\mu p_\nu) \left( \frac{5}{3} C_2(G) - \frac{2}{3} n_F \right) \delta^{ab}.
+\end{align}
+Hence the wave function renormalization is
+\begin{align}
+   Z_3 = 1 + \frac{g^2}{8\pi^2 \epsilon} \left( \frac{5}{3} C_2 (G) - \frac{2}{3} n_F \right).
+\end{align}
+
+\paragraph{Vertex renormalization}
+Also in this case, we have one QED-like graph and one new graph.
+\begin{align*}
+   \includegraphics[width=0.4\linewidth]{QCDVertexRen/1.eps}
+   &= -ig \mu^{2-d/2} (\Lambda_{(1) \, \mu}^a)_{cd} (p, q, p') \\
+   \Lambda_{(1)\,\mu}^a (p, q, p') &= (t^d t^a t^d) \Lambda^{\text{QED}}_\mu (p, q, p')
+\end{align*}
+
+Evaluate the group theoretical factor
+\begin{align*}
+   t^d t^a t^d &= t^d \comm{t^a}{t^d} + t^d t^d t^a, \\
+               &= if^{adc} t^d t^c + C_2 (F) t^a, \\
+               &= -\frac{1}{2} f^{adc} f^{dcn}t^b + C_2(F)t^a, \\
+               &= \left(-\frac{1}{2} C_2(G) + C_2(F) \right)t^a.
+\end{align*}
+
+Therefore
+\begin{align}
+   \Lambda_{(1)\,\mu}^a = \frac{g^2}{8 \pi^2 \epsilon} \left[ - \frac{1}{2} C_2 (G) + C_2 (F) \right] \gamma_\mu t^a
+\end{align}
+
+\begin{align*}
+   &\includegraphics[width=0.5\linewidth]{QCDVertexRen/2.eps} \\
+   &= -ig \mu^{2-d/2} \Lambda_{(2)\,\mu}^a \\
+   &= (+ig)^2 (-g) (\mu^{4-d})^{3/2} \int \frac{\dd[d]{k}}{(2\pi)^d} \gamma^\nu (t^f)_{cd} \frac{-i}{(k-p)^2} f^{afe}  \\
+   &\quad \times \left[ (p-k-q)_\nu g_{\mu\lambda} + (2k - p - p')_\mu g_{\nu\lambda} + (p' - k - q)_\lambda g_{\nu\mu} \right]\frac{-i}{(p' - k)^2} \frac{i}{\slashed{k}-m} \gamma^\lambda (t^e)_{db}\\
+   \Lambda_{(2)\, \mu}^a &= \frac{g^2 \mu^{4-d}}{(2\pi)^d} f^{ade} t^f t^e I_\mu
+\end{align*}
+
+Group factor
+\begin{align*}
+   f^{ade} t^f t^e = \frac{i}{2} f^{afe}f^{fed}t^d = \frac{i}{2} C_2(G) t^a 
+\end{align*}
+Loop integral divergent part
+\begin{align*}
+   I_\mu = - \frac{6 \pi^2 i }{\epsilon} \gamma_\mu
+\end{align*}
+
+Thus
+\begin{align}
+   \Lambda_{(2)\,\mu}^a = \frac{g^2}{8 \pi^2 \epsilon} \frac{3}{2} C_2 (G) \gamma_\mu t^a
+\end{align}
+
+Combined vertex renormalization
+\begin{align}
+   \Lambda_{(1)\,\mu}^a + \Lambda_{(2)\,\mu}^a = \frac{g^2}{8\pi^2 \epsilon} \left[ C_2 (G) + C_2 (F) \right]\gamma_\mu t^a
+\end{align}
+
+Read off vertex renormalization $Z_{1F}$ as in QED
+\begin{align}
+   Z_{1F} = 1 - \frac{g^2}{8\pi^2 \epsilon} \left[ C_2 (G) + C_2 (F) \right]
+\end{align}
+
+Fermion, gauge boson self energies and fermion-gauge-boson vertex are the types of corrections that we also had in QED. Here there are more diagrams, thus other renormalization factors.
+\paragraph{3-gauge-boson vertex}
+\begin{align*}
+   \includegraphics[width=0.9\linewidth]{QCDVertexRen/3.eps}
+\end{align*}
+We can show that logarithmically divergent only. Therefore only need one single subtraction, multiplicatively renormalizable!
+
+\paragraph{4-gauge-boson vertex}
+\begin{align*}
+   \feynmandiagram[inline=(v.base), layered layout]{
+      i1 --[gluon] v[blob] --[gluon] f1,
+      i2 --[gluon] v --[gluon] f2,
+   }; 
+   =
+   (Z_4^{-1} - 1) 
+   \feynmandiagram[inline=(v.base), layered layout]{
+      i1 --[gluon] v --[gluon] f1,
+      i2 --[gluon] v --[gluon] f2,
+   };  + \text{finite}
+\end{align*}
+These are also log-divergent!
+
+\paragraph{Ghost self energy}
+\begin{align*}
+   \feynmandiagram[horizontal=i1 to v1, layered layout, baseline=(v1.base)]{
+      i1 --[ghost] v1 [blob] -- [ghost] f1;
+   };
+   =  
+   \feynmandiagram[horizontal=v1 to v2, layered layout, baseline=(v1.base)]{
+      i1 --[ghost] v1 --[ghost] v2 -- [ghost] f1;
+      v1 -- [half left, gluon] v2;
+   }; 
+\end{align*}
+It leads to wave function renormalization $\tilde{Z}_3$.
+
+\paragraph{Ghost-gauge vertex}
+\begin{align*}
+    \feynmandiagram[horizontal=i1 to v1, layered layout, inline=(v1.base)]{
+      i1 --[ghost] v1 [blob] -- [ghost] f1;
+      {[same layer]i2 --[gluon] v1};
+   };
+   = \dots = (\tilde{Z}_1^{-1} - 1)
+    \feynmandiagram[horizontal=i1 to v1, layered layout, inline=(v1.base)]{
+      i1 --[ghost] v1  -- [ghost] f1;
+      {[same layer]i2 --[gluon] v1};
+   }; + \text{finite}
+\end{align*}
+Renormalization factors 
+\begin{align*}
+   Z_1 , Z_2, Z_3, Z_4, Z_{1F}, \tilde{Z}_1, \tilde{Z}_3
+\end{align*}
+and $\delta_m$ for fermions.
+
+On tree level, all couplings are inter-related. $3$-gauge, gauge-ghost and gauge-fermion all $\sim g_0$ and $4 $-gauge $\sim g_0^2$. It is consequence of gauge symmetry. If gauge symmetry unbroken by renormalization, then we expect such relations for renormalization couplings too!
+Relation between various renormalization factors, analogous to $Z_1=Z_2$ in QED. "Slavnov-Taylor identities": non-abelian generalization of Ward identities in abelian theories. It can be shown using BRST transformations.
+
+Multiply $g_0$ with $Z^{-1}$ of the corresponding vertex and with $\sqrt{Z}$ for each external leg
+\begin{align*}
+   \feynmandiagram[layered layout, baseline=(v.base)]{
+      i1 --[gluon] v --[gluon] i2,
+      i3 --[gluon] v
+   };
+      &\sim Z_3^{3/2} g_0 = Z_1 g \\
+   \feynmandiagram[layered layout, baseline=(v.base)]{
+      i1 --[gluon] v --[gluon] i2,
+      i3 --[gluon] v --[gluon] i4
+   };
+   &\sim Z_3^2 g_0^2 = Z_4 g^2 \\
+   \feynmandiagram[layered layout, baseline=(v.base)]{
+      i1 -- v -- i2,
+      i3 --[gluon] v
+   };
+      &\sim Z_2 \sqrt{Z_3} g_0 = Z_{1F} g \\
+   \feynmandiagram[layered layout, baseline=(v.base)]{
+      i1 --[ghost] v --[ghost] i2,
+      i3 --[gluon] v
+   };
+      &\sim \tilde{Z}_3 \sqrt{Z_3} g_0 = \tilde{Z}_{1} g
+\end{align*}
+with all $g$ equal! Slavnov-Taylor identities guarantee this to hold. 
+
+\begin{align}
+   \frac{g}{g_0} &= Z_1^{-1} Z_3^{3/2} = Z_4^{-1/2} Z_3 = Z^{-1}_{1F} Z_2 Z_3^{1/2} = \tilde{Z}_1^{-1} \tilde{Z}_3 Z_3^{1/2} \notag \\
+   \frac{Z_1}{Z_3} &= \frac{Z_4}{Z_1} = \frac{Z_{1F}}{Z_2} = \frac{\tilde{Z}_1}{\tilde{Z}_3}
+\end{align}
+This is generalization of the relation $Z_1 = Z_2$ in QED.
+
+\section{Running Coupling}
+In the chapter on the renormalization group, we learnt that from coupling constant, renormalization $g_0 \mapsto g$ and scale independence of  $g_0$, one can derive a scale dependence of the renormalized couling $g = \tilde{g}(Q^2)$. This can be characterized by the $\beta$-function,
+\begin{align}
+   \beta (g) = \mu \pdv{g}{\mu}
+\end{align}
+In perturbation theory, $\beta(g) = \beta_0 g^3 + \text{two-loops}$.
+
+Derived solution of RG equation 
+\begin{align}
+   \bar{g}^2 (Q^2) = \frac{g^2}{1-\beta_0 g^2 \ln(Q^2 / \mu^2)}
+\end{align}
+
+To derive the $\beta$-function for abelian and non-abelian gauge theory. 
+\paragraph{QED} the connection between bare and renormalized coupling is
+\begin{align}
+   e_0 &= Z_3^{-1/2} \mu^{\epsilon / 2} e, \quad  Z_3 = 1- \frac{e^2}{6\pi^2 \epsilon} \notag \\
+       &= e \mu^{\epsilon/2} \left(1+ \frac{e^2}{12\pi^2 \epsilon} \right)
+\end{align}
+
+\begin{align*}
+   \mu \pdv{e_0}{\mu} = 0 &= \mu^{\epsilon/2} \left[ \beta \left(1 + \frac{e^2}{12 \pi^2 \epsilon} \right) + e \frac{\epsilon}{2} \left(1+ \frac{e^2}{12\pi^2 \epsilon} \right) + \beta \frac{e^2}{6 \pi^2 \epsilon} \right] \\
+   \beta(e) &= \frac{e \epsilon}{2} + \frac{e^3}{12 \pi^2} + \order{e^5} \\
+   \beta(e) &\stackrel{\epsilon \rightarrow 0}{=} \frac{e^3}{12\pi^2} + \order{e^5}
+\end{align*}
+
+\paragraph{Non-abelian case}
+\begin{align*}
+   g_0 &= Z_{1F} Z_2^{-1} Z_3^{-1/2} \mu^{\epsilon/2} g
+   \shortintertext{where}
+   Z_{1F} &= 1 - \frac{g^2}{8\pi^2 \epsilon} \left[ C_2 (G) + C_2 (F) \right] \\
+   Z_2 &= 1 - \frac{g^2}{8\pi^2 \epsilon} C_2 (F) \\ 
+   Z_3 &= 1+ \frac{g^2}{8\pi^2 \epsilon} \left[ \frac{5}{3} C_2 (G) - \frac{2}{3} n_F \right]  \\
+   g_0 &= g \mu^{\epsilon /2} \left\{ 1  + \frac{g^2}{16 \pi^2 \epsilon} \left[ -\frac{11}{3} C_2(G)  + \frac{2}{3} n_F \right] \right\}
+\end{align*}
+where $C_2 (G) = N$ for $\SU(N)$.
+
+From the analogous calculation to the QED one above, we find
+\begin{align}
+   \beta(g) = \frac{g^3}{16 \pi^2} \left[ - \frac{11}{3} C_2(G) + \frac{2}{3} n_F \right] + \order{g^5}.
+\end{align}
+For $\SU(N)$ gauge theories, if $n_F < \frac{11}{2} N$, then $\beta_0 < 0$ and from the RG equation, we can conclude 
+\begin{itemize}
+   \item 
+      asymptotic freedom $\bar{g}^2 (Q^2 \rightarrow \infty) \rightarrow 0$,
+   \item infrared slavery, $\bar{g}^2$ grows for small $Q^2$, perturbation theory breaks down.
+\end{itemize}
+
+\paragraph{QCD} is $\SU(3)_\text{C}$ gauge theory of the strong interactions. Gauge bosons are called gluons, fermions are quarks. As far as we know, $n_F = 6$. So QCD shows asymptotic freedom and confinement.
+
+Define 
+\begin{align}
+   \frac{1}{g^2} + \beta_0 \ln(\mu^2) &= \beta_0 \ln(\Lambda_\text{QCD}^2) \notag \\
+   \alpha_s(Q^2) &= \frac{\bar{g}^2 (Q^2)}{4\pi} \notag \\
+   \alpha_s (Q^2) &= \frac{12 \pi}{(33 - 2 n_F) \ln (Q^2 / \Lambda_\text{QCD}^2 )}
+\end{align}
+Dimensional transmutation is a mechanism to trade dimensionless $\alpha_s (\bar{g})$ with dimensionful $\Lambda_\text{QCD}$. Experimentally $\Lambda_\text{QCD} \approx \SI{200}{\mega \eV}$.
+
+To two loops in $\overline{\text{MS}}$
+\begin{align}
+   \beta (g) &= \beta_0 g^3 + \beta_1 g^5 + \order{g^7} \\
+   \beta_0 &= - \frac{1}{16\pi^2} \left[ \frac{11}{3} N - \frac{2}{3} n_F \right] \\
+   \beta_1 &= - \frac{1}{(16\pi^2)^2} \left[ \frac{34}{3} N^2 - \left( \frac{13}{3} N - \frac{1}{N} \right) n_F\right]
+\end{align}
+for $N=3, n_F=6$, both terms are negative.
+
+$n_F$ increase, then quarks screen the colour charge while gluons and ghosts lead to anti-screening. If there are too many quarks in theory, these could dominate and spoil asymptotic freedom.

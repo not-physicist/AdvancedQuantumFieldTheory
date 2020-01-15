@@ -388,7 +388,7 @@ How can we derive the Feynman rule for photon propagator?
    \frac{-ig^{\mu\nu}}{k^2 + i \epsilon}
 \end{align}
 
-What is the problem? The functional integral $\int \D A_\mu \euler^{iS[A]}$ incorporated the action
+What is the problem? The functional integral $\int \D A_\mu \euler^{iS[A]}$ incorporates the action
 \begin{align}
    S &= \int \dd[4]{x} \left( - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} \right) \notag\\ 
      &= \frac{1}{2} \int \dd[4]{x} A_\mu(x) \left( \partial^2 g^{\mu\nu} - \partial^{\mu} \partial^\nu \right) A_\nu(x) \notag\\
@@ -404,8 +404,8 @@ This expression has a great deal of (interconnected) problems
          \end{align*}
          $D_{\nu\lambda}$ has no inverse (formally singular). The same holds in momentum space.
       \item We need this inverse for the derivation of the generating function with external currents.
-      \item $\frac{1}{2} \int \frac{\dd[4]{k}}{(2\pi)^4} \tilde{A}_\mu (k) (-k^2 g^{\mu\nu} + k^\mu k^\nu) \tilde{A}_\nu (-k)$ vanished for all $\tilde{A}_\nu(k) = k_\mu \alpha(k)$
-         all these field configurations have the same weight $1$ in $\int \D A_\mu \euler^{iS[A]}$. It will terribly diverge. 
+      \item $\frac{1}{2} \int \frac{\dd[4]{k}}{(2\pi)^4} \tilde{A}_\mu (k) (-k^2 g^{\mu\nu} + k^\mu k^\nu) \tilde{A}_\nu (-k)$ vanishes for all $\tilde{A}_\nu(k) = k_\mu \alpha(k)$.
+         All these field configurations have the same weight $1$ in $\int \D A_\mu \euler^{iS[A]}$. It will terribly diverge. 
       \item These configurations correspond to gauge transformation $\lag$ (also $S$) invariant under $A_\mu(x) \mapsto A_\mu(x) + \frac{1}{\euler} \partial_\mu \alpha(x) $. 
          Thus redundant (path-integral) integration over gauge equivalent configurations.
 \end{enumerate}
@@ -420,14 +420,13 @@ then the path integral is given by
 \end{align*}
 since $S$ is gauge invariant, i.e.~independent of $\alpha$.
 
-The divergence stems from $\int\D \alpha$ which cancels in the ratio $W[j] = \frac{Z[j]}{Z[0]}$
-
+The divergence stems from $\int\D \alpha$ which cancels in the ratio $W[j] = \frac{Z[j]}{Z[0]}$.
 The aim is to factorize of the gauge part in the path integral via a "smart integration" of the gauge-fixing as a constraint. This is called \underline{Faddeev-Popov method}.
 
 \subsection[Factorization of Constraints]{Factorization of Constraints\footnote{Ryder, Chap 7.2}}
 Externally simple example
 \begin{align*}
-   I &= \int \dd{x} \dd{y} \euler^{-(x^2 + y^2)}   \\
+   1 &= \int \dd{x} \dd{y} \euler^{-(x^2 + y^2)}   \\
       \shortintertext{it is rotation invariant, use polar coordinates}
      &= \int \dd{\theta}\dd{r} r e^{-r^2}
    \shortintertext{$\int \dd{\theta} = 2\pi$ corresponds to $\int \D \alpha$ in the path integral.}
@@ -435,7 +434,7 @@ Externally simple example
 
 A more general expansion for this separation
 \begin{align*}
-   I = \int \dd{\theta'} \int \dd{r} \int \dd{\theta} r \euler^{-r^2} \delta(\theta)
+   1 = \int \dd{\theta'} \int \dd{r} \int \dd{\theta} r \euler^{-r^2} \delta(\theta)
    \shortintertext{The delta function reduced the integration path to one along the x-axis ($\theta = 0$).}
 \end{align*}
 
@@ -471,11 +470,11 @@ Note that $f(\theta)$ can simply be obtained by a rotation from $y$-axis
 \end{align*}
 remember $y' = f(\theta) = y\cos\theta - x\sin\theta$.
 
-Insert this unity into $I = \int \dd{x} \dd{y} \euler^{-(x^2 + y^2)}$
+Insert this unity into $1 = \int \dd{x} \dd{y} \euler^{-(x^2 + y^2)}$
 \begin{align*}
-   I = \int \dd{\theta} \int \dd{x'} \dd{y'} \euler^{-(x'^2 + y'^2)} \Delta \left(\sqrt{x'^2 + y'^2} \right) \delta(y')
+   1 = \int \dd{\theta} \int \dd{x'} \dd{y'} \euler^{-(x'^2 + y'^2)} \Delta \left(\sqrt{x'^2 + y'^2} \right) \delta(y')
 \end{align*}
-It exhibits separation of variables made possible by the rotation invariance of the integral. The integral $\int \dd{x'} \dd{y'} \dots$ is independent of $\theta$, so $\int \dd{\theta}$ is simply an overall multiplication factor in integral.
+It exhibits \underline{separation of variables} ($\theta$ from $x'$ and $y'$) made possible by the rotation invariance of the integral. The integral $\int \dd{x'} \dd{y'} \dots$ is independent of $\theta$, so $\int \dd{\theta}$ is simply an overall multiplication factor in integral.
 
 Finally $\Delta(r)$ can also be rewritten as 
 \begin{align}
@@ -487,65 +486,65 @@ Finally $\Delta(r)$ can also be rewritten as
 \end{align}
 
 \subsection{Gauge Fixing in a Path Integral}
-Consider a gauge transformation 
+Consider the gauge transformation 
 \begin{align}
-   A_\mu(x) \mapsto A_\mu^\alpha(x) = A_\mu(x) + \frac{1}{e} \partial_\mu \alpha(x)
+   A_\mu(x) \mapsto A_\mu^\alpha(x) = A_\mu(x) + \frac{1}{e} \partial_\mu \alpha(x),
 \end{align}
 and a gauge-fixing condition 
 \begin{align}
-   F[A_\mu] = 0
+   F[A_\mu] = 0.
 \end{align}
 
-In analogy to the condition \ref{math:DeltaInv}
+In analogy to the condition \ref{math:DeltaInv} we now have
 \begin{align}
-   \Delta_F^{-1}[A_\mu] = \int \D \alpha \delta \left(F[A_\mu^\alpha] \right)
+   \Delta_F^{-1}[A_\mu] = \int \D \alpha \delta \left(F[A_\mu^\alpha] \right),
 \end{align}
 where $\delta$ is a $\delta$-functional.
 
 $\Delta_F^{-1}[A_\mu]$ is gauge invariant
 \begin{align*}
-   \Delta_F^{-1} \left[ A_\mu^{\alpha'} \right] &= \int \D \alpha \delta \left( F [A_\mu^{\alpha+\alpha'}] \right) \\
-   \shortintertext{group invariant measure $\alpha'' = \alpha + \alpha'$}
-                        &= \int \D \alpha''  \delta \left( F[A_\mu^{\alpha''}] \right) = \Delta_F^{-1}[A_\mu]
+   \Delta_F^{-1} \left[ A_\mu^{\alpha'} \right] &= \int \D \alpha \delta \left( F [A_\mu^{\alpha+\alpha'}] \right), \\
+   \shortintertext{with group invariant measure $\alpha'' = \alpha + \alpha'$}
+                        &= \int \D \alpha''  \delta \left( F[A_\mu^{\alpha''}] \right) = \Delta_F^{-1}[A_\mu].
 \end{align*}
 
 Insert $1 = \Delta_F [A_\mu] \int \D \alpha \delta(F[A_\mu^\alpha])$ into the path integral $Z$
 \begin{align}
-   Z &= \int \D A_\mu \euler^{iS[A_\mu]} \notag\\
-     &= \int \D A_\mu \Delta_F[A_\mu] \int \D \alpha \delta \left( F[A_\mu^\alpha] \right) \euler^{iS[A_\mu]} \notag\\
+   Z &= \int \D A_\mu \euler^{iS[A_\mu]}, \notag\\
+     &= \int \D A_\mu \Delta_F[A_\mu] \int \D \alpha \delta \left( F[A_\mu^\alpha] \right) \euler^{iS[A_\mu]}, \notag\\
    \shortintertext{using the gauge transformation $A_\mu \mapsto A_\mu^\alpha$}
-     &= \int \D A_\mu^\alpha \Delta [A_\mu^\alpha] \int \D \alpha \delta \left( F[A_\mu^\alpha] \right)\euler^{iS[A^\alpha_\mu]} \notag \\
+     &= \int \D A_\mu^\alpha \Delta [A_\mu^\alpha] \int \D \alpha \delta \left( F[A_\mu^\alpha] \right)\euler^{iS[A^\alpha_\mu]}, \notag \\
      \shortintertext{rename $A^\alpha_\mu = A_\mu$}
-     &= \int \D \alpha \int \D A_\mu  \Delta_F [A_\mu] \delta \left( F[A_\mu] \right) \euler^{iS[A_\mu]} \label{math:zAlpha}
+     &= \int \D \alpha \int \D A_\mu  \Delta_F [A_\mu] \delta \left( F[A_\mu] \right) \euler^{iS[A_\mu]}. \label{math:zAlpha}
 \end{align}
 
-$S$ and $\Delta_F(\dots)$ are gauge invariant and $\D A_\mu^\alpha = \D A_\mu$, since
+$S$ and $\Delta_F$ are gauge invariant and $\D A_\mu^\alpha = \D A_\mu$, since
 \begin{align*}
-   Z &= \int \D A_\mu \euler^{iS[A_\mu]} \\
-     &= \int \D A_\mu^{\tilde{\alpha}} \euler^{iS[A_\mu^{\tilde{\alpha}}]} \\
-     &= \int \D A_\mu^{\tilde{\alpha}} \euler^{iS[A_\mu]}
+   Z &= \int \D A_\mu \euler^{iS[A_\mu]}, \\
+     &= \int \D A_\mu^{\tilde{\alpha}} \euler^{iS[A_\mu^{\tilde{\alpha}}]}, \\
+     &= \int \D A_\mu^{\tilde{\alpha}} \euler^{iS[A_\mu]}.
 \end{align*}
 or $A_\mu \mapsto A_\mu^{\tilde{\alpha}}$ is just a shift of integration. Integrand of equation \ref{math:zAlpha} independent of gauge $\alpha$. Thus $\int \D \alpha$ can be moved in front and is therefore already separated!
 
 Now use 
 \begin{align}
-   \Delta_F[A_\mu] = \det \left| \frac{\delta F}{\delta \alpha} \right|_{F=0}
+   \Delta_F[A_\mu] = \det \left| \frac{\delta F}{\delta \alpha} \right|_{F=0}.
 \end{align}
 We will apply gauge-fixing conditions of the form (generalization of Lorenz gauge)
 \begin{align}
-   F[A_\mu] &= \partial^\mu A_\mu + C(x) = 0
-   \shortintertext{with $c(x)$ any scalar function. Thus }
-   F[A_\mu^\alpha] &= F[A_\mu] + \frac{1}{e} \partial^2 \alpha(x) \\
-   \Delta_F[A_\mu] &= \det \left| \frac{1}{e} \partial^2 \right| 
+   F[A_\mu] &= \partial^\mu A_\mu + C(x) = 0,
+   \shortintertext{with $C(x)$ any scalar function. Thus }
+   F[A_\mu^\alpha] &= F[A_\mu] + \frac{1}{e} \partial^2 \alpha(x), \notag \\
+   \Delta_F[A_\mu] &= \det \left| \frac{1}{e} \partial^2 \right| .
 \end{align}
 independent of $A_\mu$.
-$\Delta_F[A_\mu]$ can be moved in front of the path integral. (Not valid in the non-abelian case.)
+$\Delta_F[A_\mu]$ can be moved in front of the path integral (not valid in the non-abelian case).
 
-Since $Z$ and in the end, the physics does not depend on value of $C(x)$, we are free to have a linear combination of different $C(x)$. Now multiply equation (\ref{math:zAlpha}) with a weight$\int \D C \exp(\frac{-i}{2\xi}C^2 \dd{x})$.
-After integrating $\int \D C$) and using $\delta \left( F[A_\mu] \right) = \delta \left( \partial^\mu A_\mu - C(x) \right)$
+Since $Z$ and in the end, the physics does not depend on value of $C(x)$, we are free to have a linear combination of different $C(x)$. Now multiply equation (\ref{math:zAlpha}) with a weight$\int \D C \exp(\frac{-i}{2\xi}C^2 (x))$.
+After integrating $\int \D C$ and using $\delta \left( F[A_\mu] \right) = \delta \left( \partial^\mu A_\mu - C(x) \right)$
 \begin{align}
-   Z &= N \int \D A_\mu \exp{i \int \dd[4]{x} \left( \lag - \frac{1}{2\xi} \left( \partial_\mu A^\mu\right)^2  \right)} \\
-   \lag_{\text{eff}} &= \lag + \lag_{\text{GF}} = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} - \frac{1}{2\xi} (\partial_\mu A^\mu)^2
+   Z &= N \int \D A_\mu \exp{i \int \dd[4]{x} \left[ \lag - \frac{1}{2\xi} \left( \partial_\mu A^\mu\right)^2  \right] }, \\
+   \lag_{\text{eff}} &= \lag + \lag_{\text{GF}} = - \frac{1}{4} F_{\mu\nu} F^{\mu\nu} - \frac{1}{2\xi} (\partial_\mu A^\mu)^2,
 \end{align}
 with the gauge-fixing term in Lagrangian.
 
@@ -1012,6 +1011,7 @@ Propagator at leading order
 We will make heavy use of the fact Ward Takahashi identities hold to all orders in the following sections on the renormalization of QED.
 
 \section{Renormalization of QED I: Divergences and Dimensional Analysis}
+\label{sec:2-9}
 It is known from QFT course last term that loop diagrams are often (UV-)divergent. To obtain a sensible theory, need to \underline{regularise} these divergences and remove or absorb them by renormalization.
 
 Analyse divergences structure of QED by \underline{dimensional analysis}. Superficial degree of divergences $D$ of a Feynman diagram with 
